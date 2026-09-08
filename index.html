@@ -149,6 +149,7 @@
 
   /* ---------- Detail sheet ---------- */
   .overlay{position:fixed; inset:0; background:rgba(20,10,20,.45); backdrop-filter:blur(2px); z-index:40; display:flex; justify-content:flex-end;}
+  .overlay[hidden]{display:none;}
   .sheet{
     width:min(560px,100%); height:100%; background:var(--bg); overflow-y:auto; position:relative;
     box-shadow:-24px 0 48px -20px rgba(0,0,0,.35); animation:slidein .22s ease-out;
