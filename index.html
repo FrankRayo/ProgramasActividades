@@ -109,6 +109,7 @@
   .empty-state{grid-column:1/-1; text-align:center; padding:48px 20px; color:var(--ink-soft);}
   .card{
     --cc: var(--accent);
+    -webkit-appearance:none; appearance:none; color:var(--ink);
     text-align:left; background:var(--surface); border:1px solid var(--line); border-top:4px solid var(--cc); border-radius:12px 12px 16px 16px;
     padding:16px; display:flex; flex-direction:column; gap:10px; cursor:pointer;
     transition:transform .15s, box-shadow .15s, border-color .15s;
@@ -116,7 +117,7 @@
   .card:hover{transform:translateY(-3px); box-shadow:var(--shadow); border-color:var(--line); border-top-color:var(--cc);}
   .card-top{display:flex; justify-content:flex-end; align-items:center; gap:8px;}
   .time-pill{font-size:.76rem; color:var(--ink-soft); font-variant-numeric:tabular-nums; white-space:nowrap;}
-  .card h3{font-size:1.12rem; line-height:1.25; font-weight:700;}
+  .card h3{font-size:1.12rem; line-height:1.25; font-weight:700; color:var(--ink);}
   .skill-chips{display:flex; flex-wrap:wrap; gap:6px;}
   .skill-chip{
     display:inline-flex; align-items:center; gap:5px; font-size:.7rem; font-weight:700;
@@ -293,7 +294,7 @@ const TIME_BUCKETS = [
 ];
 
 const ACTIVITIES = [
-{id:"l1", nombre:"Mucho gusto, yo soy…", dia:"Lunes", habilidades:["AUTOESTIMA"], tiempo:"25–30 min", bucket:"media",
+{id:"l1", nombre:"Mucho gusto, yo soy…", habilidades:["AUTOESTIMA"], tiempo:"25–30 min", bucket:"media",
  materiales:["Cartulinas","Lápices o marcadores","Lana","Perforadora"],
  proposito:"Cada NNA crea su propia tarjeta de identificación (lanyard), decorada a su gusto, para usar durante toda la semana en vez de scotch. Ayuda a conocerse entre todos y potencia el sentido de comunidad.",
  desarrollo:[
@@ -306,14 +307,14 @@ const ACTIVITIES = [
  reflexion:"Que surja durante la misma actividad: conversar con cada NNA por qué eligió esos elementos, para que se reconozcan a sí mismos y lo que les gusta.",
  tips:[]},
 
-{id:"l2", nombre:"Actividad reglas de oro", dia:"Lunes", habilidades:["CONVIVENCIA"], tiempo:"Variable", bucket:"jornada",
+{id:"l2", nombre:"Actividad reglas de oro", habilidades:["CONVIVENCIA"], tiempo:"Variable", bucket:"jornada",
  materiales:[],
  proposito:"Actividad conducida por el equipo de Vínculo y Comunidad para presentar las reglas de oro de Operación Infancia: respeto, diálogo y escucha activa, y solidaridad.",
  desarrollo:["Tu rol como encargado/a de programas es de apoyo: ayudar con la atención de los NNA, la preparación de materiales y lo que Vínculo y Comunidad necesite."],
  reflexion:"La conduce el equipo de Vínculo y Comunidad.",
  tips:[], nota:"No es una actividad de Programas — se apoya, no se dirige."},
 
-{id:"l3", nombre:"Misión: Operación Infancia", dia:"Lunes", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"45–60 min", bucket:"larga",
+{id:"l3", nombre:"Misión: Operación Infancia", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"45–60 min", bucket:"larga",
  materiales:["Papelito con la lista de 'objetos imposibles' (uno por grupo)","2 telas de formación por grupo","Hojas blancas","Papel kraft con la pregunta '¿qué es algo que alguna vez intentaste y no te salió bien?'","Lápices"],
  proposito:"Una 'misión imposible' con desafíos irresolubles: los NNA aprenden que no todo se puede resolver, que el proceso importa tanto como el resultado, y que la frustración se sobrelleva mejor en equipo.",
  desarrollo:[
@@ -328,7 +329,7 @@ const ACTIVITIES = [
  reflexion:"Ideal para una reflexión general (ej. 4 esquinas) sobre resiliencia: la mayoría de las cosas que intentamos pueden salir mal, pero lo importante es atreverse a intentar.",
  tips:["Ustedes deciden cuándo detener la actividad: cuando ya estén muy frustrados o se hayan dado cuenta de que es imposible."]},
 
-{id:"l4", nombre:"Sembrando mi ser", dia:"Lunes", habilidades:["AUTOESTIMA"], tiempo:"20–30 min", bucket:"media",
+{id:"l4", nombre:"Sembrando mi ser", habilidades:["AUTOESTIMA"], tiempo:"20–30 min", bucket:"media",
  materiales:["Vasos plásticos o biodegradables (uno por NNA)","Algodón o tierra","Porotos (uno por vaso)","Plumones o lápices","Agua para regar"],
  proposito:"Primera actividad del hilo conductor 'Semana del Autocuidado y Crecimiento Personal': cada NNA siembra un poroto que lo representa, para entender que —como una planta— necesita cuidado, constancia y responsabilidad para crecer.",
  desarrollo:[
@@ -341,14 +342,14 @@ const ACTIVITIES = [
  tips:["Recuérdales durante la semana regar y observar su planta, reforzando que cuidar los sueños también requiere constancia y cariño día a día."],
  nota:"Hilo conductor 'Semana del Autocuidado' (1/3) — continúa el miércoles con 'Decorando mi entorno' y cierra el viernes con 'El jardín que floreció'."},
 
-{id:"l5", nombre:"Talleres · ¡Probemos cosas nuevas!", dia:"Lunes", habilidades:[], tiempo:"35–45 min", bucket:"media",
+{id:"l5", nombre:"Talleres · ¡Probemos cosas nuevas!", habilidades:[], tiempo:"35–45 min", bucket:"media",
  materiales:["Los que requiera cada taller (guitarras, lápices, pinturas, cuerda, etc.)"],
  proposito:"Espacio de 'Talleres': NNA y voluntarios prueban actividades nuevas y descubren talentos, a través de tutorías que arman los propios voluntarios.",
  desarrollo:["Presentar los talleres/tutorías disponibles y quién los dicta.","Dejar que cada NNA elija a qué taller ir."],
  reflexion:"Cierre del día: dar espacio para que los NNA conversen sobre cómo funcionó todo y decanten lo vivido.",
  tips:[]},
 
-{id:"m1", nombre:"Laberinto de las emociones", dia:"Martes", habilidades:["EMOCIONES","RESILIENCIA"], tiempo:"30–40 min", bucket:"media",
+{id:"m1", nombre:"Laberinto de las emociones", habilidades:["EMOCIONES","RESILIENCIA"], tiempo:"30–40 min", bucket:"media",
  materiales:["Conos, cuerdas, sillas u otros para armar un circuito","Carteles con emociones (frustración, miedo, tristeza, rabia, vergüenza, culpa)","Tarjetas de 'superpoderes emocionales' (respirar profundo, pedir ayuda, hablar de mis emociones, cambiar de mirada)","Hojas blancas","Lápices"],
  proposito:"Recorrido por estaciones donde cada NNA reconoce emociones más complejas y estrategias de resiliencia emocional para afrontarlas, trabajando también la escucha activa y el respeto.",
  desarrollo:[
@@ -359,7 +360,7 @@ const ACTIVITIES = [
  reflexion:"Reconocer sin juicio las emociones y validar el esfuerzo de enfrentarlas; compartir experiencias ayuda a darse cuenta de que otros también sienten lo mismo, y eso es normal.",
  tips:[]},
 
-{id:"m2", nombre:"Retratarte", dia:"Martes", habilidades:["AUTOESTIMA","EMPATIA"], tiempo:"40 min", bucket:"media",
+{id:"m2", nombre:"Retratarte", habilidades:["AUTOESTIMA","EMPATIA"], tiempo:"40 min", bucket:"media",
  materiales:["Papel kraft","Lápices","Pegamento","Papelitos con cualidades y habilidades, organizados por estaciones temáticas"],
  proposito:"Reconocerse en características físicas, cualidades y habilidades, desarrollando la capacidad de verse de forma positiva y valorar lo que los hace únicos.",
  desarrollo:[
@@ -372,7 +373,7 @@ const ACTIVITIES = [
  reflexion:"Conocerse y reconocer las propias cualidades ayuda a valorarse; de las diferencias nace la riqueza del grupo, y respetarlas fortalece la unión.",
  tips:[]},
 
-{id:"m3", nombre:"La gran posta", dia:"Martes", habilidades:["EQUIPO","RESILIENCIA","EMPATIA"], tiempo:"40–50 min", bucket:"larga",
+{id:"m3", nombre:"La gran posta", habilidades:["EQUIPO","RESILIENCIA","EMPATIA"], tiempo:"40–50 min", bucket:"larga",
  materiales:["Ovillos grandes de lana, cuerda o cinta (uno por equipo)","Tijeras o pinzas de cartón (opcional)","Conos","Hojas con pruebas","Caja o recipiente para la 'bomba emocional'"],
  proposito:"Posta con desafíos simbólicos: los 'nudos' se resuelven mejor pidiendo ayuda, confiando en otros y trabajando en equipo.",
  desarrollo:[
@@ -384,7 +385,7 @@ const ACTIVITIES = [
  reflexion:"Los conflictos se enredan como un ovillo de lana; detenerse, pedir ayuda y confiar en otros permite desenredarlos, transformando la tensión en unión.",
  tips:["Los hilos desenredados pueden juntarse para formar una figura colectiva (corazón, sol, círculo) — pónganse creativos."]},
 
-{id:"m4", nombre:"Mi globo emocional", dia:"Martes", habilidades:["EMOCIONES"], tiempo:"40–60 min", bucket:"larga",
+{id:"m4", nombre:"Mi globo emocional", habilidades:["EMOCIONES"], tiempo:"40–60 min", bucket:"larga",
  materiales:["Plantilla de globo (una por NNA)","Hojas blancas","Témperas o lápices de colores","Historia 'El día de Tomás' (anexa)","Globos reales (uno por NNA)","Masking tape o lana"],
  proposito:"Reconocer la variedad de emociones que se viven en un mismo día, comprender que todas son válidas y pasajeras, e identificar estrategias personales ('armadura invisible') de autocuidado.",
  desarrollo:[
@@ -396,13 +397,13 @@ const ACTIVITIES = [
  reflexion:"Todas las emociones son válidas y pasajeras; cuidar nuestro 'globo emocional' significa conocernos, darnos espacio para calmarnos y pedir ayuda cuando hace falta.",
  tips:[]},
 
-{id:"m5", nombre:"Talleres · ¡Sigamos probando cosas nuevas!", dia:"Martes", habilidades:[], tiempo:"35–45 min", bucket:"media",
+{id:"m5", nombre:"Talleres · ¡Sigamos probando cosas nuevas!", habilidades:[], tiempo:"35–45 min", bucket:"media",
  materiales:["Los que requiera cada taller"],
  proposito:"Continuación del espacio de tutorías de talentos; se espera que también los voluntarios se involucren activamente enseñando o aprendiendo.",
  desarrollo:["Recordar las opciones de tutoría disponibles.","Dejar que cada NNA elija su taller."],
  reflexion:"—", tips:[]},
 
-{id:"x1", nombre:"Ashuntale'", dia:"Miércoles", habilidades:["EQUIPO","EMOCIONES"], tiempo:"30–40 min", bucket:"media",
+{id:"x1", nombre:"Ashuntale'", habilidades:["EQUIPO","EMOCIONES"], tiempo:"30–40 min", bucket:"media",
  materiales:["9 impresiones grandes de emociones por equipo","9 impresiones pequeñas (5×5 cm) iguales, por equipo","Lentejas, sillas, aros, pelotas u otros para obstáculos"],
  proposito:"Memoria + posta con obstáculos: organizarse en equipo con liderazgo y comunicación, y ser resilientes ante la dificultad.",
  desarrollo:[
@@ -414,7 +415,7 @@ const ACTIVITIES = [
  reflexion:"Usar la reflexión general del bloque para conectar la actividad con el trabajo en equipo, la memoria emocional y la resiliencia frente al error.",
  tips:["Antes de empezar, organizar el equipo según las habilidades de cada uno (el más rápido al final, el de mejor memoria al principio); a mitad de camino, dar un momento para reorganizar la estrategia."]},
 
-{id:"x2", nombre:"Un paso para adelante", dia:"Miércoles", habilidades:["EMPATIA","EMOCIONES"], tiempo:"30 min", bucket:"media",
+{id:"x2", nombre:"Un paso para adelante", habilidades:["EMPATIA","EMOCIONES"], tiempo:"30 min", bucket:"media",
  materiales:["Lista de 10–15 frases o situaciones hipotéticas","Música suave (opcional)"],
  proposito:"Reconocer experiencias y emociones compartidas, comprendiendo que muchos viven situaciones similares y que no están solos en lo que sienten.",
  desarrollo:[
@@ -426,7 +427,7 @@ const ACTIVITIES = [
  reflexion:"Muchas veces creemos que ciertas emociones o situaciones solo nos pasan a nosotros, pero son experiencias que muchos también viven; reconocerlo ayuda a ser más empáticos.",
  tips:[]},
 
-{id:"x3", nombre:"Tombo", dia:"Miércoles", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"40 min", bucket:"media",
+{id:"x3", nombre:"Tombo", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"40 min", bucket:"media",
  materiales:["1 pelota (vóleibol, fútbol o quemadas)","Conos"],
  proposito:"Fomentar la cooperación y el trabajo grupal a través de una competencia lúdica tipo béisbol.",
  desarrollo:[
@@ -439,7 +440,7 @@ const ACTIVITIES = [
  reflexion:"Preguntar cómo trabajar mejor en equipo, qué estrategias usar para avanzar más lejos y cómo decidir los roles; destacar la importancia de organizarse y apoyarse.",
  tips:[]},
 
-{id:"x4", nombre:"Decorando mi entorno", dia:"Miércoles", habilidades:["AUTOESTIMA"], tiempo:"35–45 min", bucket:"media",
+{id:"x4", nombre:"Decorando mi entorno", habilidades:["AUTOESTIMA"], tiempo:"35–45 min", bucket:"media",
  materiales:["Los vasos con porotos de cada NNA","Plumones, témperas, stickers, papel de colores, tijeras y pegamento","Cartulina grande o papel kraft","Cinta adhesiva"],
  proposito:"Segunda actividad del hilo conductor: reflexionar sobre las personas y hábitos que ayudan a crecer, entendiendo que el autocuidado también depende del entorno.",
  desarrollo:[
@@ -452,13 +453,13 @@ const ACTIVITIES = [
  tips:["Si a algún NNA su poroto no ha crecido, es buen momento para reforzar que los sueños, como las plantas, tienen distintos ritmos."],
  nota:"Hilo conductor 'Semana del Autocuidado' (2/3)."},
 
-{id:"x5", nombre:"Talleres · ¡Lo estoy pasando bacán!", dia:"Miércoles", habilidades:[], tiempo:"Variable", bucket:"jornada",
+{id:"x5", nombre:"Talleres · ¡Lo estoy pasando bacán!", habilidades:[], tiempo:"Variable", bucket:"jornada",
  materiales:["Papelógrafo de inscripción"],
  proposito:"A mitad de semana, ayudar a que los NNA definan qué presentarán en el show de talentos e inscribirse en un papelógrafo.",
  desarrollo:["Poner un papelógrafo de inscripción al show de talentos del sábado.","Motivar con mucho entusiasmo para que todos se animen a practicar y/o inscribirse."],
  reflexion:"—", tips:[]},
 
-{id:"j1", nombre:"Policías y ladrones", dia:"Jueves", habilidades:["EQUIPO"], tiempo:"35–45 min", bucket:"media",
+{id:"j1", nombre:"Policías y ladrones", habilidades:["EQUIPO"], tiempo:"35–45 min", bucket:"media",
  materiales:["Petos o pañuelos de colores","Conos o tiza para delimitar la cancha y la 'Cárcel'"],
  proposito:"Juego de persecución grupal con estrategia de escape y rescate, pensado para reír y disfrutar, equilibrando las actividades más reflexivas del día.",
  desarrollo:[
@@ -471,7 +472,7 @@ const ACTIVITIES = [
  reflexion:"El énfasis está en la energía y la diversión, como contrapeso a las actividades más reflexivas del día.",
  tips:["Puede ser buena instancia para que los NNA jueguen entre ellos sin que el voluntario sea intermediario."]},
 
-{id:"j2", nombre:"Encuentra lo que nos une", dia:"Jueves", habilidades:["EMPATIA","EQUIPO"], tiempo:"40 min", bucket:"media",
+{id:"j2", nombre:"Encuentra lo que nos une", habilidades:["EMPATIA","EQUIPO"], tiempo:"40 min", bucket:"media",
  materiales:["Hojas blancas","Lápices de colores","Materiales disponibles en el entorno (cajas, ramas, cartones)"],
  proposito:"Relacionarse con NNA distintos a sus amigos habituales, descubriendo similitudes y valorando diferencias.",
  desarrollo:[
@@ -484,7 +485,7 @@ const ACTIVITIES = [
  reflexion:"¿Cómo se sintieron trabajando con personas distintas? ¿Qué fue más fácil, lo común o las diferencias? Un equipo se enriquece tanto de lo que une como de lo que diferencia.",
  tips:[]},
 
-{id:"j3", nombre:"Juego libre", dia:"Jueves", habilidades:["EMOCIONES","EMPATIA"], tiempo:"Todo el bloque entre almuerzo y talleres", bucket:"jornada",
+{id:"j3", nombre:"Juego libre", habilidades:["EMOCIONES","EMPATIA"], tiempo:"Todo el bloque entre almuerzo y talleres", bucket:"jornada",
  materiales:["Materiales a libre elección (deportivos, plastilina, cartones, etc.)"],
  proposito:"Que los niños jueguen de forma espontánea y sin estructura predefinida, eligiendo qué hacer, con qué y dónde; nutre el crecimiento emocional y social en un ambiente seguro.",
  desarrollo:[
@@ -496,7 +497,7 @@ const ACTIVITIES = [
  reflexion:"No imponer conversaciones reflexivas durante el juego libre: interfiere con la creatividad. Si surgen emociones importantes, se puede hablar de ellas después.",
  tips:[]},
 
-{id:"j4", nombre:"Creemos un mundo nuevo", dia:"Jueves", habilidades:["EMPATIA","EQUIPO"], tiempo:"30–40 min", bucket:"media",
+{id:"j4", nombre:"Creemos un mundo nuevo", habilidades:["EMPATIA","EQUIPO"], tiempo:"30–40 min", bucket:"media",
  materiales:["Lápices","Cartulinas","Cartón para la base","Palos de maqueta o de helado","Mostacillas y glitter","Cola fría y pegamento"],
  proposito:"Trabajar la empatía de forma indirecta, diseñando en equipo un planeta nuevo con sus propias reglas de convivencia.",
  desarrollo:[
@@ -509,13 +510,13 @@ const ACTIVITIES = [
  reflexion:"Hoy imaginaron mundos donde todos podían convivir bien; ¿qué pequeñas cosas de esos mundos podríamos traer al nuestro? La empatía empieza con pequeños gestos.",
  tips:["Se pueden dejar las maquetas expuestas como 'Galería de Mundos Empáticos'."]},
 
-{id:"j5", nombre:"Talleres · ¡Yo puedo!", dia:"Jueves", habilidades:[], tiempo:"Variable", bucket:"jornada",
+{id:"j5", nombre:"Talleres · ¡Yo puedo!", habilidades:[], tiempo:"Variable", bucket:"jornada",
  materiales:[],
  proposito:"Reforzar la confianza de los NNA que estén cansados o inseguros sobre el show de talentos; validar tanto a quien quiere presentarse como a quien prefiere solo ir a ver.",
  desarrollo:["Dar mucho refuerzo positivo durante la práctica.","Si un NNA no quiere presentarse está bien: puede seguir en talleres o ir solo a ver el show."],
  reflexion:"—", tips:[]},
 
-{id:"v1", nombre:"Cápsula del tiempo", dia:"Viernes", habilidades:["AUTOESTIMA","EMOCIONES"], tiempo:"30–40 min (se desarrolla durante toda la jornada)", bucket:"jornada",
+{id:"v1", nombre:"Cápsula del tiempo", habilidades:["AUTOESTIMA","EMOCIONES"], tiempo:"30–40 min (se desarrolla durante toda la jornada)", bucket:"jornada",
  materiales:["Caja de cartón","Decoración","Papeles, dibujos u objetos pequeños","Lápices o plumones","Diplomas, fotos, stickers y pulseras"],
  proposito:"Crear un recuerdo simbólico y tangible del paso por Operación Infancia, para llevarse a casa.",
  desarrollo:[
@@ -527,7 +528,7 @@ const ACTIVITIES = [
  reflexion:"Compartir qué eligieron guardar y por qué; valorar los recuerdos y el crecimiento vivido, entendiendo que aunque el ciclo termine, lo aprendido permanece.",
  tips:[]},
 
-{id:"v2", nombre:"Ovillo de lana", dia:"Viernes", habilidades:["EMOCIONES","EMPATIA","AUTOESTIMA"], tiempo:"25–35 min", bucket:"media",
+{id:"v2", nombre:"Ovillo de lana", habilidades:["EMOCIONES","EMPATIA","AUTOESTIMA"], tiempo:"25–35 min", bucket:"media",
  materiales:["Ovillos de lana"],
  proposito:"Expresar sentimientos positivos hacia los demás, destacando habilidades o talentos, fortaleciendo la comunicación y las relaciones del grupo.",
  desarrollo:[
@@ -538,7 +539,7 @@ const ACTIVITIES = [
  reflexion:"¿Qué fue lo que más te llamó la atención de lo que te dijeron? Se busca un espacio de confianza para decir cosas positivas que normalmente no se dirían; dejar que la reflexión fluya como conversación.",
  tips:[]},
 
-{id:"v3", nombre:"El jardín que floreció", dia:"Viernes", habilidades:["AUTOESTIMA"], tiempo:"40 min", bucket:"media",
+{id:"v3", nombre:"El jardín que floreció", habilidades:["AUTOESTIMA"], tiempo:"40 min", bucket:"media",
  materiales:["Plantas decoradas de cada NNA","Papel, sobres o cartulinas pequeñas para las cartas","Plumones, lápices de colores y stickers","Materiales para decorar el stand"],
  proposito:"Cierre del hilo conductor: reflexionar sobre el crecimiento personal y el autocuidado, mostrando los avances de la semana ('Feria del crecimiento' + 'Carta a mi yo').",
  desarrollo:[
@@ -548,7 +549,7 @@ const ACTIVITIES = [
  reflexion:"¿Qué aprendiste de ti mientras cuidabas tu planta? ¿Qué cosas te ayudan a crecer y sentirte bien? Igual que el poroto, ellos también crecen cuando se tratan con cariño, se esfuerzan y se rodean de apoyo.",
  tips:[], nota:"Hilo conductor 'Semana del Autocuidado' (3/3, cierre)."},
 
-{id:"v4", nombre:"Nuestros volantines", dia:"Viernes", habilidades:["EMOCIONES","AUTOESTIMA"], tiempo:"Breve, sin duración fija", bucket:"corta",
+{id:"v4", nombre:"Nuestros volantines", habilidades:["EMOCIONES","AUTOESTIMA"], tiempo:"Breve, sin duración fija", bucket:"corta",
  materiales:["Volantines de cartulina española","Lápices y/o plumones","1 sobre por persona"],
  proposito:"Fomentar la expresión de afecto y gratitud entre NNA y voluntarios, cerrando la semana con un gesto significativo.",
  desarrollo:[
@@ -559,13 +560,13 @@ const ACTIVITIES = [
  reflexion:"Cómo se sintieron al escribir y recibir palabras de cariño; reconocer y expresar lo que valoramos de los demás fortalece los vínculos y deja huellas que permanecen.",
  tips:[]},
 
-{id:"v5", nombre:"Talleres · ¡Inscrito/a!", dia:"Viernes", habilidades:[], tiempo:"Variable", bucket:"jornada",
+{id:"v5", nombre:"Talleres · ¡Inscrito/a!", habilidades:[], tiempo:"Variable", bucket:"jornada",
  materiales:[],
  proposito:"Última práctica antes del show de talentos del sábado; buen momento para ir despidiéndose de la experiencia de la semana.",
  desarrollo:["Confirmar que todos los inscritos para el sábado estén listos.","Dar espacio para practicar y para las despedidas."],
  reflexion:"—", tips:[]},
 
-{id:"s1", nombre:"Show de talentos y graduación", dia:"Sábado", habilidades:["AUTOESTIMA"], tiempo:"Jornada completa", bucket:"jornada",
+{id:"s1", nombre:"Show de talentos y graduación", habilidades:["AUTOESTIMA"], tiempo:"Jornada completa", bucket:"jornada",
  materiales:["Decoración de la escuela","Escenario","Sillas y coffee para invitados","Medallas u otro 'premio' para todos"],
  proposito:"Cierre de semana con un show de talentos abierto a apoderados y comunidad, donde cada NNA puede presentar uno o más talentos.",
  desarrollo:[
@@ -578,7 +579,7 @@ const ACTIVITIES = [
  reflexion:"Enfocar el cierre en la suerte de todo lo aprendido y lo bien que lo pasaron juntos, más que en la despedida en sí — para acoger la pena sin centrar el día en ella.",
  tips:[]},
 
-{id:"c1", nombre:"Agarra la lenteja o eri' lenteja", dia:"Complementaria", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"20–35 min", bucket:"media",
+{id:"c1", nombre:"Agarra la lenteja o eri' lenteja", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"20–35 min", bucket:"media",
  materiales:["Lentejas de colores distintos (una por equipo)","Cuerda larga para cruzar la cancha de lado a lado"],
  proposito:"Recolectar lentejas del propio color esparcidas en la cancha antes que los demás, evitando ser atrapados por una cuerda móvil.",
  desarrollo:[
@@ -590,7 +591,7 @@ const ACTIVITIES = [
  reflexion:"Reforzar trabajo en equipo y resiliencia según el estado emocional del grupo; también sirve como momento de juego y risa dentro de una jornada más cargada.",
  tips:["Si se vuelve repetitivo, aumentar la dificultad: correr en un pie, en parejas tomadas de la mano, de espaldas, o llevar las lentejas en la cabeza."]},
 
-{id:"c2", nombre:"Cachipún alemán", dia:"Complementaria", habilidades:["EQUIPO"], tiempo:"20–30 min", bucket:"media",
+{id:"c2", nombre:"Cachipún alemán", habilidades:["EQUIPO"], tiempo:"20–30 min", bucket:"media",
  materiales:[],
  proposito:"Correr en equipo hacia el campo rival jugando cachipún en cada encuentro, reforzando que el objetivo del equipo esté alineado.",
  desarrollo:[
@@ -601,7 +602,7 @@ const ACTIVITIES = [
  reflexion:"La importancia del trabajo en equipo y de estar atento al compañero que compite: mientras más tarde en notar que perdió, más avanza el rival.",
  tips:[]},
 
-{id:"c3", nombre:"Cruzando el río extremo", dia:"Complementaria", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"30–40 min", bucket:"media",
+{id:"c3", nombre:"Cruzando el río extremo", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"30–40 min", bucket:"media",
  materiales:["Cartones","Papeles"],
  proposito:"Cruzar un 'río' usando solo dos 'plataformas flotantes' (cartones), comunicándose y confiando en el equipo.",
  desarrollo:[
@@ -613,7 +614,7 @@ const ACTIVITIES = [
  reflexion:"¿Qué estrategias usaron para comunicarse y organizarse? ¿Qué ayudó a mantener la calma pese a los obstáculos? Para lograr algo juntos hay que confiar en los demás.",
  tips:[]},
 
-{id:"c4", nombre:"La nave", dia:"Complementaria", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"40 min a 1 h", bucket:"larga",
+{id:"c4", nombre:"La nave", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"40 min a 1 h", bucket:"larga",
  materiales:["Cajas de cartón grandes","Scotch o masking tape","Botellas plásticas, bombillas u otros para decorar","Plumones y lápices de colores","Elementos para obstáculos (bolas de papel, pelotas, cuerda, vendas para los ojos)"],
  proposito:"Construir una nave en equipo y superar una pista de obstáculos, aprendiendo a enfrentarlos sin rendirse y a valorar el esfuerzo colectivo.",
  desarrollo:[
@@ -625,7 +626,7 @@ const ACTIVITIES = [
  reflexion:"La importancia de la comunicación y de saber escuchar; enfrentar juntos los obstáculos hace la diferencia.",
  tips:[]},
 
-{id:"c5", nombre:"Que nadie toque el suelo", dia:"Complementaria", habilidades:["EMPATIA","EQUIPO"], tiempo:"20–40 min", bucket:"media",
+{id:"c5", nombre:"Que nadie toque el suelo", habilidades:["EMPATIA","EQUIPO"], tiempo:"20–40 min", bucket:"media",
  materiales:["Globos (uno por participante)","Plumones permanentes","Ideas de penitencias"],
  proposito:"Mantener en el aire globos con el nombre de cada uno, entendiendo que cada persona necesita del apoyo de los demás para no 'caer'.",
  desarrollo:[
@@ -637,7 +638,7 @@ const ACTIVITIES = [
  reflexion:"Cada globo representa a un compañero; la mejor forma de ayudar a alguien a levantarse es reconociendo lo valioso que es. Nadie logra el desafío solo.",
  tips:["Para 7–10 años: retos más simples y frases guiadas ('me gusta cuando tú…').","Para 11–13 años: retos más exigentes y pedir que justifiquen la cualidad con una razón concreta."]},
 
-{id:"c6", nombre:"¿Cómo lo veo?", dia:"Complementaria", habilidades:["EMPATIA","EMOCIONES"], tiempo:"30–40 min", bucket:"media",
+{id:"c6", nombre:"¿Cómo lo veo?", habilidades:["EMPATIA","EMOCIONES"], tiempo:"30–40 min", bucket:"media",
  materiales:["Hojas con historias breves (anexo)","Escenografía simple (sillas, mesas, conos, pelotas)"],
  proposito:"Identificar comportamientos empáticos o no en pequeñas historias actuadas, proponer soluciones y reconocer las propias actitudes.",
  desarrollo:[
@@ -649,7 +650,7 @@ const ACTIVITIES = [
  reflexion:"Cómo se sintió el personaje, qué actitudes llaman la atención, qué harían ellos en esa situación; no hay una única fórmula para ser empático.",
  tips:[]},
 
-{id:"c7", nombre:"En la silla del otro", dia:"Complementaria", habilidades:["EMPATIA","EMOCIONES"], tiempo:"30–40 min", bucket:"media",
+{id:"c7", nombre:"En la silla del otro", habilidades:["EMPATIA","EMOCIONES"], tiempo:"30–40 min", bucket:"media",
  materiales:["Sillas","Papelitos con el nombre de cada participante","Masking tape"],
  proposito:"Reconocer momentos en que uno mismo ha sido empático y en que otros lo han sido con uno, para entender mejor la empatía.",
  desarrollo:[
@@ -661,7 +662,7 @@ const ACTIVITIES = [
  reflexion:"Cómo se sienten cuando han sido empáticos y cuando otros lo han sido con ellos; construir entre todos una definición más clara de la empatía.",
  tips:["Si se vuelve monótono, variar las opciones de historia o rotar quién habla en cada ronda."]},
 
-{id:"c8", nombre:"Observando con otros ojos", dia:"Complementaria", habilidades:["EMPATIA","EMOCIONES"], tiempo:"35–45 min", bucket:"media",
+{id:"c8", nombre:"Observando con otros ojos", habilidades:["EMPATIA","EMOCIONES"], tiempo:"35–45 min", bucket:"media",
  materiales:["Rollos de confort","Lana","Cartón","Decoración"],
  proposito:"Crear un objeto para 'observar' a otros y practicar ponerse en el lugar del otro de forma entretenida y constante.",
  desarrollo:[
@@ -672,7 +673,7 @@ const ACTIVITIES = [
  reflexion:"Todos somos distintos y podemos sentirnos distinto; ponerse en el lugar del otro ayuda a respetarlo y apoyarlo.",
  tips:[]},
 
-{id:"c9", nombre:"La olla", dia:"Complementaria", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"35–45 min", bucket:"media",
+{id:"c9", nombre:"La olla", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"35–45 min", bucket:"media",
  materiales:["Papeles pequeños con conceptos de OI","Un recipiente para los papeles","Cronómetro"],
  proposito:"Adivinar conceptos relacionados con Operación Infancia dentro del núcleo, fortaleciendo autoestima, confianza, liderazgo y comunicación.",
  desarrollo:[
@@ -684,7 +685,7 @@ const ACTIVITIES = [
  reflexion:"Qué palabras resultaron más difíciles y por qué; conversar cómo la resiliencia y el trabajo en equipo fueron clave en la actividad y lo son en la vida diaria.",
  tips:[]},
 
-{id:"c10", nombre:"Atrápala", dia:"Complementaria", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"30–40 min", bucket:"media",
+{id:"c10", nombre:"Atrápala", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"30–40 min", bucket:"media",
  materiales:["15–20 botellas plásticas (con arroz o agua para estabilidad) o rollos de confort","Música (opcional)","Conos"],
  proposito:"Juego de reflejos por duplas donde la atención y la toma de decisiones bajo presión importan más que solo la velocidad.",
  desarrollo:[
@@ -697,7 +698,7 @@ const ACTIVITIES = [
  reflexion:"Cómo enfrentar desafíos en equipo; a veces se gana y a veces no, pero importa apoyarse, adaptarse y disfrutar el proceso aunque sea frustrante.",
  tips:[]},
 
-{id:"c11", nombre:"Piu piu", dia:"Complementaria", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"20–30 min", bucket:"media",
+{id:"c11", nombre:"Piu piu", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"20–30 min", bucket:"media",
  materiales:[],
  proposito:"Romper el hielo entre NNA y voluntarios con un juego de reflejos tipo duelo, generando confianza para las actividades siguientes.",
  desarrollo:[
@@ -709,7 +710,7 @@ const ACTIVITIES = [
  reflexion:"Lo entretenido y beneficioso de conocer gente nueva; salir de la zona de confort puede generar amistades importantes a futuro.",
  tips:[]},
 
-{id:"c12", nombre:"La champions de los resilientes", dia:"Complementaria", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"40–50 min", bucket:"larga",
+{id:"c12", nombre:"La champions de los resilientes", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"40–50 min", bucket:"larga",
  materiales:["Pelota de fútbol","Petos deportivos","1 tarjeta amarilla y 1 roja","Fichas de inscripción de equipo","Silbato"],
  proposito:"Partido de fútbol con reglas que se agregan progresivamente, para que los equipos aprendan a sobreponerse y encontrar soluciones en conjunto.",
  desarrollo:[
@@ -721,7 +722,7 @@ const ACTIVITIES = [
  reflexion:"En los núcleos, conversar cómo afrontaron las distintas reglas impuestas, enfocándose en el trabajo en equipo y la resolución de conflictos en conjunto.",
  tips:[]},
 
-{id:"c13", nombre:"Lienzo de las emociones", dia:"Complementaria", habilidades:["EMOCIONES"], tiempo:"40 min", bucket:"media",
+{id:"c13", nombre:"Lienzo de las emociones", habilidades:["EMOCIONES"], tiempo:"40 min", bucket:"media",
  materiales:["Pliegos de cartulina","Lápices","Masking tape"],
  proposito:"Descubrir que dibujar es una manera válida de expresar emociones y sentirse más aliviado.",
  desarrollo:[
@@ -733,7 +734,7 @@ const ACTIVITIES = [
  reflexion:"¿Les gustó la actividad? ¿Cómo se sintieron? ¿Dibujar puede ser una buena herramienta para expresar emociones? No hay una manera correcta de expresarlas.",
  tips:[]},
 
-{id:"c14", nombre:"Recetario de las emociones", dia:"Complementaria", habilidades:["EMOCIONES","EQUIPO"], tiempo:"30–40 min", bucket:"media",
+{id:"c14", nombre:"Recetario de las emociones", habilidades:["EMOCIONES","EQUIPO"], tiempo:"30–40 min", bucket:"media",
  materiales:["Hojas blancas o cartulinas","Lápices de colores o marcadores","Tijeras","Pegamento","Materiales para decorar","Clips"],
  proposito:"Crear en núcleo un 'recetario' con las señales de cada emoción y los pasos para regularla.",
  desarrollo:[
@@ -745,7 +746,7 @@ const ACTIVITIES = [
  reflexion:"¿Cuáles son las emociones que más cuesta regular? ¿Dónde se sienten en el cuerpo? ¿Sería útil llevar el recetario en el día a día?",
  tips:[]},
 
-{id:"c15", nombre:"Corriendo a mis emociones", dia:"Complementaria", habilidades:["EMOCIONES"], tiempo:"30 min", bucket:"media",
+{id:"c15", nombre:"Corriendo a mis emociones", habilidades:["EMOCIONES"], tiempo:"30 min", bucket:"media",
  materiales:["1 papel kraft por equipo","Lápices"],
  proposito:"Correr a asociar elementos cotidianos (comida, color, lugar del cuerpo, etc.) con cada emoción, para analizarlas mejor.",
  desarrollo:[
@@ -756,7 +757,7 @@ const ACTIVITIES = [
  reflexion:"Reconocer cuándo se siente cada emoción y por qué se asocian esas cosas con ella; conversar qué herramientas tienen para regularlas y cuáles les faltan.",
  tips:["Como puede primar la velocidad sobre la reflexión, adapten la dinámica a su zona; puede servir una mini reflexión después de cada emoción."]},
 
-{id:"c16", nombre:"Cómo lucen las emociones", dia:"Complementaria", habilidades:["EMOCIONES","EMPATIA"], tiempo:"Más de 40 min", bucket:"larga",
+{id:"c16", nombre:"Cómo lucen las emociones", habilidades:["EMOCIONES","EMPATIA"], tiempo:"Más de 40 min", bucket:"larga",
  materiales:["Hojas","Tijeras y pegamento","Lápices de colores y plumones","Elementos decorativos","Palitos de helado"],
  proposito:"Representar de forma creativa una emoción, elaborando una máscara que muestre cómo se ve y se vive esa emoción.",
  desarrollo:[
@@ -768,7 +769,7 @@ const ACTIVITIES = [
  reflexion:"Cada emoción puede tener causas e interpretaciones distintas para cada persona, como se refleja en la variedad de máscaras; identificar lo que sentimos da más herramientas para gestionarlo.",
  tips:[]},
 
-{id:"c17", nombre:"Mi afiche publicitario", dia:"Complementaria", habilidades:["AUTOESTIMA","EMOCIONES","EMPATIA"], tiempo:"45 min", bucket:"larga",
+{id:"c17", nombre:"Mi afiche publicitario", habilidades:["AUTOESTIMA","EMOCIONES","EMPATIA"], tiempo:"45 min", bucket:"larga",
  materiales:["Hojas blancas o cartulinas (una por NNA)","Lápices de colores, mina y plumones","Masking tape"],
  proposito:"Reconocerse de forma real, identificando tanto cualidades positivas como aquello que cuesta más aceptar.",
  desarrollo:[
@@ -780,7 +781,7 @@ const ACTIVITIES = [
  reflexion:"Reconocer las propias luces y sombras, y ver que todos las tienen; identificar qué hace único a cada uno hace más entretenido conocer a las personas.",
  tips:[]},
 
-{id:"c18", nombre:"Ser niño", dia:"Complementaria", habilidades:["AUTOESTIMA"], tiempo:"30–40 min", bucket:"media",
+{id:"c18", nombre:"Ser niño", habilidades:["AUTOESTIMA"], tiempo:"30–40 min", bucket:"media",
  materiales:["Tiras de papel de colores con orificio","Plumones o lápices","Hilo, lana o cuerda para colgar","Un árbol o estructura visible"],
  proposito:"Compartir recuerdos, gustos y sueños de la infancia, reconociendo lo valioso de esta etapa y fortaleciendo vínculos entre NNA y voluntarios.",
  desarrollo:[
@@ -792,7 +793,7 @@ const ACTIVITIES = [
  reflexion:"Ser niño es una etapa muy valiosa que hay que atesorar y disfrutar; compartir estos pensamientos conecta a todos y ayuda a los adultos a reconectar con su niño interior.",
  tips:[]},
 
-{id:"c19", nombre:"Te invito a mi galaxia", dia:"Complementaria", habilidades:["AUTOESTIMA","EMPATIA"], tiempo:"30–40 min", bucket:"media",
+{id:"c19", nombre:"Te invito a mi galaxia", habilidades:["AUTOESTIMA","EMPATIA"], tiempo:"30–40 min", bucket:"media",
  materiales:["Hojas o cartulinas cortadas en forma de estrella","Revistas","Tijeras y pegamento"],
  proposito:"Responder '¿quién soy?' con un collage de cualidades positivas, y practicar la escucha e interpretación de las de los demás.",
  desarrollo:[
@@ -804,7 +805,7 @@ const ACTIVITIES = [
  reflexion:"¿Cómo te sentiste al hacer el collage? ¿Qué cualidades positivas destacaste de ti? ¿Cómo te sentiste al interpretar el de tu compañero/a?",
  tips:[]},
 
-{id:"c20", nombre:"Conócete", dia:"Complementaria", habilidades:["AUTOESTIMA"], tiempo:"30–40 min", bucket:"media",
+{id:"c20", nombre:"Conócete", habilidades:["AUTOESTIMA"], tiempo:"30–40 min", bucket:"media",
  materiales:["Hojas blancas","Lápices de colores"],
  proposito:"Reconocer y describir las propias características, y conocer las de los compañeros, a través de un origami tipo 'comecocos'.",
  desarrollo:[
@@ -813,7 +814,110 @@ const ACTIVITIES = [
   "Jugar entre compañeros: uno dice un número, el otro abre y cierra el origami esa cantidad de veces, luego elige un color/forma para revelar la característica escrita."
  ],
  reflexion:"Resaltar las propias cualidades y generar conciencia de las características de los demás, aprendiendo a valorar las diferencias.",
- tips:[]}
+ tips:[]},
+
+{id:"sep1", nombre:"Nuestro monstruo", habilidades:["EQUIPO"], tiempo:"~30 min", bucket:"media",
+ materiales:["Cartón","Cartulinas y papeles de colores","Goma eva","Tubos de cartón","Tapas","Cinta adhesiva","Pegamento","Tijeras","Otros materiales reciclados o decorativos"],
+ proposito:"Fortalecer el sentido de pertenencia y permitir que los integrantes de cada núcleo se conozcan mejor a través de la creación de un monstruo que los represente. Durante su construcción, el núcleo conversa, comparte sus gustos y llega a acuerdos para decidir las características del monstruo.",
+ desarrollo:[
+  "Presentación del monstruo: cada núcleo crea desde cero un monstruo que lo represente. Debe tener como elemento principal el color de su núcleo, pero todo lo demás queda en sus manos: forma, tamaño, cantidad de brazos, ojos, accesorios y lo que quieran agregar.",
+  "Conociendo al monstruo y al núcleo: antes de construir, deciden características del monstruo (nombre, personalidad, superpoder, comida favorita, deporte o juego favorito, algo que le encanta hacer, algo que no le gusta o le da miedo). Para cada una, el voluntario genera primero una conversación donde todos cuentan su propia respuesta y luego el núcleo llega a un acuerdo.",
+  "Construcción del monstruo: se invita al grupo a seguir conversando y pensar qué más podría representar a su núcleo, agregando libremente nuevas características, gustos, accesorios o historias.",
+  "Presentación: cada núcleo presenta brevemente su monstruo y algunas de las decisiones que tomaron para crearlo."
+ ],
+ reflexion:"Reforzar que para crear algo que representara a todos tuvieron que escucharse, compartir sus gustos y llegar a acuerdos. El monstruo queda acompañando al núcleo durante la salida, por lo que pueden cuidarlo y seguir agregándole cosas a medida que se vayan conociendo mejor.",
+ tips:[]},
+
+{id:"sep2", nombre:"Misión: rescate reglas de oro", habilidades:["EQUIPO","CONVIVENCIA"], tiempo:"~30 min", bucket:"media",
+ materiales:["3 tarjetas gigantes (una por Regla de Oro)","Pistas para la búsqueda del tesoro","Guion breve con 2–3 situaciones de conflicto"],
+ proposito:"Que los NNAJ internalicen las Reglas de Oro como la base que sostiene a Operación Infancia, comprendiendo que su cumplimiento depende de todos y no solo de un grupo pequeño, y que sepan reconocerlas y aplicarlas frente a un conflicto cotidiano.",
+ desarrollo:[
+  "Parte 1, Búsqueda del tesoro — antes de la actividad, esconder en distintos puntos del colegio las 3 tarjetas gigantes, una por regla.",
+  "Reunir a toda la zona en círculo y presentar la situación: las Reglas de Oro que sostienen a Operación Infancia se perdieron, y sin ellas la fundación corre riesgo de desaparecer. Se necesita la ayuda de todos para encontrarlas.",
+  "Dividir a toda la zona en 3 grandes grupos, cada uno a cargo de encontrar una de las tres tarjetas, y dar la señal de inicio.",
+  "A medida que cada grupo encuentra su tarjeta, la trae de vuelta al punto de encuentro y comparte con el resto qué regla representa.",
+  "Parte 2, Congelado — una vez recuperadas las tres, anunciar que Operación Infancia está a salvo y convocar a toda la zona al espacio del 'escenario'.",
+  "Explicar y ejemplificar brevemente la mecánica: los voluntarios actúan una situación de conflicto frente a toda la zona; al llegar a la tensión máxima, se da la señal y quedan congelados.",
+  "Abrir un breve espacio para que los NNAJ, en conjunto, identifiquen qué regla se está rompiendo y propongan cómo solucionarlo.",
+  "Elegir una tarjeta y colocarla sobre el actor: si es la correcta, se 'descongela' la escena representando el final feliz. Repetir con 1–2 situaciones más, cubriendo las tres reglas."
+ ],
+ reflexion:"Al cierre, en círculo general: ¿Qué significan las reglas de oro? ¿Por qué creen que estas reglas sostienen a Operación Infancia? ¿Se han visto en situaciones parecidas? Reforzar que las reglas dependen de todos: no basta con que un grupo las cumpla, toda la comunidad debe cuidarlas.",
+ tips:[]},
+
+{id:"sep3", nombre:"Mi camino hacia el futuro", habilidades:["AUTOESTIMA"], tiempo:"~20 min", bucket:"corta",
+ materiales:["Hojas blancas o cartulinas","Lápices grafito","Lápices de colores","Plumones","Goma y regla","Stickers o recortes de revistas (opcional)"],
+ proposito:"Invitar a los NNAJ a imaginar y representar un sueño o meta que les gustaría alcanzar en el futuro, identificando los pasos, aprendizajes y desafíos que podrían encontrar en el camino. A través de un cómic, comprenden que los grandes objetivos pueden alcanzarse mediante pequeños pasos y que el camino puede incluir dificultades, cambios y nuevas oportunidades.",
+ desarrollo:[
+  "Presentación: explicar que cada persona tiene sueños diferentes y que hoy imaginarán cómo sería el camino para conseguir uno de ellos. Se les puede decir: 'Hoy vamos a imaginar que podemos viajar al futuro y conocer a la persona que queremos llegar a ser. Pero para llegar hasta ahí necesitamos recorrer un camino. ¿Qué cosas tendríamos que hacer para conseguir nuestro sueño?'.",
+  "Elección de nuestro sueño: cada NNAJ piensa en un sueño, meta o proyecto que le gustaría alcanzar en el futuro.",
+  "Construimos el camino: entregar una hoja dividida en varios cuadros, como una página de cómic; cada cuadro representa un momento del camino hacia el sueño.",
+  "¡Algo salió mal!: introducir una pequeña sorpresa — 'ningún camino es completamente perfecto, a mitad de la historia ocurre algo inesperado' — y que cada participante invente un obstáculo que aparezca en su historia."
+ ],
+ reflexion:"Reforzar que los sueños no tienen que cumplirse de un día para otro: muchas veces se construyen mediante pequeñas acciones, aprendizajes, personas que nos acompañan y la capacidad de volver a intentarlo cuando algo no resulta. Cambiar de camino no significa fracasar: a medida que crecemos podemos descubrir nuevos intereses y modificar nuestras metas.",
+ tips:[]},
+
+{id:"sep4", nombre:"Olimpiadas OI", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"~40 min", bucket:"media",
+ materiales:["Materiales según las competencias definidas (pelotas, conos, cuerdas, vasos, globos, etc.)","Cintillos o petos de colores para diferenciar equipos","Materiales de barra (pompones, cartulinas para lienzos/carteles, plumones)","Tabla o cartel visible para anotar el puntaje","Copa o medallas"],
+ proposito:"Que los NNAJ vivan una experiencia de competencia sana organizándose en equipos con roles diferenciados (jugadores, técnicos, dirección, barra), comprendiendo que cada rol aporta al resultado colectivo y que el trabajo en equipo no se limita a jugar, sino también a acompañar y motivar a los compañeros.",
+ desarrollo:[
+  "Presentar que serán las olimpiadas de OI y dividir a toda la zona en equipos, cada uno con un color o nombre asignado.",
+  "Dentro de cada delegación, repartir roles: Capitán/Director (coordina y decide estrategias), Técnicos (apoyan y dan indicaciones durante las estaciones), Jugadores (rotan en cada estación para que todos participen) y Barra (anima con cantos, carteles y pompones). Los roles pueden rotar entre estaciones.",
+  "Dar un tiempo breve para que cada delegación prepare su nombre, grito o canto de barra y decore su material de aliento.",
+  "Realizar una breve ceremonia de apertura: cada equipo se presenta con su nombre y grito frente a las demás.",
+  "Empiezan las olimpiadas, con distintos juegos dinámicos de manera secuencial (ej. cruzando el río, el reloj, circuito motor, partido de fútbol, entre otras); en cada juego participa un grupo reducido de jugadores mientras el resto anima desde la barra.",
+  "Ir registrando el puntaje por juego en el cartel visible, para mantener la motivación y el seguimiento del avance.",
+  "Al finalizar, realizar una breve ceremonia de premiación reconociendo no solo al equipo ganador, sino también aspectos como la mejor barra o el mejor espíritu de equipo."
+ ],
+ reflexion:"Al cierre, en el equipo preguntar: ¿Cómo se sintieron en su rol dentro del equipo? ¿Fue distinto jugar que animar desde la barra? ¿Por qué creen que ambos roles son importantes para el equipo? Reforzar que ganar no es lo único importante: el trabajo en equipo se construye tanto jugando como acompañando, y que el respeto hacia los otros equipos también forma parte de competir bien.",
+ tips:["Pueden sacar ideas de juegos y dinámicas entretenidas de equipo en internet/TikTok, pónganse creativos: ustedes conocen mejor a su zona."]},
+
+{id:"sep5", nombre:"La casa del monstruo", habilidades:["EQUIPO"], tiempo:"~30 min", bucket:"media",
+ materiales:["Billetes creados por cada zona","Cartón","Cajas","Palitos de helado","Tubos de cartón","Pinturas","Papeles de colores","Cartulinas","Telas","Lana","Goma eva","Elementos decorativos","Cinta adhesiva","Pegamento","Tijeras","Materiales reciclados"],
+ proposito:"Que cada núcleo construya una casa para su monstruo, administrando un presupuesto común y tomando decisiones sobre qué materiales comprar. Conversan, se organizan y llegan a acuerdos para crear entre todos una casa que los represente.",
+ desarrollo:[
+  "Parte 1, El mercado — cada núcleo recibe $80 (nombre de su moneda) y una base mínima gratuita: base de cartón, dos piezas grandes de cartón y acceso a tijeras, pegamento y cinta.",
+  "Presentar las estaciones del mercado, cada una atendida por voluntarios: Estructura (cartón grande $12, cartón pequeño $6, palitos $8, tubos $6), Pintura (color de pintura $6, papeles de colores $8), Decoración (lana/telas $8, goma eva/cartulina $8, decoraciones pequeñas $5) y Accesorios (elementos especiales entre $10 y $15). Algunos productos tienen stock limitado.",
+  "Parte 2, Construcción — los núcleos comienzan a construir y pueden volver al mercado todas las veces que quieran mientras tengan dinero.",
+  "Durante la actividad pueden comprar, vender o intercambiar materiales entre núcleos, negociando libremente sus precios. Motivarlos a conversar antes de gastar: ¿qué necesita primero nuestra casa? ¿vale la pena comprar esto? ¿guardamos plata para después?",
+  "Al terminar, cada núcleo muestra brevemente la casa de su monstruo y cuenta alguna decisión importante que tuvieron que tomar para construirla."
+ ],
+ reflexion:"Reforzar que tenían recursos limitados y tuvieron que organizarse, escuchar distintas ideas y decidir juntos qué era más importante. No existe una casa correcta: cada una es distinta porque representa las decisiones de su núcleo.",
+ tips:["Los vendedores pueden promocionar sus productos y generar entusiasmo con las últimas unidades o los materiales especiales.","Evitar premiar solamente la casa 'más bonita': lo importante es cómo se organizaron y lo que lograron construir juntos."]},
+
+{id:"sep6", nombre:"El cuento incompleto", habilidades:["AUTOESTIMA","EMOCIONES","EQUIPO"], tiempo:"~30 min", bucket:"media",
+ materiales:["Hojas blancas","Lápices de colores","Plumones","Cuento impreso para los voluntarios"],
+ proposito:"Generar un espacio lúdico en el que los NNA desarrollen su imaginación y creatividad mediante la construcción colectiva de una historia. A través de un cuento con partes incompletas, proponen elementos que permiten continuar la narración, expresando libremente sus ideas y escuchando las propuestas de sus compañeros.",
+ desarrollo:[
+  "Presentación: reunir a los NNA en círculo y explicar que escucharán un cuento ('El misterio del parque') que tiene partes que se perdieron y que ellos deberán ayudar a completar — no existen respuestas correctas o incorrectas, la historia se construye entre todos.",
+  "Comenzar el cuento y, al llegar a cada parte incompleta, detener la narración y dejar que los NNA propongan libremente cómo continuar. Parte incompleta 1: qué encuentran los niños bajo el árbol y qué dice o significa la nueva pista. Parte incompleta 2: qué hay al otro lado de la puerta y qué sucede cuando entran.",
+  "Dibujamos nuestra historia: mientras avanza el cuento, los NNA pueden ir dibujando las escenas que más les llamen la atención, armando al final un pequeño storyboard de su propia versión (no es necesario que los dibujos sean detallados)."
+ ],
+ reflexion:"Para cerrar, mostrar cómo las partes incompletas dieron origen a historias distintas y preguntar: ¿Todos imaginamos lo mismo? ¿Qué fue lo más entretenido de inventar? ¿Fue fácil imaginar lo que podía pasar? ¿Qué historia les gustó más de las que inventamos entre todos? Reforzar que cada persona puede imaginar algo diferente a partir de una misma situación, y que escuchar las ideas de los demás permite construir historias nuevas y más creativas.",
+ tips:[], nota:"El texto completo del cuento 'El misterio del parque', con sus dos partes incompletas para improvisar en el momento, está en el material impreso del manual."},
+
+{id:"sep7", nombre:"Bingo de las emociones", habilidades:["EMOCIONES"], tiempo:"20 min", bucket:"corta",
+ materiales:["Cartones de bingo, uno por NNA (distintos modelos por núcleo)","Lápices","Tarjetas con casos, 12 por encargado"],
+ proposito:"Fortalecer el reconocimiento emocional identificando cómo las emociones pueden manifestarse en pensamientos, cuerpo y comportamiento, comprendiendo que una misma situación puede generar experiencias emocionales diferentes.",
+ desarrollo:[
+  "Reunir a los NNA por núcleo y entregar a cada participante un cartón de bingo y lápices; se convierten en 'detectives emocionales': en lugar de números, identifican qué emoción podría estar experimentando una persona frente a distintas situaciones cotidianas.",
+  "En cada ronda, el encargado lee una tarjeta con una situación y tres pistas asociadas a la emoción (pensamientos, reacciones corporales y comportamientos). Primero presenta la situación para que los NNA identifiquen la emoción y la marquen; si es necesario, entrega una, dos o las tres pistas para facilitar la identificación.",
+  "Los NNA que tengan la emoción identificada en su cartón la marcan. Se continúa con nuevos casos abordando las tres dimensiones a lo largo del juego. Al completar fila, columna o diagonal se dice '¡Bingo!', pero el juego sigue hasta usar todas las tarjetas preparadas.",
+  "Algunas tarjetas presentan una misma situación asociada a emociones diferentes: el encargado usa las pistas para orientar la identificación, y estas tarjetas ayudan especialmente a la reflexión."
+ ],
+ reflexion:"Las emociones frente a una situación se pueden reconocer por distintas pistas: lo que pensamos, cómo reacciona nuestro cuerpo y nuestros comportamientos. Una misma situación no necesariamente genera la misma reacción en todos. ¿En qué situaciones se dieron cuenta de que los personajes reaccionaban distinto? ¿Qué pistas tenían diferente? Por ejemplo, frente a una presentación, un personaje puede sentir miedo, pensar 'no quiero equivocarme' y querer salir de la sala; otro puede sentirse entusiasmado, pensar 'quiero mostrar lo que preparé' y ofrecerse para presentar primero.",
+ tips:["Si el grupo termina rápido los casos preparados, se puede invitar a los NNA a crear nuevas tarjetas con situaciones y pistas para incorporarlas al juego."],
+ nota:"Los cartones de bingo y las tarjetas de casos (anexos) están en el material impreso del manual."},
+
+{id:"sep8", nombre:"Edición especial: así vivimos el finde", habilidades:["EQUIPO","AUTOESTIMA"], tiempo:"~40 min", bucket:"media",
+ materiales:["Papel kraft o cartulinas grandes, una por núcleo","Plumones","Lápices de colores","Stickers","Materiales para decorar","Pegamento","Tijeras","Fotos impresas del fin de semana (opcional)","Un diario completo por núcleo, de referencia y decoración"],
+ proposito:"Fortalecer el sentido de pertenencia y el trabajo en equipo mediante la creación colectiva de un periódico que represente las experiencias vividas durante el fin de semana, promoviendo la distribución de roles, la participación y el reconocimiento de los aportes de cada integrante.",
+ desarrollo:[
+  "Sketch de presentación: mostrar brevemente qué es un periódico real y preguntar a los NNA si conocen sus partes (portada, noticias, opinión, entrevistas, etc.); explicar que cada núcleo se convertirá en un equipo editorial y creará su propio periódico con lo vivido este fin de semana.",
+  "Reunirse por núcleo, entregar los materiales y organizarse: distribuir roles y decidir como grupo qué secciones tendrá su periódico y quién se encarga de cada parte. Secciones obligatorias — Portada (nombre creativo, titular principal, imagen o dibujo representativo), Actualidad (noticias y momentos destacados del fin de semana), Columna de opinión (opinión del núcleo sobre lo que espera de OI o sobre algo específico del fin de semana), Internacional (una noticia o tema de interés para los NNA sobre su comunidad, Chile o el mundo) y Carta al próximo voluntario/NNA (invitación a participar de Operación Infancia). Secciones opcionales: Arte y cultura, Deporte, Álbum de recuerdos, o una nueva sección que quieran crear.",
+  "Cada núcleo presenta su 'edición especial' al resto del grupo."
+ ],
+ reflexion:"Al finalizar, preguntar: ¿Cómo nos organizamos para crear el periódico? ¿Qué aportó cada uno? ¿Qué hace especial a nuestro núcleo? Reforzar que cada integrante tiene algo distinto que aportar y que construir juntos permite fortalecer el sentido de pertenencia al grupo.",
+ tips:["Si los tiempos coinciden, la presentación de los periódicos puede realizarse como parte del cierre general del fin de semana, frente a un 'jurado editorial' (los encargados de talleres).","Coordinar previamente con comunicaciones si se pueden imprimir fotos del fin de semana antes del domingo PM."]}
 ];
 
 /* ---------- Herramientas (técnicas del manual) ---------- */
@@ -914,7 +1018,7 @@ function render(){
   const grid = document.getElementById("grid");
   const list = ACTIVITIES.filter(matches);
   document.getElementById("result-count").textContent = list.length + (list.length===1 ? " actividad encontrada" : " actividades encontradas");
-  document.getElementById("intro-line").textContent = `${ACTIVITIES.length} actividades del Manual de Programas Verano 2026, organizadas por habilidad socioemocional.`;
+  document.getElementById("intro-line").textContent = `${ACTIVITIES.length} actividades de los manuales de Operación Infancia, organizadas por habilidad socioemocional.`;
 
   if(!list.length){
     grid.innerHTML = `<div class="empty-state">No encontramos actividades con esos filtros.<br>Probá sacando alguno.</div>`;
