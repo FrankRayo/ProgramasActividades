@@ -204,10 +204,16 @@
     .app{padding:14px 14px 48px;}
     .sheet{width:100%;}
     .sheet-body{padding:6px 18px 40px;}
-    .grid{grid-template-columns:1fr 1fr;}
-  }
-  @media (max-width:420px){
-    .grid{grid-template-columns:1fr;}
+    .grid{grid-template-columns:1fr 1fr; gap:10px;}
+    .card{padding:12px; gap:7px;}
+    .card h3{font-size:.98rem;}
+    .card-desc{font-size:.78rem; -webkit-line-clamp:3;}
+    .card-mat{font-size:.72rem;}
+    .skill-chip{font-size:.64rem; padding:3px 8px 3px 6px;}
+    .time-pill{font-size:.7rem;}
+    .chip{font-size:.72rem; padding:5px 10px; gap:4px;}
+    .chip-row{gap:6px;}
+    .filter-block{margin-bottom:8px;}
   }
 </style>
 
@@ -229,7 +235,6 @@
   </header>
 
   <section id="view-actividades">
-    <p class="intro-line" id="intro-line"></p>
 
     <div class="search-row">
       <input type="search" id="search" placeholder="Buscar por nombre, material o palabra clave…" aria-label="Buscar actividad">
@@ -1123,7 +1128,6 @@ function render(){
   const grid = document.getElementById("grid");
   const list = ACTIVITIES.filter(matches);
   document.getElementById("result-count").textContent = list.length + (list.length===1 ? " actividad encontrada" : " actividades encontradas");
-  document.getElementById("intro-line").textContent = `${ACTIVITIES.length} actividades de los manuales de Operación Infancia, organizadas por habilidad socioemocional.`;
 
   if(!list.length){
     grid.innerHTML = `<div class="empty-state">No encontramos actividades con esos filtros.<br>Probá sacando alguno.</div>`;
