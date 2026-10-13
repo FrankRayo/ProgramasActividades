@@ -6,6 +6,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  (function(){
+    var t; try{ t = localStorage.getItem("oiTheme"); }catch(e){}
+    if(!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
 <style>
   :root{
     --bg:#FAF4EA;
@@ -19,6 +26,8 @@
     --accent-3:#F8B840;
     --accent-soft:#F3E0EC;
     --accent-contrast:#FFFFFF;
+    --accent-text:var(--accent);
+    --on-skill:#FFFFFF;
     --skill-equipo:#2E7D6B;
     --skill-emociones:#C07A1A;
     --skill-empatia:#F83860;
@@ -28,24 +37,27 @@
     --shadow: 0 10px 30px -12px rgba(54,38,47,.2);
   }
   :root[data-theme="dark"]{
-    --bg:#1D1220;
-    --surface:#28192E;
-    --surface-alt:#332038;
-    --ink:#F6EAF3;
-    --ink-soft:#C0A2C0;
-    --line:#402C42;
-    --accent:#F08CC4;
-    --accent-2:#FF7E8E;
+    --bg:#1A1118;
+    --surface:#251A23;
+    --surface-alt:#31222E;
+    --ink:#F3E8EF;
+    --ink-soft:#B39CAB;
+    --line:#3B2A37;
+    --accent:#C2318F;
+    --accent-text:#F08CC8;
+    --accent-2:#FF7A90;
     --accent-3:#F5BC5C;
-    --accent-soft:#3E2338;
-    --accent-contrast:#1D1220;
-    --skill-equipo:#57C4AB;
-    --skill-emociones:#E3A448;
-    --skill-empatia:#FF8B9B;
-    --skill-resiliencia:#B79AE8;
-    --skill-autoestima:#E585BC;
-    --skill-convivencia:#8FB2E6;
-    --shadow: 0 10px 30px -10px rgba(0,0,0,.55);
+    --accent-soft:#3E1F37;
+    --accent-contrast:#FFFFFF;
+    --on-skill:#1A1118;
+    --skill-equipo:#5CC7AE;
+    --skill-emociones:#E8A94E;
+    --skill-empatia:#FF7E93;
+    --skill-resiliencia:#B39AE8;
+    --skill-autoestima:#EC86C2;
+    --skill-convivencia:#8DB4EA;
+    --shadow: 0 12px 32px -12px rgba(0,0,0,.7);
+    color-scheme:dark;
   }
 
   *{box-sizing:border-box;}
@@ -53,7 +65,7 @@
   h1,h2,h3,h4{font-family:"Poppins",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; font-weight:600; text-wrap:balance; margin:0;}
   ::selection{background:var(--accent-soft);}
   button{font-family:inherit;}
-  input:focus-visible, button:focus-visible, .card:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  input:focus-visible, button:focus-visible, .card:focus-visible{outline:2px solid var(--accent-text); outline-offset:2px;}
 
   .app{max-width:1180px; margin:0 auto; padding:20px 20px 64px;}
 
@@ -80,6 +92,17 @@
   }
   .view-btn.active{background:var(--surface); color:var(--ink); box-shadow:var(--shadow);}
 
+  .top-actions{display:flex; align-items:center; gap:10px;}
+  .theme-btn{
+    width:40px; height:40px; flex:none; border-radius:11px; border:none; background:var(--surface-alt);
+    color:var(--ink-soft); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:color .15s;
+  }
+  .theme-btn:hover{color:var(--ink);}
+  .theme-btn svg{width:18px; height:18px;}
+  .theme-btn .i-sun{display:none;}
+  :root[data-theme="dark"] .theme-btn .i-sun{display:block;}
+  :root[data-theme="dark"] .theme-btn .i-moon{display:none;}
+
   /* ---------- Filters ---------- */
   .intro-line{color:var(--ink-soft); font-size:.92rem; margin:0 0 18px; max-width:62ch;}
   .search-row{position:relative; margin-bottom:14px;}
@@ -99,10 +122,10 @@
     font-size:.82rem; font-weight:600; padding:7px 13px; border-radius:999px; cursor:pointer;
     display:inline-flex; align-items:center; gap:6px; transition:.15s; white-space:nowrap;
   }
-  .chip:hover{border-color:var(--accent);}
+  .chip:hover{border-color:var(--accent-text);}
   .chip .n{font-variant-numeric:tabular-nums; opacity:.7; font-weight:600;}
   .chip.active{background:var(--accent); border-color:var(--accent); color:var(--accent-contrast);}
-  .chip.skill-c.active{background:var(--sc); border-color:var(--sc); color:var(--accent-contrast);}
+  .chip.skill-c.active{background:var(--sc); border-color:var(--sc); color:var(--on-skill);}
   .chip .dot{width:8px; height:8px; border-radius:50%; background:var(--sc); flex:none;}
 
   .result-count{font-size:.82rem; color:var(--ink-soft); margin:18px 2px 10px;}
@@ -168,17 +191,17 @@
   .sheet-time{display:inline-flex; align-items:center; gap:6px; font-size:.85rem; color:var(--ink-soft); font-weight:600;}
   h4.section-h{
     font-family:"Poppins"; text-transform:uppercase; letter-spacing:.08em; font-size:.74rem;
-    font-weight:700; color:var(--accent); margin:26px 0 10px;
+    font-weight:700; color:var(--accent-text); margin:26px 0 10px;
   }
   .proposito{font-size:1rem; line-height:1.6; color:var(--ink);}
   .materiales{list-style:none; margin:0; padding:0; display:grid; gap:8px;}
   .materiales li{display:flex; gap:9px; align-items:flex-start; font-size:.92rem; line-height:1.4;}
-  .materiales li::before{content:"▢"; color:var(--accent); flex:none; margin-top:1px;}
+  .materiales li::before{content:"▢"; color:var(--accent-text); flex:none; margin-top:1px;}
   .desarrollo{list-style:none; margin:0; padding:0; display:grid; gap:14px; counter-reset:step;}
   .desarrollo li{display:flex; gap:12px; font-size:.94rem; line-height:1.55; counter-increment:step;}
   .desarrollo li::before{
     content:counter(step); flex:none; width:24px; height:24px; border-radius:50%;
-    background:var(--accent-soft); color:var(--accent); font-weight:700; font-size:.78rem;
+    background:var(--accent-soft); color:var(--accent-text); font-weight:700; font-size:.78rem;
     display:flex; align-items:center; justify-content:center; margin-top:1px;
   }
   .tipbox{
@@ -195,7 +218,7 @@
   /* ---------- Tools view ---------- */
   .tools-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; align-items:start;}
   .tool-card{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:18px 20px;}
-  .tool-card h3{font-size:1.05rem; margin-bottom:10px; color:var(--accent);}
+  .tool-card h3{font-size:1.05rem; margin-bottom:10px; color:var(--accent-text);}
   .tool-card ul{margin:0; padding-left:18px; display:grid; gap:9px; font-size:.9rem; line-height:1.5;}
   .tool-card ul li b{color:var(--ink);}
   .song-wrap{display:flex; flex-wrap:wrap; gap:8px;}
@@ -231,9 +254,15 @@
         <span class="brand-sub">Manual de Programas</span>
       </div>
     </div>
-    <div class="view-toggle" role="tablist">
-      <button class="view-btn active" data-view="actividades" role="tab" aria-selected="true">Actividades</button>
-      <button class="view-btn" data-view="herramientas" role="tab" aria-selected="false">Herramientas</button>
+    <div class="top-actions">
+      <div class="view-toggle" role="tablist">
+        <button class="view-btn active" data-view="actividades" role="tab" aria-selected="true">Actividades</button>
+        <button class="view-btn" data-view="herramientas" role="tab" aria-selected="false">Herramientas</button>
+      </div>
+      <button class="theme-btn" id="theme-btn" aria-label="Cambiar a modo oscuro">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
     </div>
   </header>
 
@@ -993,7 +1022,333 @@ const ACTIVITIES = [
   "Cada núcleo presenta su 'edición especial' al resto del grupo."
  ],
  reflexion:"Al finalizar, preguntar: ¿Cómo nos organizamos para crear el periódico? ¿Qué aportó cada uno? ¿Qué hace especial a nuestro núcleo? Reforzar que cada integrante tiene algo distinto que aportar y que construir juntos permite fortalecer el sentido de pertenencia al grupo.",
- tips:["Si los tiempos coinciden, la presentación de los periódicos puede realizarse como parte del cierre general del fin de semana, frente a un 'jurado editorial' (los encargados de talleres).","Coordinar previamente con comunicaciones si se pueden imprimir fotos del fin de semana antes del domingo PM."]}
+ tips:["Si los tiempos coinciden, la presentación de los periódicos puede realizarse como parte del cierre general del fin de semana, frente a un 'jurado editorial' (los encargados de talleres).","Coordinar previamente con comunicaciones si se pueden imprimir fotos del fin de semana antes del domingo PM."]},
+
+{id:"t25-01", nombre:"Buscando pilares perdidos", habilidades:["EQUIPO"], tiempo:"40 min", bucket:"media",
+ materiales:["Cartulinas de colores","Papel kraft (papelógrafos)","Lápices","Pegamento"],
+ proposito:"Que cada grupo encuentre todas las letras de su palabra secreta, descubra cuál es y cree un papelógrafo sobre ella para presentarlo a sus compañeros. Sirve para presentar el 5º pilar de Operación Infancia (sueños y autoestima). Trabaja el trabajo en equipo, el pensamiento crítico, la comunicación efectiva y la escucha respetuosa.",
+ desarrollo:[
+  "Preparación: antes de la actividad, esconder por la escuela las letras de cada palabra; cada palabra se diferencia por color. Anticipar en cuántos grupos se dividirán los NNAJ para crear y esconder el número justo de palabras. Las palabras son a elección, pero sí o sí deben estar 'sueños' y 'autoestima'.",
+  "Reunir a los NNAJ, explicar la actividad, separarlos en núcleos y asignar un color a cada grupo. Decirle a cada grupo cuántas letras tiene que buscar.",
+  "Empieza la búsqueda: cada grupo busca las letras de su color y, cuando las encuentra todas, descifra cuál es la palabra secreta.",
+  "Con la palabra armada, el grupo se acerca a talleres a recibir lápices, pegamento y un papelógrafo: pega cada letra formando la palabra, reflexiona sobre ella y plasma libremente sus ideas (significado, dibujos, ejemplos, sinónimos).",
+  "Cada grupo pasa adelante unos minutos a presentar la palabra que le tocó. Los grupos de 'sueños' y 'autoestima' salen juntos, para recordar que ese es ahora el 5º pilar de Operación Infancia."
+ ],
+ reflexion:"Guiada, sobre todo durante el paso 3, cuando se conversa de la palabra con distintos ejemplos: así los NNAJ desarrollan habilidades comunicativas y pensamiento crítico y entienden que los conceptos trabajados tienen relevancia en su día a día. Al escuchar a los demás equipos conocen nuevos conceptos importantes de OI y practican la escucha respetuosa.",
+ tips:["Ideas de palabras relacionadas con los pilares de OI: autoestima, inclusión, sueños, resiliencia, cooperación, liderazgo, aceptación, responsabilidad, emociones, empatía. ¡Pueden inventar nuevas!"],
+ nota:"Hilo conductor Verano 2025, capítulo 1 ('El robo de los pilares perdidos'): estando todos en el círculo, llega angustiada la mascota de Operación Infancia y cuenta que unos ladrones robaron los pilares que sostienen la magia y el propósito de las jornadas. Los talleres anuncian: '¡Vamos a buscar los pilares perdidos!'. Cada zona elige una mascota (voluntario disfrazado, peluche grande, marioneta o personaje imaginario) y prepara el cuento con emoción. Antes de esta actividad hay que presentar el 5º pilar y dar la bienvenida a todos."},
+
+{id:"t25-02", nombre:"Creando lazos en acción", habilidades:["EQUIPO"], tiempo:"50 min", bucket:"larga",
+ materiales:["Conos para delimitar el espacio cuadrado","Lista de miniactividades y penitencias para cada ronda","Música"],
+ proposito:"Que los NNAJ jueguen en un espacio reducido siguiendo instrucciones que fomentan el movimiento y la interacción, formando grupos de distintos tamaños que realizan pequeñas actividades en equipo; cada ronda termina con una dinámica grupal. Permite interactuar con compañeros y voluntarios nuevos, promoviendo la cooperación y la resolución de problemas en equipo.",
+ desarrollo:[
+  "Delimitar con conos un espacio cuadrado de tamaño mediano dentro de la cancha: lo bastante amplio para moverse sin chocar, pero pequeño para que no se dispersen demasiado.",
+  "Poner música: todos se mueven por el espacio mientras reciben instrucciones como 'toca la mayor cantidad de espaldas' o 'toca la mayor cantidad de rodillas sin que toquen la tuya'. Buscan que se muevan, se mezclen y se separen de sus cercanos.",
+  "Mientras juegan, pedir que formen grupos de 2, 3, 4 o 5 personas; el último grupo en formarse hace una penitencia simple (ej. 5 sentadillas, 3 burpees o algo acorde a la capacidad de cada NNAJ). Las instrucciones pueden variar rápido ('júntense en grupos de 5', luego 'en grupos de 3'). Avisar antes que el último en formarse cumple la penitencia, para que se junten rápido con quienes tienen al lado y no vayan a buscar a sus mejores amigos.",
+  "Cada ronda termina con una miniactividad o pregunta que el grupo formado debe realizar o responder. Se juegan mínimo 4 rondas (grupos de 2, 3, 4 y 5). Después de cada miniactividad vuelven a recibir las 'instrucciones iniciales' para dispersarse y moverse de nuevo por el espacio."
+ ],
+ reflexion:"Reflexionar sobre lo enriquecedor que es conocer nuevas personas y cómo la interacción con compañeros de otros núcleos puede abrir oportunidades únicas para compartir experiencias y aprender de los demás. Resaltar cómo la comunicación y la cooperación con personas distintas fueron claves para realizar las miniactividades con éxito.",
+ tips:["Ideas de miniactividades movidas — grupos de 2: crear un saludo de mínimo 10 pasos. Grupos de 3: crear una mini-coreografía de 6 pasos, donde cada uno va añadiendo un paso. Grupos de 4: nudo humano (en círculo mirándose, con la mano derecha en el centro se toman las de quienes quedan enfrente, luego lo mismo con la izquierda, e intentan formar un círculo dándose las espaldas sin soltarse las manos). Grupos de 5: inventar un nombre y grito de equipo.","Ideas de miniactividades de conversación — 30 segundos de autobiografía (gustos, familia, sueños, algo que les apasione); preguntas de conocimiento mutuo (películas favoritas, algo que les gustaría aprender, una experiencia divertida); tres cosas en común entre todos los del grupo; '¿qué será mejor?' (resolver un dilema por consenso, ej. si se pudiera tener un superpoder, pero solo uno, ¿cuál elegiríamos y por qué?). Si tienen otras ideas, ¡cámbienlas! Conviene equilibrar actividades movidas y de conversación."]},
+
+{id:"t25-03", nombre:"Manos a la obra", habilidades:["EQUIPO","EMPATIA"], tiempo:"40 min aprox.", bucket:"media",
+ materiales:["Materiales simples para construir: vendas o pañuelos, cajas de cartón, sillas, mesas, mantas, rollitos de confort, etc.","Papelitos con los roles (y otros en blanco)","Cronómetro"],
+ proposito:"Dividir a los NNAJ en grupos y asignar a cada uno roles con 'dificultades' para que, en cada ronda y con un tiempo determinado, construyan de manera creativa un objeto con los materiales a su alcance, cooperando para que cada miembro participe. Practican ponerse en el lugar del otro: reconocer fortalezas y debilidades de cada miembro del equipo, hacerse cargo de las debilidades de quienes tienen roles y ponerse en el lugar de personas de la sociedad con diversas dificultades (ceguera, sordera, etc.). También desarrollan comunicación efectiva, trabajo en equipo y creatividad en un contexto de apoyo mutuo.",
+ desarrollo:[
+  "Dividir a los NNAJ en grupos de aprox. 6 (núcleos juntos de a dos). Deben construir, en un tiempo determinado, el objeto que se les indique. Al terminar el tiempo se vota por la mejor construcción y se le da un punto.",
+  "Distribución de roles: dentro de cada grupo, los participantes sacan papelitos con roles que traen distintas dificultades (hay también papeles en blanco, sin rol). En cada ronda se vuelve a sacar un papelito, para que los roles vayan cambiando. Cada rol e integrante debe participar sí o sí en la construcción, y todo el equipo debe encargarse de que así sea.",
+  "Con los grupos formados y los roles asignados, distribuirlos en el espacio, entregar los materiales y decir en voz alta (para que todos escuchen) el artefacto que deberán construir. Algunas ideas: avión, tren, castillo, nave espacial, casa, edificio, museo, restaurante.",
+  "Darles aprox. 10 minutos con cronómetro para que comiencen a construir (el tiempo queda a criterio de los voluntarios).",
+  "Al terminar el tiempo, los 'jueces' pasan grupo por grupo revisando lo que construyeron, y los miembros de los grupos explican las distintas partes y funciones de su construcción."
+ ],
+ reflexion:"La idea es que los NNAJ reflexionen sobre cómo fue 'sentir en su propia piel' lo que estos distintos personajes de la sociedad experimentan con sus limitaciones, y que quienes no tenían limitaciones cuenten de qué forma tuvieron que adaptarse y colaborar para facilitar la participación de todos. Se busca que tomen conciencia de la importancia de apoyar a quienes necesitan ayuda en distintos contextos. Preguntas posibles: ¿Cómo se sintieron cuando les tocó representar un rol? ¿Cómo se hicieron cargo como equipo de las dificultades del resto para poder llevar a cabo la construcción? ¿Por qué es importante estar consciente de las debilidades de quienes nos rodean y acogerlas? ¿Pueden ver situaciones así en su día a día? ¿Cómo suelen actuar en esas situaciones?",
+ tips:["Otra opción: hacer una sola ronda y entregar los roles a la mitad, en caso de que los niños se estén demorando mucho y estén muy involucrados en la construcción.","Ideas de roles — Anciano/a: se mueve más lento y le cuesta levantar cosas pesadas, pero tiene mucha sabiduría y puede dar muy buenas ideas. Persona con los ojos vendados: se le pone una venda y hay que asegurarse de que no pueda ver. Persona que no puede hablar: no habla durante todo el turno, pero puede intentar comunicarse de otras formas. Persona con las manos vendadas: se le amarran las manos con una venda. Bebé: gatea para moverse y se comunica con sonidos básicos, como balbuceos. Persona con una pierna lesionada: solo puede usar una pierna, saltando o moviéndose despacio. Papelito en blanco: ningún rol."]},
+
+{id:"t25-04", nombre:"La historieta de la empatía", habilidades:["EMPATIA"], tiempo:"40 min", bucket:"media",
+ materiales:["1/2 papel kraft por núcleo","Tijeras","Pegamento","Plumones","Cuento impreso 'El nuevo comienzo de Valentina'"],
+ proposito:"Que los NNAJ se pongan de acuerdo para crear la continuación del cuento entregado: elaboran dos finales para el cuento que escucharán. Aplican la empatía por pasos e identifican aquello que les ayudó a ser empáticos con el personaje, para aplicar pasos similares en otras situaciones de su vida en las que quieran ayudar a otro. Al ser una actividad en núcleos, se enriquecen con las opiniones y observaciones de sus compañeros.",
+ desarrollo:[
+  "Un voluntario de cada núcleo lee el cuento entregado al resto del grupo, de forma atractiva para que los niños presten atención y se interesen en participar. Al final, el núcleo conversa sobre cómo creen que se sintieron los personajes en cada momento.",
+  "Dividir el papel kraft por la mitad.",
+  "En la primera mitad crean el final de la historieta en base a lo que NO les gustaría que pasara. Esto no se les dice en un principio a los niños: la idea es que piensen el final pensando en el bienestar del personaje principal. Para cada escena deben crear una imagen y un texto o explicación.",
+  "En la segunda mitad crean una historieta con un final distinto al anterior: aquello que SÍ les gustaría que pasara, pensando en el bienestar y las emociones del personaje principal."
+ ],
+ reflexion:"A medida que se trabaja (en ambos finales), los voluntarios buscan conversaciones reflexivas con los NNAJ acerca de por qué decidieron que pasaran esas cosas en la historieta y cómo creen que esas cosas harían sentir a los personajes. Al final se les pregunta qué creen que practicaron durante esta actividad; si no se dan cuenta, se les explica que lo que hicieron fue aplicar la empatía. También se conversa para identificar cuál fue la estrategia que utilizaron (reconocer las emociones y necesidades del otro, actuar para ayudarlos) y en qué situaciones de su vida podrían aplicar ese pensamiento.",
+ tips:[],
+ nota:"Resumen del cuento 'El nuevo comienzo de Valentina': Valentina llega a un colegio nuevo y, por nervios y miedo, responde de forma brusca o fría cuando Tomás la invita a jugar, cuando Samuel se ofrece a ayudarla en matemáticas y cuando se acerca a las niñas que juegan a la cuerda. Conversando con su hermano mayor decide cambiar y trata de ser más amable, pero los demás todavía recuerdan cómo los rechazó y no la dejan unirse. Valentina reflexiona que no quiere ser pesada ni que los demás se sientan mal por ella, y le pide perdón a Tomás. El cuento termina ahí: los núcleos completan la continuación. El texto completo está en el manual impreso."},
+
+{id:"t25-05", nombre:"Nuestro baúl", habilidades:["EQUIPO"], tiempo:"30 min", bucket:"media",
+ materiales:["Caja de zapatos (una por núcleo)","Pinturas y pinceles","Plumones y lápices de colores","Pegamento","Tijeras","Papeles de colores, telas, stickers y otros elementos decorativos"],
+ proposito:"Fortalecer el sentido de pertenencia y el trabajo en equipo creando un símbolo colectivo que represente a cada núcleo: una caja de zapatos decorada como 'baúl de los recuerdos', donde guardarán las manualidades, creaciones y dibujos realizados durante la semana. Usar el baúl como espacio para guardar sus creaciones valoriza su esfuerzo y fomenta el cuidado de los recuerdos compartidos.",
+ desarrollo:[
+  "Explicar a los NNAJ que deberán decorar una caja de zapatos como un 'baúl de los recuerdos' que representará a su núcleo.",
+  "Una vez decorado, el baúl queda disponible durante la semana para guardar las creaciones, manualidades y recuerdos importantes del grupo."
+ ],
+ reflexion:"Al final de la actividad, reflexionar sobre cómo el diseño del baúl representa al núcleo y cómo los hace sentir parte de un grupo; hablar de cómo el sentido de pertenencia puede fortalecer la confianza y la cooperación. Durante la semana pueden ir preguntando a los NNAJ si creen que el baúl realmente los representa como núcleo y qué le agregarían si lo hicieran de nuevo (para ver si han logrado conocerse más entre sí y encontrar más cosas que los representen).",
+ tips:[]},
+
+{id:"t25-06", nombre:"Un día de muchas emociones", habilidades:["EMOCIONES"], tiempo:"20 min", bucket:"corta",
+ materiales:["Cuento 'Carta de la mascota' (ver resumen en esta ficha)"],
+ proposito:"Que los participantes reconozcan la emoción que los personajes podrían sentir en cada momento de lo relatado, y la representen actuando.",
+ desarrollo:[
+  "Ubicar a todos los participantes en el medio de la cancha. Un guía va leyendo el cuento o los escenarios (recuerden los tips de la capacitación de talleres sobre la voz y la expresión de emociones por medio de gestos faciales).",
+  "Todos actúan como si estuvieran en esa situación: piensan cómo se siente el personaje en ese momento y representan la emoción. Ejemplo: están en la casa de la abuela; la abuela les cocina una torta (se ponen felices); se les cae la torta al piso (se ponen tristes, enojados, etc.).",
+  "Carta de la mascota, para leer en voz alta: la mascota organiza una fiesta en la oficina de OI e infla un globo gigante que explota (actúan sorpresa); decora y baila con alegría (actúan felicidad); al sacar el pastel del horno se le resbala y cae al suelo (actúan tristeza, enojo o frustración, según lo que imaginen sentir); sale a tomar aire y al volver unos ladrones se llevaron todos los pilares de OI (actúan miedo o tristeza); llegan las otras mascotas, la animan y cada una regresa a su zona a pedir ayuda para buscar los pilares (actúan entusiasmo o determinación). La carta cierra diciendo que es normal sentir miedo, tristeza o frustración en momentos difíciles, pero que son pasajeras; lo importante es actuar con calma, buscar ayuda, confiar en quienes nos rodean y recordar que siempre hay esperanza."
+ ],
+ reflexion:"Durante nuestro día a día pueden ocurrir muchas cosas que no controlamos y que nos pueden producir diferentes emociones. Lo importante es recordar que las emociones son pasajeras y que es normal sentirlas aunque no sean tan agradables, ya que al ser seres humanos estamos condicionados a sentir. Pero, tal como estas emociones llegan a nuestro día a día, a los minutos se marchan.",
+ tips:[],
+ nota:"Hilo conductor Verano 2025, capítulo 2: tras el arduo trabajo de búsqueda, los pilares fueron recuperados. La mascota, ya más tranquila, regresa con un mensaje importante: 'Quiero contarles cómo viví ese momento tan difícil'. Reunidos en un círculo, escuchan cómo describe su experiencia, desde el miedo inicial, pasando por la tristeza y la frustración, hasta la esperanza al vernos unidos para ayudarla. Aquí comienza la actividad."},
+
+{id:"t25-07", nombre:"Memorice de emociones", habilidades:["EMOCIONES","EMPATIA"], tiempo:"40 min", bucket:"media",
+ materiales:["Dos hojas impresas del emocionario de Operación Infancia por núcleo","Cartulinas","Lápices","Tijeras","Pegamento","Un dado por núcleo"],
+ proposito:"Que los núcleos creen un memorice con el emocionario de OI y jueguen, ampliando su vocabulario emocional. Cada vez que encuentran un par de tarjetas de la misma emoción contestan preguntas que desarrollan el reconocimiento, expresión y regulación de sus emociones. Podrán identificar situaciones que las desencadenan, cómo las regulan y cómo se manifiestan en su cuerpo; el diálogo sobre emociones promueve la empatía y la comprensión entre compañeros.",
+ desarrollo:[
+  "Entregar a cada núcleo dos hojas impresas con el emocionario de Operación Infancia y cartulinas. Recortar las emociones del emocionario y pegarlas en la cartulina para hacerlas más resistentes.",
+  "Con todas las emociones listas, mezclar las cartas y colocarlas boca abajo para jugar al memorice tradicional, intentando encontrar los pares de emociones.",
+  "Cuando un NNA encuentra un par de emociones iguales, lanza un dado y, según el número que salga, habla sobre lo siguiente en relación con la emoción encontrada: si sale 1 o 4, situaciones que provocan esa emoción; si sale 2 o 5, cómo regula esa emoción cuando la siente (qué hace al respecto); si sale 3 o 6, cómo siente o se manifiesta esa emoción en su cuerpo."
+ ],
+ reflexion:"La reflexión se realiza durante la actividad, mientras se habla y se comparten las experiencias respecto a las distintas emociones. Al finalizar, destacar la importancia de conocer las emociones y cómo aprender a reconocerlas en nuestro cuerpo nos ayuda a manejarlas mejor.",
+ tips:["Si un núcleo es muy grande, separarlo en dos: intenta hacer grupos de máximo 5."]},
+
+{id:"t25-08", nombre:"Casting de las emociones", habilidades:["EMOCIONES","EQUIPO"], tiempo:"1 hora", bucket:"larga",
+ materiales:["Ficha impresa de personaje (una por grupo)","Lápices"],
+ proposito:"Que los niños personalicen una emoción en base a las características que distingan de ella, dándose cuenta de los distintos atributos que cada uno identifica y de que, aunque la emoción tenga el mismo nombre, puede significar cosas distintas para cada uno. Niños y voluntarios reflexionan sobre una emoción 'no tan conocida' y se cuestionan cómo la ven ('qué cara le ponen').",
+ desarrollo:[
+  "Comenzar contando a los niños que les otorgaron una misión: crear la nueva emoción para la película Intensamente 3. Separarlos por núcleo y entregar a cada grupo una emoción definida por ustedes que no aparezca en las películas anteriores (al menos en la 1); la idea no es usar emociones muy difíciles, pero sí que amplíen su vocabulario. Si el contexto lo permite, también pueden dejar que los NNA imaginen y decidan la emoción que quieren hacer.",
+  "Con la emoción entregada, los niños completan la ficha (una por grupo), que pide una serie de cosas, entre ellas: hacer un dibujo de la emoción (como personaje tipo Intensamente), ponerle un nombre, describirla, etc.",
+  "Entregar la ficha a los 'jueces' (pueden ser ustedes, ¡métanle harto show!: uno puede ser el director de la nueva película, otro un crítico especialista, etc.).",
+  "Los niños hacen un casting para presentar su emoción: mediante la actuación ejemplifican lo que significa. Después de que todos presenten deberán 'elegir una emoción'; para que nadie se enoje, pueden decirles que por primera vez en todos los castings que han visto se aceptarán todos los personajes presentados."
+ ],
+ reflexion:"La reflexión se realiza durante el transcurso de la actividad: la idea es que puedan ver las distintas concepciones que cada niño y voluntario tiene sobre la emoción que deben personalizar, y que entiendan que, así como cada uno es capaz de distinguirla de manera única, también la ejecuta con la misma unicidad.",
+ tips:[], nota:"La ficha de personajes va impresa (anexo del manual)."},
+
+{id:"t25-09", nombre:"Castillos en ataque", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"40 min", bucket:"media",
+ materiales:["Sillas","Mesas","Colchonetas","Cartones","Otros materiales deportivos prestados por el establecimiento","Disfraces"],
+ proposito:"Que los grupos construyan sus castillos con los materiales que tengan a su disposición. Deben sobrepasar los obstáculos que se disponen y superar la frustración que estos les generan, potenciando la colaboración y participación de todos para lograr el objetivo, escuchando ideas de otros y poniéndose de acuerdo para definir roles.",
+ desarrollo:[
+  "Separar a los NNA en alianzas (3 grupos equitativos). Pronto empezarán a recibir ataques de enemigos, ¡pero aún no tienen su castillo listo! Deben comenzar a construirlo para protegerse.",
+  "Indicar que para armar su fuerte tendrán cierta cantidad de materiales (todos los grupos con una cantidad similar). Darles de 5 a 7 minutos para armarlo.",
+  "¡Hay un problema! Llegaron dragones de tierras enemigas y robaron x materiales (los materiales eliminados y los que quedan son a elección de ustedes). Deben volver a armar sus castillos con los materiales restantes y, además, construir una protección, porque viene el ataque de los trolls.",
+  "Los trolls atacaron los castillos: ahora no tienen (material a elección), ¡deben volver a construir sus castillos con los materiales que quedan! (Sí o sí deben quedar los cartones.) Los voluntarios mueven los materiales al otro extremo de la cancha para poder llevar a cabo el paso siguiente. Al final de este paso, pedir a cada grupo que elija quién será el rey o reina y quién el sabio o sabia del reino. El rey no cumple ningún rol específico: es para crear la instancia en que deban ponerse de acuerdo para definir roles.",
+  "¡Aún hay esperanza! Se abrió un camino mágico donde pueden rescatar materiales perdidos: con los cartones sobrantes cruzan un río imaginario (los NNAJ pasan los cartones como bases para cruzar el espacio designado) y, al cruzarlo, pueden llevarse materiales designados por los voluntarios para terminar su castillo. Pero ojo: el único que sabe de esta posibilidad es el sabio. Alguien debe acercarse a él a preguntarle en secreto, y el sabio tiene la responsabilidad de decirle a su equipo y guiarlos a los materiales (adónde ir y cómo llegar)."
+ ],
+ reflexion:"La actividad pone a prueba la capacidad de sobrepasar la frustración, ya que se les pide armar su castillo cada vez con menos materiales y más obstáculos. Es importante conversar con los niños acerca de cómo se sintieron y qué hicieron con esas emociones; pueden repasar los materiales que se fueron sustrayendo, qué sintieron en cada paso y cómo pudieron enfrentar y reconocer esos sentimientos en ellos mismos. Rescatar que, a pesar de los obstáculos, fueron capaces de armar su castillo en equipo; guiar la reflexión en lo positivo de haber superado las etapas, validando también las cosas que no hayan logrado, les hayan costado o quisieran mejorar.",
+ tips:["Esta construcción es diferente a 'Manos a la obra' para que no se sienta repetitivo: allí se usan materiales tipo manualidades y los obstáculos son roles personales; aquí la construcción es más grande y los obstáculos pueden ser externos y van apareciendo uno por uno. El foco de 'Manos a la obra' es el trabajo en equipo; el de esta actividad, la resiliencia."]},
+
+{id:"t25-10", nombre:"Árbol de la autoestima", habilidades:["AUTOESTIMA","EMPATIA","EQUIPO"], tiempo:"30 min", bucket:"media",
+ materiales:["Hojas de papel","Marcadores o lápices de colores"],
+ proposito:"Que los NNAJ identifiquen y valoren sus propias cualidades positivas y habilidades, representándolas a través de un árbol. Fortalecen su autoestima al identificar sus cualidades internas y únicas (las raíces) y, al recibir comentarios y agradecimientos de sus compañeros, aprenden a valorar cómo los demás perciben sus fortalezas, lo que mejora su autoconfianza. También fomenta el trabajo en equipo y la empatía, ya que requiere colaboración y respeto mutuo para contribuir al crecimiento de los árboles de los compañeros.",
+ desarrollo:[
+  "Entregar a cada niño/a una hoja de papel donde deberán escribir su nombre y decorarlo libremente, con la intención de que esa decoración los represente.",
+  "En la parte inferior de la hoja, los NNAJ dibujan las raíces de un árbol; en cada raíz escriben cualidades positivas o habilidades que creen tener. Luego dibujan el tronco del árbol, que sale de las raíces.",
+  "Una vez que los troncos están completos, NNAJ y voluntarios reparten sus dibujos dentro del núcleo, donde se van turnando para complementar el árbol de los demás dibujando ramas, hojas o frutos que simbolicen una cualidad, un comentario de aprecio o un agradecimiento hacia aquel a quien pertenece el dibujo.",
+  "Cuando los árboles están completos, los niños reciben nuevamente sus hojas, con las aportaciones de los demás."
+ ],
+ reflexion:"El árbol que cada uno tiene representa parte de quiénes somos. Las raíces simbolizan esas cualidades que nosotros mismos vemos que llevamos dentro y nos ayudan a crecer, mientras que las ramas, hojas y frutos, dibujados por los demás, representan cómo los demás perciben nuestra personalidad, valoran nuestras cualidades y cómo influimos de manera positiva en sus vidas. Necesitamos tanto nuestras raíces (visión propia) como el apoyo y la conexión con los demás para que el árbol florezca.",
+ tips:["Recordarles a los NNAJ, de ser necesario, que somos mucho más de lo que algunas personas dicen o piensan de nosotros."]},
+
+{id:"t25-11", nombre:"La gymkana de la resiliencia", habilidades:["RESILIENCIA"], tiempo:"30 min", bucket:"media",
+ materiales:["Lana enredada","Emboques","Libro '¿Dónde está Wally?'","Aro y pelota de básquetbol","Vendas"],
+ proposito:"Que los NNAJ pasen por una serie de etapas que pueden generar frustración en ellos, sigan adelante y logren completarlas para llevar a su equipo a la meta. Se enfrentan a tareas que pueden ser frustrantes en un ambiente de apoyo y calma, para que encuentren herramientas internas para regular esa emoción y seguir buscando el objetivo (tolerancia a la frustración).",
+ desarrollo:[
+  "Preparar todas las etapas de la gymkana: deben ser 3 caminos paralelos, uno para cada alianza, y cada camino con estas etapas: 1) buscando a Wally, 2) encestar, 3) decir un trabalenguas, 4) emboque, 5) desenredar un nudo, 6) círculo con los ojos cerrados, 7) contando en grupo.",
+  "Dividir la zona por alianzas y preguntar a cada grupo si saben qué es la frustración; explicar que es una emoción que se presenta cuando no logramos alcanzar un objetivo o satisfacer un deseo, y que puede ir acompañada de ira, molestia, decepción, etc.",
+  "Cada niño debe pasar por al menos dos etapas: poner un niño en las primeras dos etapas, otro en las siguientes dos, otro en las últimas dos, y así hasta que todos los niños hayan hecho dos etapas.",
+  "Finalmente, todos los niños de la alianza deben hacer la etapa 7: contar en conjunto hasta 15 (si es muy fácil o muy difícil pueden modificar la meta). Con los ojos cerrados y sin hablar, deben turnarse para decir el número que toca; si dos personas hablan al mismo tiempo, deben partir desde cero.",
+  "Si les sobra tiempo, los niños pueden pasar por otras etapas para jugar."
+ ],
+ reflexion:"Preguntarles si recuerdan lo que es la frustración; luego, si se sintieron frustrados en algún momento, cuándo y por qué creen que fue eso, y si querían rendirse. Conversar acerca de qué hicieron para seguir adelante y cómo se sintieron cuando lo lograron. Pueden preguntar en qué otros momentos de la vida han sentido frustración y recordarles que es algo común y que lo importante es intentar superarla, para no rendirse y también para estar tranquilos y poder continuar, ya que bajo el estrés las cosas no nos salen bien.",
+ tips:[]},
+
+{id:"t25-12", nombre:"Desfile de estandartes", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"50 min", bucket:"larga",
+ materiales:["Trozos de tela (uno por núcleo o equipo)","Pinturas para tela y pinceles","Plumones, tijeras y pegamento","Lentejuelas, cintas, retazos de tela, botones y otros materiales decorativos","Palos o varillas para sostener los estandartes","Cartón o bolsas de basura para proteger las superficies de trabajo","Carteles con frases para el desfile ('excelente', 'muy creativo', 'puro talento') y música"],
+ proposito:"Que los núcleos, trabajando en equipo, diseñen y decoren un estandarte de tela que represente a Operación Infancia, su zona y su núcleo. Que enfrenten obstáculos durante el proceso, encuentren soluciones y presenten su trabajo en un ambiente respetuoso y de apoyo. El sentido de pertenencia es un factor clave en la resiliencia, ya que crea un espacio acogedor donde los niños sienten que sus ideas son escuchadas y valoradas; además, enfrentarse a imprevistos les enseña a manejar la frustración de forma constructiva y aumenta su sentido de pertenencia hacia Operación Infancia.",
+ desarrollo:[
+  "Reunir a los núcleos y entregarles los materiales. Indicar que deben crear y decorar su estandarte usando su creatividad y trabajando en equipo para reflejar su identidad como núcleo, su zona y Operación Infancia. Explicar que al final habrá un desfile para presentar los estandartes.",
+  "Cuando los núcleos hayan avanzado en sus diseños, introducir un obstáculo para desafiar su proceso creativo. Por ejemplo: devolver algunos materiales, usar solo un color, que quienes toquen el estandarte no puedan mirar, trabajar con una sola mano o con las manos atadas, que los voluntarios no puedan ayudar, etc.",
+  "Preparar una pasarela y materiales para el desfile (carteles con frases como 'excelente', 'muy creativo', 'puro talento'). Ambientar el evento con música y motivación, y que cada núcleo presente su estandarte destacando el esfuerzo y la creatividad demostrados."
+ ],
+ reflexion:"Durante la actividad, la idea es que cada núcleo vaya discutiendo cómo manejaron las diferentes opiniones que se generan en el grupo y cómo, a través del trabajo en equipo, la comunicación y la perseverancia, lograron solucionar las problemáticas que surgieron durante el desarrollo de la actividad.",
+ tips:["Los voluntarios deben apoyar a los niños para afrontar la noticia del obstáculo, alentándolos a buscar alternativas y finalizar su diseño con éxito.","Es importante que el desfile sea un verdadero evento: que se reconozca el esfuerzo de los niños y que los voluntarios muestren mucha motivación, para que todos lo pasen bien y los núcleos se sientan orgullosos del trabajo que hicieron en conjunto."],
+ nota:"Hilo conductor Verano 2025, capítulos 3 y 4: en el almuerzo, la mascota entra radiante con música y trompetas y agradece por haber recuperado los pilares; reparte sobres con la invitación al Gran Desfile de Estandartes (lugar, día y hora a completar), para celebrar la unión, la creatividad y el esfuerzo. El día del desfile el lugar se transforma en un escenario mágico —alfombra roja, trompetas, disfraces—; cada núcleo desfila con su estandarte, la mascota lidera el desfile agradeciendo a cada participante y al final comparten comida, risas y aplausos."},
+
+{id:"t25-13", nombre:"Luz, cámara, acción", habilidades:["EQUIPO"], tiempo:"30 min", bucket:"media",
+ materiales:[],
+ proposito:"Que los y las NNA trabajen la comunicación para lograr un ambiente de escucha y participación. Se darán cuenta de que deben trabajar en equipo para realizar la actuación, lo que les permite desarrollar la comunicación: escuchar a los demás y transmitir sus ideas respetando las opiniones del resto. Además desarrollan la creatividad, ya que deben crear una historia a partir de solo 3 palabras.",
+ desarrollo:[
+  "Dividir en grupos de 6 a 10 personas, considerando NNA y voluntarios.",
+  "A cada grupo se le entregan 3 palabras con las que deberán crear una historia; tienen 15 minutos para hacerlo.",
+  "Escribir la historia en un papel (lo puede hacer un voluntario).",
+  "Una vez listas las historias de todos los grupos, cada grupo se organiza para interpretarla y actuarla frente a los compañeros. La finalidad es que los compañeros adivinen las palabras, por lo que debe estar bien interpretada.",
+  "Se intercambian e interpretan las historias entre grupos (una vez), para así poder adivinar las tres palabras que usó el otro grupo."
+ ],
+ reflexion:"Terminando la actuación se discute sobre cómo lograron hacer la actividad, cómo fueron capaces de comunicarse y si se respetaron los turnos de habla. La idea fuerza es la comunicación entre pares y cómo lograron que funcionara. Preguntas: ¿Les gustó la actividad? ¿Qué creen que trabajamos? ¿Cómo se organizaron? ¿Qué dificultades tuvieron a lo largo de la actividad y cómo solucionaron esas dificultades? ¿Sus compañeros/as entendieron qué querían representar? ¿Entendieron lo que sus compañeros querían representar?",
+ tips:["Requiere toda la creatividad y personalidad de los voluntarios, que son quienes guían a los grupos."]},
+
+{id:"t25-14", nombre:"Encontremos al líder", habilidades:["EQUIPO","EMPATIA"], tiempo:"20–25 min", bucket:"media",
+ materiales:[],
+ proposito:"Que los niños y niñas se pongan de acuerdo para escoger al líder que guiará la actividad, por lo que deberán trabajar en equipo para cumplir el objetivo. Demuestra la importancia de ser un buen líder y de la necesidad de trabajar en equipo para cumplir los objetivos de manera efectiva.",
+ desarrollo:[
+  "Dividir a los niños y niñas en tres grupos de igual cantidad (se recomienda hacerlo por alianzas), integrando a un voluntario que estará a cargo de la actividad. Formar un círculo en que exista distancia entre los participantes y separar los grupos, ya que esta actividad requiere mucha atención.",
+  "El voluntario elige a un participante que deberá salir un momento del círculo para que los demás escojan al líder del juego, y luego tendrá que regresar. El niño que salió se ubica en el centro del círculo.",
+  "El líder realiza movimientos con las manos, como tocarse la cabeza, peinarse, aplaudir, tocarse las rodillas, darse golpecitos en la nariz, etc., y los demás deben copiarlos. El niño o niña que se encuentra en el centro debe adivinar quién es el jugador que da las instrucciones (el líder), por lo que debe poner atención y observar a todos los integrantes del grupo.",
+  "El grupo debe permanecer en silencio, solamente siguiendo los movimientos que dicta el líder, para que el jugador del centro no logre identificar quién es. Cuando el niño o niña adivina quién es el líder, el voluntario escoge a otro participante y comienza nuevamente el juego."
+ ],
+ reflexion:"A través de esta actividad los niños y niñas lograrán ponerse de acuerdo para escoger al líder que guiará la actividad. Preguntas: ¿Les gustó la actividad? ¿Qué creen que trabajaron? ¿Cuál creen que es una de las herramientas más importantes para poder ganar en este juego? ¿Qué consideraron para escoger a los líderes? ¿Qué características creen que son importantes? El trabajo en equipo es muy importante: 'Una persona puede ser imprescindible para un equipo, pero ningún equipo está compuesto por una sola persona'.",
+ tips:["Te recomendamos hacer esta actividad en alianzas para que sea más entretenida para los NNA; si no, une dos núcleos y realízala junto con los voluntarios."]},
+
+{id:"t25-15", nombre:"Misión: empatía", habilidades:["EMPATIA","CONVIVENCIA"], tiempo:"~30 min (se desarrolla durante todo el fin de semana)", bucket:"jornada",
+ materiales:["Hojas y lápices","Papel kraft con cuadraditos para marcar (papelógrafo con unos 90 cuadraditos)","Pinturas o plumones de colores"],
+ proposito:"Que los niños piensen en las cosas que hacen, o pueden hacer, que siguen las reglas de oro de OI, aportan a la convivencia, hacen sentir bien a los otros y demuestran empatía, y que las pongan en práctica de forma consciente pintando un cuadradito por cada acción 'bonita'. Verán de forma gráfica el impacto de la suma de cada acción bonita; se darán cuenta de que son cosas cotidianas que aportan a la convivencia y al bienestar de los demás, y que se puede y debe hacer no solo con los amigos sino con toda persona.",
+ desarrollo:[
+  "Preparar un papelógrafo con el título y dividirlo en al menos unos 90 cuadraditos.",
+  "Luego de que Vínculo y Comunidad haya hecho su actividad sobre convivencia, reunir a todos en un círculo y retomar y complementar ese tema: preguntarles si recuerdan lo que es la empatía, hablarles de la convivencia, de cómo nuestras acciones afectan a los otros y de tratar a los demás como nos gustaría que nos trataran (planeen lo que van a decir en base a lo que dijo Vínculo, para complementarse y no repetir). Presentarles el papelógrafo y explicar que por cada acción de empatía, cumplimiento de las reglas de oro o trato bonito a los demás pueden marcar un cuadradito de color. Invitarlos a tomárselo en serio, para que juntos llenemos de colores el papel durante el fin de semana.",
+  "En los núcleos conversan sobre lo expuesto en el círculo y cuáles son ejemplos de esas acciones. Cada persona hace su propia lista, decorada, y la guarda para cuando quiera recordarla. Los voluntarios recuerdan la importancia de la actividad y motivan a los niños a participar activamente.",
+  "Definir un lugar para dejar el papelógrafo y a algunas personas encargadas de que, cuando un niño quiera pintar un cuadrado, conversen con él acerca de la acción que hizo, para asegurarse de que fue en serio y no solo para avanzar en el papelógrafo.",
+  "Al final del día o del fin de semana (depende de cuándo se llene) se muestra todo lo avanzado y se reflexiona con los niños sobre cómo las pequeñas acciones de cada uno, juntas, significaron mucho."
+ ],
+ reflexion:"La reflexión es la descrita anteriormente y debe realizarse constantemente por los voluntarios durante el fin de semana. Además, en la presentación y cierre de la actividad los jefes de talleres deben recordarla.",
+ tips:[]},
+
+{id:"t25-16", nombre:"Eres mis ojos", habilidades:["EMPATIA","EQUIPO","RESILIENCIA"], tiempo:"Sin duración indicada", bucket:"media",
+ materiales:["Pañolines (uno para cada participante)","Obstáculos (sillas, pelotas, entre otros)"],
+ proposito:"Que los niños sean capaces de guiar a sus compañeros, poniéndose en su lugar para ver cómo guiarlos de mejor manera. Intentan que su compañero no choque con los obstáculos, trabajando su empatía y comunicación; se trabaja el cuidado de pares y la construcción de confianza en el grupo.",
+ desarrollo:[
+  "Dar las instrucciones de la actividad. Dividir a las niñas y a los niños en parejas, en las cuales uno de los dos estará vendado. El que se encuentre sin el pañolín será los ojos de su compañera o compañero, por lo que deberá guiarla o guiarlo hasta la meta solo con la voz.",
+  "En el camino habrá obstáculos que cada pareja debe esquivar, y si la niña o el niño vendado se está acercando mucho a un obstáculo, es necesario que su pareja lo tome del brazo y lo ayude a seguir para evitar accidentes.",
+  "Las voluntarias y los voluntarios encargados entregan un pañolín a cada pareja y, si es necesario, los ayudan a ponérselos.",
+  "Ubicar a cada pareja en la línea de partida y dar comienzo a la actividad.",
+  "Cuando todas las parejas hayan llegado a la meta, pedirles que intercambien los pañolines con su pareja para que la compañera o el compañero pueda experimentar lo mismo.",
+  "Por último, invitar a las niñas y a los niños a reflexionar sobre lo experimentado. Los voluntarios guían la conversación con el fin de que sean capaces de reconocer la importancia de cuidar a los demás para enfrentarse a la vida."
+ ],
+ reflexion:"En esta actividad se trabaja la habilidad del cuidado de pares y que los niños sean capaces de construir la confianza en el grupo.",
+ tips:[]},
+
+{id:"t25-17", nombre:"La entrevista del sustituto", habilidades:["EMPATIA"], tiempo:"40 min", bucket:"media",
+ materiales:["Papel y lápiz","Una silla"],
+ proposito:"Que los NNA escuchen activamente y sean capaces de ponerse en la situación de su compañero, respondiendo preguntas como si fueran él. Tendrán la oportunidad de ponerse en el lugar de otro niño e imaginar cómo se sentirían en situaciones simples y cotidianas; además trabajan habilidades comunicativas y respuestas orales.",
+ desarrollo:[
+  "Las duplas, con ayuda de los voluntarios, van contestando y conversando sobre preguntas como: ¿cuál es tu canción favorita?, ¿cuál es la comida que menos te gusta?, ¿cuál es tu regalo soñado?, ¿cuál es tu lugar favorito?, ¿cuáles son tus miedos?, ¿qué disfrutas hacer?, ¿qué clase te gusta menos del colegio? El voluntario y los niños pueden agregar más preguntas.",
+  "Mientras los niños conversan, el voluntario va poniendo atención y debe inventar una especie de entrevista en base a lo que hablaron, haciendo preguntas según lo que dice su ahijado. Ejemplos: ¿cómo te sentirías si te muestro una araña? (si el miedo es a las arañas); ¿qué sentirías si te regalo una pelota? (si el regalo soñado es una pelota); ¿qué me dirías si ahora te doy un pedazo de carne? (si la carne es la comida menos favorita).",
+  "Cada voluntario le dirá a su niño que ahora ha cambiado de nombre y se llama como la pareja que le tocó. Le hará las preguntas tipo 'entrevista' y este tendrá que responder como si fuese la otra persona: ahí se verá la capacidad de ponerse en su lugar y de qué manera escuchó a su pareja.",
+  "El niño entrevistado se sienta en una silla mientras el voluntario, haciendo mímica de micrófono, lo entrevista.",
+  "Al final todos reflexionan sobre la importancia de ponerse en el lugar del otro y de escuchar de manera activa."
+ ],
+ reflexion:"Esta actividad permite que los y las NNA aprendan de la escucha activa: a realmente escuchar lo que el compañero quiere decir. Preguntas: ¿Les gustó la actividad? ¿Qué creen que trabajamos? ¿Qué fue lo que más les costó? ¿Y lo que menos les costó? ¿Por qué? ¿Qué creen que podemos hacer mejor si hacemos otra ronda? La escucha activa es tarea de cada uno de nosotros, nos ayuda a ser más empáticos y generar mejores vínculos.",
+ tips:[]},
+
+{id:"t25-18", nombre:"Adivina quién", habilidades:["EMPATIA"], tiempo:"30 min", bucket:"media",
+ materiales:["1 o 2 hojas de papel por niña o niño","1 lápiz por niña o niño","Papeles pequeños, cada uno con el nombre de un niño o voluntario"],
+ proposito:"Que los y las NNA se conozcan entre sí y aprendan a escuchar y comprender las diferentes personalidades y gustos que tiene cada uno (empatía y escucha activa). Puede ocurrir que uno pase mucho tiempo cerca de una persona sin conocerla: a través del juego se crean buenos lazos entre compañeros, con quienes trabajarán a lo largo de la semana.",
+ desarrollo:[
+  "Dividir a los niños en grupos (considerando los núcleos, que no queden núcleos separados; se recomienda un máximo de 12 personas por grupo, entre 2 y 3 núcleos juntos), reunidos en un círculo en el patio, cada uno con un papel y un lápiz.",
+  "Parte 1: las niñas y niños se pasean por el patio o cancha, tratando de ir cruzándose entre ellos hasta la señal. Cuando se da la señal, quedan en parejas (cada vez distintas) y tienen 1–2 minutos para preguntarse cosas para conocerse entre sí: sus hobbies, mascotas, gustos, disgustos, su familia, etc. Anotan las respuestas en sus hojas, con el nombre de la persona arriba. Cuando se hayan hecho una cantidad pertinente de repeticiones, vuelven a ordenarse sentados en un círculo.",
+  "Parte 2: se elige a uno para que se ponga al medio y se le asigna, en secreto, a alguno de los compañeros que entrevistó (viendo su papel). Ahora el resto del círculo debe hacerle preguntas al niño del centro que les ayuden a adivinar a quién le tocó; la dificultad es que estas preguntas solo pueden responderse con un 'sí' o un 'no'. Los niños se respaldan en el papel donde anotaron las cosas que aprendieron del resto para determinar a quién le tocó. Quien adivina primero pasa al medio, se le asigna otro compañero y se vuelve a repetir la ronda de preguntas."
+ ],
+ reflexion:"Debe guiarse hacia la importancia de la escucha activa y también de conocer al compañero: para poder establecer buenos vínculos afectivos y ser más empáticos necesitamos conocer a la otra persona, su nombre, sus gustos, su edad, etc. Preguntas: ¿Les gustó la actividad? ¿Qué creen que aprendieron de esta? ¿Pudieron conversar con todos o la mayoría de sus compañeros/as? ¿Qué información creen que era necesaria para poder adivinar a quién se refería el/la compañero/a? ¿Pudieron recolectar esa información? La empatía es la base de las habilidades sociales: permite que conectemos entre nosotros y como sociedad.",
+ tips:["Esta actividad a veces es difícil de entender: practícala con los voluntarios antes, para que ellos puedan guiar a los y las NNA."]},
+
+{id:"t25-19", nombre:"Misión imposible", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"40 min", bucket:"media",
+ materiales:["Lo que requiera cada misión elegida (ej. una pelota, calcetines, cordones, monedas)"],
+ proposito:"Que todos los NNA logren comunicarse entre sí para lograr los objetivos comunes de cada equipo. Desarrollan el trabajo en equipo y la resiliencia, reforzando la comunicación entre pares, la resolución de problemas y el apoyarse entre todos aportando ideas para llevar a cabo la actividad de manera más eficiente.",
+ desarrollo:[
+  "Separar a los NNA en 2 a 4 grupos grandes (dependiendo de la cantidad de NNA).",
+  "Nombrar una de las misiones imposibles de la lista; los NNA la realizan y van sumando puntos (a criterio de los jefes de talleres).",
+  "El equipo que más puntos haya sumado será el ganador de la misión imposible.",
+  "Lista de misiones: 1) una persona por equipo que haga la mayor cantidad de dominadas posibles con la pelota; 2) traer la mayor cantidad de calcetines rojos (o de cualquier color); 3) hacer su grito favorito de Operación Infancia lo más fuerte posible; 4) conseguir la mayor cantidad de cordones blancos posibles; 5) hacer una carrera de 3 pies con todos los participantes del equipo; 6) hacer el mayor tiempo posible en plancha; 7) traer la moneda más antigua; 8) hacer una figura con los cuerpos (corazón, triángulo, casa, etc.)."
+ ],
+ reflexion:"Comprender que una actividad de trabajo en equipo sin comunicación efectiva es difícil de lograr. Así mismo, valorar las ideas de los demás y también opinar sobre ellas genera un buen ambiente de trabajo en el equipo, en donde se podrán solucionar varias problemáticas.",
+ tips:["Repartir bien los puntos entre cada equipo para que no quede uno sin puntos. Al hacer 3 equipos o más, hay mayor probabilidad de que el equipo ganador de cada tarea se vaya rotando."]},
+
+{id:"t25-20", nombre:"Aprendamos a pedir ayuda", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"45 min", bucket:"larga",
+ materiales:["No requiere materiales obligatorios (opcionalmente, elementos para la escenografía de las actuaciones)"],
+ proposito:"Que los niños se den cuenta de que la situación problemática en la que se encuentra el personaje se puede solucionar pidiendo ayuda a otros, y que en conjunto con su equipo piensen una posible solución a este problema y la representen. Ser resiliente implica sobreponerse a las adversidades y salir adelante; muchas veces necesitamos la ayuda de otras personas para encontrar una solución, o al menos la motivación y el apoyo, y esto no nos hace menos capaces. Pedir ayuda no es algo de lo que avergonzarse, y puede hacer mucho más fácil la resolución de algunos problemas.",
+ desarrollo:[
+  "Los jefes de talleres, con ayuda de otros voluntarios, preparan una actuación en la que haya un personaje principal que tiene un problema que quiere resolver, pero no sabe cómo y no quiere pedir ayuda. Debe estar bien preparada y practicada para que los niños realmente la entiendan y la actividad funcione.",
+  "Sentar a los niños y voluntarios en un espacio cómodo, frente a un escenario atractivo, y explicarles que primero deben mirar un show que les tienen preparado. Actuar la situación.",
+  "Tener una breve conversación sobre cuál era el problema del protagonista, si lo solucionó o no, y que lo podría haber solucionado pidiendo ayuda.",
+  "Dar la instrucción de que se junten de a 2 núcleos, conversen formas en las que el protagonista podría solucionar el problema y preparen un sketch de cómo sería la situación si el protagonista sí pidiera ayuda a alguien. Para trabajar el trabajo en equipo es importante que en los equipos se definan roles y todos participen (algunos niños pueden actuar, otros escribir las ideas o la historia, otros preparar la escenografía, etc.).",
+  "Todos los núcleos se juntan para ver las actuaciones de los otros (si son muchos núcleos y los niños están muy dispersos, pueden separarlos en dos para que no tengan que ver tantas presentaciones)."
+ ],
+ reflexion:"Nuevamente se juntan en núcleos o grupos más chicos para hacer una reflexión grupal, conversando de las diferentes ideas y soluciones de las presentaciones y los beneficios de pedir ayuda. También pueden conversar acerca de momentos en los que ellos han necesitado ayuda y si la han pedido o no.",
+ tips:[]},
+
+{id:"t25-21", nombre:"Teléfono de las emociones", habilidades:["EMOCIONES","EMPATIA","EQUIPO"], tiempo:"30 min", bucket:"media",
+ materiales:["Hojas de papel","Lápices"],
+ proposito:"Comunicar un mensaje —el dibujo de una emoción— de manera clara y precisa para que llegue intacto al final de la fila y así poder adivinar la emoción. Los NNA podrán reconocer y comprender situaciones que representen ciertas emociones y, a través de la empatía y el trabajo en equipo, continuar el dibujo para cumplir con el objetivo del juego.",
+ desarrollo:[
+  "Separar a NNA y voluntarios en grupos de aproximadamente 5 personas. Cada grupo forma una fila (mirándose la espalda) y se le entrega una hoja con un lápiz para dibujar.",
+  "Se llama a los primeros de cada fila (a quienes nadie les mira la espalda) y se les dice una emoción en secreto.",
+  "El primero de la fila tiene 15 segundos para empezar a dibujar una situación que represente dicha emoción. Cuando se acaban los 15 segundos, se inicia de nuevo la cuenta de 15 segundos y el dibujo pasa al que continúa en la fila, que debe intentar adivinar qué emoción es y continuar el dibujo, y así sucesivamente hasta llegar al último de la fila (el que no mira ninguna espalda).",
+  "Cuando el dibujo llega al último, este tendrá que observar la 'obra de arte' que pasó por sus compañeros e intentar adivinar qué emoción representa.",
+  "Repetir cambiando el orden en que estaban en la fila y con una nueva emoción."
+ ],
+ reflexion:"Comprender cómo una situación puede generar cierta emoción en otra persona, que no necesariamente ocurre en mí. La idea es que los NNA sean empáticos al reconocer la situación de otro que produjo la determinada emoción, y así puedan complementar el dibujo.",
+ tips:[]},
+
+{id:"t25-22", nombre:"MasterChef felicidad", habilidades:["EMOCIONES"], tiempo:"30 min", bucket:"media",
+ materiales:["Hojas","Lápices","Tijeras","Papeles cortados en cuadrados pequeños (los 'ingredientes')","Gorros de chef (2 hojas blancas pegadas)"],
+ proposito:"Que los y las NNA reconozcan aquello que los hace felices, ya sean personas, mascotas, lugares, actividades u objetos materiales que asocian con su felicidad. Tendrán una mejor idea de qué los hace felices, para realizar de forma más frecuente aquello que contribuye a su felicidad y rodearse de las personas que los hacen felices.",
+ desarrollo:[
+  "La actividad se realiza separada por núcleos, pero cada NNA elaborará su propio 'plato de la felicidad'. A cada núcleo se le entregan papeles cortados en cuadrados pequeños y lápices. Preparar con anticipación 'gorros de chef' (2 hojas blancas pegadas) para que la dinámica de ser chefs sea lo más interactiva posible.",
+  "Cada núcleo se ubica en su propia estación de trabajo (mesas MasterChef) y los voluntarios de cada núcleo cumplen el rol de 'conseguir' los ingredientes que los NNA vayan pidiendo.",
+  "Los NNA van conversando con los voluntarios cuáles son los ingredientes que necesitan, y los voluntarios deben conseguir ese ingrediente (papel pequeño escrito) y pasárselo al NNA para que lo añada a su plato.",
+  "Una vez que los NNA tienen listos sus platos, se les da la posibilidad de ir a presentarlos a un jurado experto que escuchará con atención qué es lo que contiene su plato de la felicidad."
+ ],
+ reflexion:"La idea de la actividad es que los y las NNA noten qué ingredientes los hacen sentir felices en su vida y de qué manera los deben combinar para que se genere la mayor felicidad posible. Buscamos que sea posible a lo largo de la actividad a través del diálogo y la reflexión con los voluntarios sobre qué es lo que los hace felices.",
+ tips:[]},
+
+{id:"t25-23", nombre:"Mi escudo personal", habilidades:["AUTOESTIMA"], tiempo:"40 min", bucket:"media",
+ materiales:["Hojas blancas o cartulina para cada NNA","Lápices de colores y plumones","Materiales para decorar (pegatinas, revistas para recortar, pegamento)"],
+ proposito:"Que los NNA reflexionen sobre sus valores, habilidades y motivaciones, representándolos de forma creativa en un escudo que los identifique y que puedan compartir con sus compañeros. Fomenta el autoconocimiento y la autoestima, ayudándolos a reconocer sus fortalezas, intereses y motivaciones; además, al compartir su escudo refuerzan su confianza y desarrollan habilidades de comunicación.",
+ desarrollo:[
+  "Explicar que diseñarán un escudo personal que refleje quiénes son, del tamaño de una hoja o cartulina, destacando cada uno de los elementos que incluirán en su escudo.",
+  "Dividir el escudo en cuatro cuadrantes. En cada cuadrante deben incorporar: Sueños (escribir o dibujar algo que deseen lograr o alcanzar en el futuro); Cualidad que los represente (algo que destaque de su personalidad, ej. bondad, valentía); Algo que les motive o les dé fuerza (personas, lugares o actividades que los impulsen, ej. familia, amigos, deporte); Cosas que les gusta hacer (habilidades o pasatiempos que disfruten y en los que se sientan buenos, ej. cantar, dibujar).",
+  "En el centro del escudo agregar un dibujo o símbolo que los represente, como un animal, un objeto o una imagen significativa y, para finalizar, agregar un eslogan: escribir debajo del escudo una frase motivacional o inspiradora que les guste o los identifique.",
+  "Cada uno comparte su escudo con el núcleo, explicando los elementos que incluyó y el significado detrás de ellos."
+ ],
+ reflexion:"Guiar una conversación sobre cómo el escudo que crearon es una representación de quiénes son, de sus valores, sueños y habilidades. Al cargar con este escudo, pueden encontrar inspiración en sus propios valores para avanzar y superar desafíos, utilizándolo como una herramienta para cumplir sus sueños y objetivos.",
+ tips:[]},
+
+{id:"t25-24", nombre:"Horizontes de papel (parte 1)", habilidades:["AUTOESTIMA","EMOCIONES","RESILIENCIA"], tiempo:"Sin duración indicada", bucket:"media",
+ materiales:["Hojas blancas","Lápices","Video 'Scarlett - animated short' (YouTube)"],
+ proposito:"Que los NNA reflexionen acerca de sus sueños y cómo eso los hace sentir, luego de ver un video de inspiración. Lograrán reconocer sus sueños y plasmarlos; al hacerlo y conversar dentro de los núcleos acerca de este tema, comprenderán que sí se puede soñar y que estos sueños se pueden lograr.",
+ desarrollo:[
+  "Que los NNA y voluntarios se separen en grupos y busquen un lugar tranquilo para trabajar.",
+  "Ver un video en los núcleos, que dará paso a la siguiente parte de la actividad (se puede buscar en YouTube como 'Scarlett - animated short').",
+  "Los NNA tendrán que representar en la hoja cómo se ven ellos en 10–15 años más (a qué estarán dedicados o estudiando, con quiénes vivirán, quiénes serán sus amigos, etc.).",
+  "Una vez listos, cada uno tendrá que mostrar y explicar lo que hizo al núcleo y contar un poco de por qué cree que será así su futuro y cómo se siente al respecto."
+ ],
+ reflexion:"Intentar realizar la reflexión durante la actividad, para que se dé un espacio de conversación acerca de cada situación particular. La idea es que los niños entiendan la importancia de soñar, del trabajo que conlleva hacerlos realidad y de que todos podemos soñar sin importar qué tan distintos seamos el uno del otro.",
+ tips:["Es muy importante que los niños o voluntarios guarden cada dibujo con el nombre del creador, ya que se usarán en la siguiente actividad (parte 2: avioncitos)."],
+ nota:"Parte 1 de 2. Continúa con 'Horizontes de papel (parte 2)'."},
+
+{id:"t25-25", nombre:"Horizontes de papel (parte 2)", habilidades:["RESILIENCIA","AUTOESTIMA"], tiempo:"20 min", bucket:"corta",
+ materiales:["Los dibujos con los sueños de 'Horizontes de papel (parte 1)'"],
+ proposito:"Crear avioncitos de papel con las hojas de los sueños creadas en la actividad anterior y hacer una competencia con ellos. Dar una instancia para que los NNA se den cuenta de que los sueños no son solo soñarlos, sino que también hay que trabajar en ellos y ser resilientes para llegar a alcanzarlos.",
+ desarrollo:[
+  "Cada NNA y voluntario transforma en un avioncito el dibujo que creó en la parte 1.",
+  "Juntar a todos en un extremo de la cancha, formados uno al lado del otro con sus avioncitos en la mano.",
+  "Pedirles que, con la ayuda de la imaginación, piensen que el otro extremo de la cancha es la meta de sus sueños y toda la cancha vendría siendo el camino que tienen que recorrer para alcanzarlos. A la cuenta de 3 lanzan sus avioncitos intentando llegar al otro lado.",
+  "Al haber lanzado todos sus aviones y ninguno haber alcanzado la meta (el otro extremo de la cancha), pedirles que vayan donde su avión cayó y que sigan lanzándolo hasta llegar al otro extremo de la cancha.",
+  "Una vez que todos los avioncitos cruzaron al otro extremo, juntar a todos y guiar el cierre de la actividad con la reflexión."
+ ],
+ reflexion:"Dos reflexiones, guiadas o compartidas principalmente por los encargados de talleres (es importante tenerlas preparadas para que salgan bien). Reflexión 'resiliencia': hacerlos darse cuenta de que, al no alcanzar la meta de sus sueños con el primer intento, la actividad no se quedó ahí, sino que todos siguieron lanzando hasta llegar al otro extremo de la cancha; el camino hacia mis sueños requiere ser resiliente, ya que si al primer intento no lo logré, hay que seguir esforzándose e intentándolo, porque tarde o temprano se llegará a alcanzarlos. Reflexión 'mi propio camino': partir preguntando con cuántos intentos cada uno llegó a la meta (que levanten la mano los que llegaron con 2 lanzamientos, 3, 4...) para que se vayan dando cuenta de que no todos llegaron con los mismos intentos; los sueños son distintos entre cada uno y a cada uno le costará distinto alcanzarlos, así que invitar a no compararse con el del lado y seguir enfocados en los propios sueños, porque al final igual todos llegaron al otro extremo de la cancha.",
+ tips:[],
+ nota:"Parte 2 de 2. Se hace con los dibujos de 'Horizontes de papel (parte 1)'."},
+
+{id:"t25-26", nombre:"Luche de los sueños", habilidades:["AUTOESTIMA"], tiempo:"45 min", bucket:"larga",
+ materiales:["Hojas de papel (5 a 10 por NNA y/o voluntario)","Lápices","Tiza y masking tape"],
+ proposito:"Que los NNA logren posicionar en los cuadrados del juego del luche las etapas de su sueño. Les permitirá visualizar mejor cómo llegar a cumplir sus sueños e identificar los pasos a seguir para esto.",
+ desarrollo:[
+  "En núcleos, repartir los materiales a cada uno (entre 5 y 10 hojas por NNA y/o voluntario).",
+  "Comenzar a hablar sobre los sueños de cada uno y elegir el más importante o el que quieran usar para la actividad.",
+  "En cada una de las hojas, escribir 1 paso a seguir hacia su sueño y también en cuánto tiempo más ocurrirá ese paso. Ir ordenando los papeles de forma cronológica.",
+  "Una vez que todos tienen las hojas con los pasos a seguir para llegar a su sueño, cada NNA dibuja en el suelo su luche (si hay espacio, los voluntarios también hacen el suyo). La idea es que dibujen tantos cuadrados como hojas de pasos tengan: si mi sueño tiene 7 pasos, dibujaré un luche con 7 cuadrados.",
+  "Pegar las hojas al suelo, una hoja en cada cuadrado.",
+  "Que todos los niños jueguen en sus luches. También pueden dar el espacio de que jueguen en otros luches, así se van contando sus sueños y pasos a seguir entre todos."
+ ],
+ reflexion:"Explicar la importancia de tener una organización para que realmente se puedan cumplir nuestros sueños. Y también, muy importante, recalcar que no existe edad para dejar de soñar: todos podemos hacerlo siempre.",
+ tips:[]}
 ];
 
 /* ---------- Herramientas (técnicas del manual) ---------- */
@@ -1204,6 +1559,19 @@ document.querySelectorAll(".view-btn").forEach(btn=>{
     document.getElementById("view-herramientas").hidden = v!=="herramientas";
   });
 });
+
+const themeBtn = document.getElementById("theme-btn");
+function syncThemeBtn(){
+  const dark = document.documentElement.dataset.theme === "dark";
+  themeBtn.setAttribute("aria-label", dark ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+}
+themeBtn.addEventListener("click", ()=>{
+  const t = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = t;
+  try{ localStorage.setItem("oiTheme", t); }catch(e){}
+  syncThemeBtn();
+});
+syncThemeBtn();
 
 function fillTools(){
   const li = (arr)=>arr.map(([t,d])=>`<li><b>${t}:</b> ${d}</li>`).join("");
