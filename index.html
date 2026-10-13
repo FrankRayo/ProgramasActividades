@@ -68,6 +68,7 @@
   input:focus-visible, button:focus-visible, .card:focus-visible{outline:2px solid var(--accent-text); outline-offset:2px;}
 
   .app{max-width:1180px; margin:0 auto; padding:20px 20px 64px;}
+  .site-footer{margin-top:48px; padding-top:18px; border-top:1px solid var(--line); text-align:center; font-size:.82rem; color:var(--ink-soft);}
 
   /* ---------- Header ---------- */
   .top-stripe{height:8px; background:var(--accent); width:100%;}
@@ -321,6 +322,8 @@
     <div class="reflex-dyn" id="tool-reflexiones"></div>
   </section>
 
+  <footer class="site-footer">Hecho por La Pampilla con cariño para ustedes - Felipe Fesser</footer>
+
 </div>
 
 <div class="overlay" id="overlay" hidden>
@@ -412,12 +415,21 @@ const ACTIVITIES = [
  reflexion:"Que surja durante la misma actividad: conversar con cada NNA por qué eligió esos elementos, para que se reconozcan a sí mismos y lo que les gusta.",
  tips:[]},
 
-{id:"l2", nombre:"Actividad reglas de oro", habilidades:["CONVIVENCIA"], tiempo:"Variable", bucket:"jornada",
- materiales:[],
- proposito:"Actividad conducida por el equipo de Vínculo y Comunidad para presentar las reglas de oro de Operación Infancia: respeto, diálogo y escucha activa, y solidaridad.",
- desarrollo:["Tu rol como encargado/a de programas es de apoyo: ayudar con la atención de los NNA, la preparación de materiales y lo que Vínculo y Comunidad necesite."],
- reflexion:"La conduce el equipo de Vínculo y Comunidad.",
- tips:[], nota:"No es una actividad de Programas — se apoya, no se dirige."},
+{id:"l2", nombre:"Actividad reglas de oro", habilidades:["CONVIVENCIA"], tiempo:"30 min", bucket:"media",
+ materiales:["2 o 3 papelógrafos (depende de cuántos niños pondrán sus manos)","Témperas de varios colores","Pinceles o brochas"],
+ proposito:"Que los NNAJ recuerden las reglas de oro (respeto, escucha activa y solidaridad) y la importancia de la convivencia en Operación Infancia, y que se comprometan a cumplirlas firmando un papelógrafo con sus manos pintadas.",
+ desarrollo:[
+  "Hacer un círculo con todos los NNAJ y comenzar con preguntas introductorias: ¿qué es la convivencia? ¿cómo creen que se construye una buena convivencia? ¿qué cosas son importantes para una buena convivencia?",
+  "Recalcar que toda acción que realizamos tiene una consecuencia (ejemplo: no nos abrochamos los cordones de las zapatillas y nos caemos), y que por eso debemos cumplir ciertas reglas para que el lugar donde nos encontramos (Operación Infancia) sea entretenido y seguro para todos. Para llamar más la atención, en estos dos primeros pasos pueden pedirle ayuda a Talleres para que actúen situaciones cortas y preguntar a los niños si eso aporta a la convivencia o no.",
+  "Luego de esta pequeña conversación, el encargado de Vínculo y Comunidad guía a que los NNAJ mismos digan las reglas de oro: que intenten recordarlas y las vayan nombrando, para después profundizar más en las 3 reglas de oro.",
+  "Presentar el papelógrafo con las reglas de oro escritas y decir que estará pegado durante toda la semana en algún lugar del colegio (ideal que sea estratégico para que puedan verlo, por ejemplo en la entrada, para que cada vez que lleguen se les recuerde).",
+  "Explicarles muy simple que existe un protocolo de convivencia, que nos ayuda a voluntarios y niños a pasarlo bien y sentirnos seguros en Operación Infancia. No profundizar más allá de lo que es, pero contarles que existe y para qué sirve.",
+  "Contar a todos los niños, niñas y adolescentes que 'firmarán' un acuerdo de que respetarán las reglas de oro y mantendrán la buena convivencia: se ponen papelógrafos y cada NNAJ se pinta la mano con témpera (el voluntario ayuda) y 'firma' que respetará el acuerdo.",
+  "Cerrar con una pequeña reflexión de por qué es importante hacer esto; pueden pedir opiniones de niños y/o voluntarios."
+ ],
+ reflexion:"Por qué es importante hacer este acuerdo: cumplir las reglas de oro entre todos hace que Operación Infancia sea entretenido y seguro para todos. Pueden pedir opiniones de niños y/o voluntarios.",
+ tips:["Si algún NNAJ tiene problemas con pintarse la mano, puede firmar con un plumón en el papelógrafo.","Comentar a los apoderados que trabajaremos con témpera durante el día (puede ser por el grupo de WhatsApp).","Idealmente trabajan con la témpera los voluntarios y no los niños, para no dejar manchado el colegio; los voluntarios deben sacarse la pechera para no ensuciarla.","Pueden usar los papelógrafos que necesiten para que todos los NNAJ 'firmen', y luego pegarlos en un lugar estratégico para que los niños los puedan observar."],
+ nota:"Actividad conducida por el equipo de Vínculo y Comunidad; el encargado de Talleres apoya con la atención de los NNA, la preparación de materiales y, si se lo piden, actuando situaciones cortas."},
 
 {id:"l3", nombre:"Misión: Operación Infancia", habilidades:["RESILIENCIA","EQUIPO"], tiempo:"45–60 min", bucket:"larga",
  materiales:["Papelito con la lista de 'objetos imposibles' (uno por grupo)","2 telas de formación por grupo","Hojas blancas","Papel kraft con la pregunta '¿qué es algo que alguna vez intentaste y no te salió bien?'","Lápices"],
@@ -577,19 +589,6 @@ const ACTIVITIES = [
  reflexion:"El énfasis está en la energía y la diversión, como contrapeso a las actividades más reflexivas del día.",
  tips:["Puede ser buena instancia para que los NNA jueguen entre ellos sin que el voluntario sea intermediario."]},
 
-{id:"j2", nombre:"Encuentra lo que nos une", habilidades:["EMPATIA","EQUIPO"], tiempo:"40 min", bucket:"media",
- materiales:["Hojas blancas","Lápices de colores","Materiales disponibles en el entorno (cajas, ramas, cartones)"],
- proposito:"Relacionarse con NNA distintos a sus amigos habituales, descubriendo similitudes y valorando diferencias.",
- desarrollo:[
-  "Formar grupos de 3 NNA + 1 voluntario/a, mezclados intencionalmente.",
-  "Cumplir desafíos colaborativos sencillos (juntar hojas, inventar un saludo, formar una figura con el cuerpo).",
-  "En una hoja dividida en 'Lo que tenemos en común / Lo que nos hace distintos', conversar y escribir lo descubierto.",
-  "Con materiales del entorno, diseñar una pequeña escultura o tótem que represente al grupo.",
-  "Cada grupo muestra su creación y explica su significado."
- ],
- reflexion:"¿Cómo se sintieron trabajando con personas distintas? ¿Qué fue más fácil, lo común o las diferencias? Un equipo se enriquece tanto de lo que une como de lo que diferencia.",
- tips:[]},
-
 {id:"j3", nombre:"Juego libre", habilidades:["EMOCIONES","EMPATIA"], tiempo:"Todo el bloque entre almuerzo y talleres", bucket:"jornada",
  materiales:["Materiales a libre elección (deportivos, plastilina, cartones, etc.)"],
  proposito:"Que los niños jueguen de forma espontánea y sin estructura predefinida, eligiendo qué hacer, con qué y dónde; nutre el crecimiento emocional y social en un ambiente seguro.",
@@ -631,17 +630,6 @@ const ACTIVITIES = [
   "Cerrar la cápsula: se la llevan a casa como cierre simbólico del ciclo."
  ],
  reflexion:"Compartir qué eligieron guardar y por qué; valorar los recuerdos y el crecimiento vivido, entendiendo que aunque el ciclo termine, lo aprendido permanece.",
- tips:[]},
-
-{id:"v2", nombre:"Ovillo de lana", habilidades:["EMOCIONES","EMPATIA","AUTOESTIMA"], tiempo:"25–35 min", bucket:"media",
- materiales:["Ovillos de lana"],
- proposito:"Expresar sentimientos positivos hacia los demás, destacando habilidades o talentos, fortaleciendo la comunicación y las relaciones del grupo.",
- desarrollo:[
-  "Formar grupos de 10–15 personas (idealmente por alianza), sentados o de pie.",
-  "Quien tiene la lana sostiene la punta, elige a alguien y le dice qué le gusta de él/ella o qué habilidad destaca; le lanza el ovillo sosteniendo su parte.",
-  "Esa persona repite el proceso con otra, y así hasta formar una telaraña."
- ],
- reflexion:"¿Qué fue lo que más te llamó la atención de lo que te dijeron? Se busca un espacio de confianza para decir cosas positivas que normalmente no se dirían; dejar que la reflexión fluya como conversación.",
  tips:[]},
 
 {id:"v3", nombre:"El jardín que floreció", habilidades:["AUTOESTIMA"], tiempo:"40 min", bucket:"media",
@@ -1348,7 +1336,92 @@ const ACTIVITIES = [
   "Que todos los niños jueguen en sus luches. También pueden dar el espacio de que jueguen en otros luches, así se van contando sus sueños y pasos a seguir entre todos."
  ],
  reflexion:"Explicar la importancia de tener una organización para que realmente se puedan cumplir nuestros sueños. Y también, muy importante, recalcar que no existe edad para dejar de soñar: todos podemos hacerlo siempre.",
- tips:[]}
+ tips:[]},
+
+{id:"t25-27", nombre:"La isla de la convivencia", habilidades:["EMPATIA","EQUIPO","CONVIVENCIA"], tiempo:"45 min", bucket:"larga",
+ materiales:["3 papelógrafos","Plumones","Hojas","Lápices","Tijeras","Pegamento"],
+ proposito:"Que cada alianza imagine su comunidad ideal, con sus características y reglas, y que luego los NNAJ tengan que ponerse de acuerdo para tomar decisiones sobre cómo enfrentar cada situación en sus islas. Trabaja empatía y trabajo en equipo (respeto, cooperación, roles, escucha).",
+ desarrollo:[
+  "Dividir a los niños en las 3 'alianzas' (aprox. 10–15 niños por grupo). Explicar que son todos parte de una tribu que vive en una isla y que la misión es vivir en paz y respeto, de modo que todos se sientan bien; explicar qué es la buena convivencia. Ser dramáticos y teatrales para que los niños realmente entren en el personaje: pueden decir que son comunidades del futuro, que hubo un accidente y son los únicos sobrevivientes que deben construir nuevas comunidades, o que salió electo alcalde un amigo de ellos y les pidió ayuda diseñando las nuevas ciudades que va a construir. ¡Sean creativos! Mantener la historia durante toda la actividad.",
+  "Pensar cómo se llamará su tribu, cuáles son sus características y cómo es la isla en la que viven. Diseñar la isla: dibujar en las hojas los elementos básicos que los niños vayan proponiendo (colegio, supermercado, policía, hospital, parques, etc.). Es importante que todos aporten con ideas o dibujando y pintando; deliberan en grupo cómo se vería su isla/país/ciudad ideal y por qué, escuchándose entre todos, respetando las opiniones y colaborando en equipo. Los voluntarios ayudan a cortar y pegar los elementos que los niños hayan creado.",
+  "Con la isla creada, definir 3 reglas de convivencia para la isla y anotarlas en ella. Ejemplos: todos debemos escucharnos, respetar turnos, decir gracias, etc.",
+  "Ahora que la isla está construida y existen las reglas, ponerla a prueba presentando situaciones que desafíen la convivencia. Ejemplos: una disputa por quién quiere ser presidente de la isla (muchos habitantes pretenden gobernar, pero solo uno puede serlo: ¿cómo podemos lograr ponernos de acuerdo o que todos tengan la oportunidad de serlo?); solo se pueden llevar 10 de una lista de cosas a la isla (¿cómo nos ponemos de acuerdo entre todos?); para sobrevivir, cada uno tiene que encargarse de una tarea diferente dentro de la isla (¿quién hará qué?). Es muy importante ser convincentes y entretenidos al plantearles las situaciones a los niños.",
+  "Cerrar con una reflexión grupal."
+ ],
+ reflexion:"La reflexión debe orientarse hacia la importancia de la buena convivencia para la vida en comunidad. Preguntas: ¿Cómo se sintieron trabajando juntos para construir la isla? ¿Cómo solucionaron los problemas que se presentaron? ¿Qué creen que es importante para resolver conflictos? ¿Cuál/es de las reglas que crearon deberían aplicarse en la vida real? ¿Qué regla faltó? Finalizar haciendo hincapié en que la buena convivencia es vital para vivir en comunidad: se trata de escucharse entre todos, ayudar al que lo necesita, ceder cuando es necesario, ser respetuosos, etc. Invitarlos a recordar las reglas que se utilizaron y a tenerlas presentes en su día a día.",
+ tips:["Rol de los graduados: definan y preparen con ellos, el día anterior, lo que harán. Se reparten los grupos en la cantidad de graduados para que estén 'a cargo' (junto con los voluntarios): van a explicar la actividad, ayudar entregando los ejemplos y guiar la reflexión (cada graduado con un papel con las preguntas guía de la reflexión). Participan en la actividad junto a los demás niños, pero con un rol un poco más directivo. Si creen que esto es muy avanzado para algunos de los niños que se gradúan, pueden ayudar principalmente entregando las instrucciones."],
+ nota:"Actividad creada por Vínculo y Comunidad (VyC), liderada por VyC y niños graduados."},
+
+{id:"t25-28", nombre:"El ovillo de las afirmaciones", habilidades:["AUTOESTIMA"], tiempo:"45 min", bucket:"larga",
+ materiales:["Ovillos de lana (1 por grupo)","Hojas","Plumones"],
+ proposito:"Que los participantes se entreguen el ovillo de lana entre sí para que quien lo reciba diga en voz alta una afirmación sobre sí mismo (por ejemplo: 'soy buen compañero') y luego creen una lista con algunas de esas afirmaciones. Los niños piensan en características propias y dicen cosas positivas de ellos mismos; así conocen de forma dinámica la técnica de bienestar 'las afirmaciones' para aplicarla en el futuro, y se llevan a casa una lista para recordarla cuando la necesiten. Trabaja autoestima, autoconocimiento y bienestar emocional.",
+ desarrollo:[
+  "Juntarse de a dos núcleos (o lo que estimen conveniente) y sentarse en un círculo. La persona que parte tiene el ovillo de lana y dice una característica propia o una afirmación sobre sí misma. En vez de la clásica actividad del ovillo de lana en la que uno lanza el ovillo a otra persona para decirle algo positivo, esta vez cada uno menciona cosas propias.",
+  "Luego de hablar, la primera persona lanza el ovillo a alguien para que esa persona diga algo sobre sí misma, y así sucesivamente. Se puede repetir gente y hacer muchas rondas, según el tiempo que tengan.",
+  "Luego de unos 15–20 minutos, o cuando lo estimen conveniente, detener la actividad. Preguntar a los NNAJ cómo se sintieron al decir esas cosas. Decirles que aquello que les decimos a los demás, pero también lo que nos decimos a nosotros mismos, tiene un gran impacto en nuestro estado de ánimo e incluso en nuestro comportamiento, y que por eso, cuando lo necesitemos, podemos decirnos cosas buenas o las que queramos escuchar. Explicar que las afirmaciones positivas pueden comenzar por 'yo soy' (referencia a mis cualidades), 'yo tengo' (referencia a las herramientas, externas o internas) o 'yo puedo' (referencia a lo que soy capaz o puedo hacer). Ejemplos: yo soy capaz; yo tengo amigos y familia que me apoyan; yo puedo pedir ayuda.",
+  "Invitar a todos a hacer una lista de afirmaciones positivas sobre ellos mismos, con frases que comiencen con 'yo soy', 'yo tengo' o 'yo puedo': dividir la hoja en tres partes, una para cada una. Así la guardan y pueden leerla cuando la necesiten.",
+  "Cerrar con una reflexión grupal."
+ ],
+ reflexion:"La reflexión se va desarrollando a lo largo de la actividad. Es importante dar espacio para que todos los niños piensen cómo se sintieron y en qué momentos podría servirles esta técnica. Preguntar a alguien si quiere compartir alguna de sus frases y en qué momento cree que podría usar la técnica de las afirmaciones.",
+ tips:[]},
+
+{id:"t25-29", nombre:"Yo, nosotros y tú", habilidades:["EMPATIA"], tiempo:"30 min", bucket:"media",
+ materiales:["Hojas de papel","Plumones para escribir"],
+ proposito:"Que cada participante divida una hoja en 3 secciones —'yo', 'nosotros' y 'tú'— en las que registrará las respuestas a diversas preguntas. Tendrán la oportunidad de percatarse tanto de las similitudes como de las diferencias con sus compañeros y, por medio de ellas, conocerlos mejor. Esto crea el espacio para que desde pequeños se acostumbren a aceptar las diferencias con sus pares (empatía y reconocimiento de las diferencias).",
+ desarrollo:[
+  "Juntarse en núcleos. Cada participante (incluidos los voluntarios) divide su hoja en 3 y pone los títulos: el primer espacio para 'yo', el segundo (el del medio) para 'nosotros' y el tercero para 'tú'. En el espacio de 'yo' debe escribir su nombre.",
+  "Un voluntario o encargado lee la primera pregunta; los participantes se juntan de a dos para conversar las respuestas y luego escribirlas en la hoja. Ejemplo: la pregunta es '¿cuál es tu deporte favorito?'. Pepe está haciendo la actividad con Juan: el deporte favorito de Pepe es el fútbol y el de Juan es el básquetbol. Pepe escribe en 'yo': 'mi deporte fav es el fútbol', y en 'tú': 'el deporte fav de Juan es el básquetbol'. Si el deporte favorito de ambos fuera el vóleibol, Pepe escribiría en 'nosotros': 'nuestro deporte fav es el vóleibol'.",
+  "Se continúa con las preguntas, cambiando de pareja cada vez."
+ ],
+ reflexion:"Al final de la actividad reflexionar en grupos con preguntas como: ¿les gustó la actividad?, ¿les gustó conocer más a sus compañeros?, ¿qué respuestas les sorprendieron?, ¿creen que es importante hacer este ejercicio y por qué?, ¿creen que respetan y dan espacio a todas las diferencias de la gente? Recordarles que todos somos diferentes, tanto en la forma de ser como en opiniones; algunas destacan más que otras, y estas hacen a un grupo más interesante y completo.",
+ tips:["Los voluntarios pueden ayudar a los niños a escribir y pueden anotar las respuestas abreviadas (por ejemplo, solo 'Juan>básquetbol' en vez de 'el deporte fav de Juan es el básquetbol')."]},
+
+{id:"t25-30", nombre:"Las emociones en mi cuerpo", habilidades:["EMOCIONES"], tiempo:"50 min", bucket:"larga",
+ materiales:["Hojas grandes (pueden ser dos hojas pegadas), una por niño","Lápices","Un papelógrafo para el grupo","Cuento y guía de preguntas impresos (uno por núcleo) o, en su defecto, un proyector y el video presentado"],
+ proposito:"Que los niños identifiquen en qué lugar del cuerpo sienten cada emoción y cómo la expresan, dibujando una silueta humana (parte 1: 'Mis sentimientos'), y que luego imaginen y dibujen una burbuja protectora —su espacio vital— alrededor de esa silueta, pensando cómo cuidarla y fortalecerla (parte 2: 'Mi burbuja'). Trabaja el reconocimiento de emociones.",
+ desarrollo:[
+  "Separar al grupo en núcleos y entregar el cuento y el seguimiento de preguntas al líder de cada núcleo (ver nota).",
+  "Parte 1, Mis sentimientos: los niños ven una película o video de los sentimientos, o los voluntarios les leen un cuento sobre sentimientos. Luego se genera una conversación acerca de los sentimientos que más sienten los niños, cuándo los experimentan y cuáles son los que más sienten; los que vayan saliendo se anotan como lluvia de ideas.",
+  "Entregar un papel grande por niño (pueden ser dos hojas juntas) y pedirles que se dibujen en él, con su cuerpo completo y su ropa favorita. Pensando en los sentimientos de los que hablaron (al menos 5), marcan cada emoción dentro de la silueta, poniéndole un nombre y un color: identifican en qué lugar del cuerpo sienten esa emoción cuando la sienten, cómo la expresan, etc.",
+  "Una vez listos, los niños comparten sus siluetas con el grupo, hablan de lo que dibujaron y observan los dibujos de los compañeros. Notarán que todos sentimos cosas diferentes en lugares diferentes y que todos somos capaces de analizar dónde las sentimos.",
+  "Parte 2, Mi burbuja: pedirles que tomen el dibujo de sí mismos para continuar trabajando sobre él. Que cierren los ojos e imaginen que alrededor de su cuerpo se forma una burbuja que los rodea por completo; es individual, ninguna burbuja abarca a más de una persona. Darles unos segundos para imaginar cómo es esa burbuja y formular preguntas: ¿de qué color es tu burbuja? ¿tiene un solo color o varios? ¿es brillante u opaca? ¿de qué parece estar hecha? ¿está quieta o se mueve? Pedirles que imaginen que es de un material ligero y frágil, como las burbujas de jabón, y que además de frágil es muy valiosa.",
+  "Que abran los ojos y tracen su burbuja alrededor de la silueta, con las emociones, sobre el mismo papel. Darles unos minutos para que la dibujen y decoren como quieran.",
+  "Decirles: 'Imaginemos que esta burbuja es tu espacio vital, el espacio que rodea tu cuerpo y protege tus emociones y sentimientos de todo lo que ocurre fuera de ti que afecta a tu persona. Sabemos que ocurren muchas cosas fuera de ti que te provocan emociones. Tú no puedes controlar si ocurren o no. Pensemos todos: ¿qué puede proteger la burbuja de cada uno(a) y qué podría dañarla?'. Esperar a que respondan, anotando en un papelógrafo las ideas que se consideren acertadas.",
+  "Explicarles que esa burbuja es su protección y que es importante pensar de qué manera cuidarla y preservarla: cuidar la propia burbuja es algo que se aprende, y no importa si ya han sucedido cosas que duelen o lastiman.",
+  "Pedirles que modifiquen el dibujo de su burbuja, cambiando lo que les parezca que 'la hace más fuerte' (dibujar los lugares que creen más fuertes). Cuando hayan acabado, pedirles ideas sobre cómo pueden proteger su burbuja y apuntar las respuestas en un papelógrafo. Que representen cómo 'cuidarían su burbuja el día de hoy' con una imagen (dibujos, figuras, manchas de color, etc.).",
+  "Si queda tiempo, pedir a dos o tres personas que compartan sus trabajos y reflexiones. La idea es que se lleven su dibujo a casa."
+ ],
+ reflexion:"No está contemplada una reflexión formal: se realiza a lo largo de la actividad.",
+ tips:["Esta actividad es intensa y pueden salir conversaciones profundas; por eso no requiere ni contempla una reflexión al final. Es importante que los voluntarios entiendan la dinámica y las diferentes partes que contempla (parte 1 y parte 2): explícales bien la actividad y prepara el material con anticipación.","No marques lo que creas que estuvo 'mal hecho' ni digas ninguna frase que puedan interpretar como juicio o reproche. Si surge algún contenido que creas bueno aclarar, no lo digas tú directamente: pregunta al grupo si se les ocurren otras maneras de hacerlo y guía la discusión hacia la información que sea más útil."],
+ nota:"Guía para voluntarios — cuento: Emilia, de 10 años, va en cuarto básico. No le gusta mucho ir a la escuela porque le cuestan matemáticas y ciencias y se pone triste cuando recibe una mala nota, pero siempre se esfuerza e incluso le pide ayuda a su hermana. Cuando llega apenada a casa, su tía la recibe con galletas de chocolate, sus favoritas, y siente mucha alegría; una vez su hermana se las comió todas antes de que pudiera probarlas y sintió mucha rabia. Le gusta jugar fútbol: se entusiasma con cada partido del recreo y se frustra mucho cuando falla un penal, pero nunca ha dejado de esforzarse. Emilia siente muchos sentimientos a lo largo del día y sabe cómo expresarlos: ¿qué sentimientos sueles sentir tú a lo largo del día? El video y el cuento completo están en el anexo del manual."},
+
+{id:"t25-31", nombre:"Jardín de los recuerdos", habilidades:["EMPATIA"], tiempo:"50 min", bucket:"larga",
+ materiales:["Hojas de papel de colores","Marcadores","Tijeras","Pegamento","Palitos de madera para los tallos"],
+ proposito:"Fomentar la reflexión y la expresión de agradecimiento entre los NNAJ y voluntarios mediante la creación de un símbolo tangible (flores) que represente los vínculos y experiencias compartidas durante la semana. Permite reconocer y valorar los momentos y vínculos significativos que surgieron, fortaleciendo la empatía, la gratitud y el sentido de comunidad.",
+ desarrollo:[
+  "Antes de empezar, destinar un espacio visible en la escuela para 'plantar' las flores.",
+  "Cada uno recibe los materiales necesarios para diseñar y decorar una flor sin pétalos (solo el tallo). En el centro de la flor deben escribir su nombre.",
+  "Se crean los pétalos, que se regalarán para las flores de otras personas a las que deseen agradecer o expresar afecto. Cada pétalo puede llevar un mensaje escrito o entregarse junto con unas palabras de agradecimiento, explicando por qué se regala. Durante este tiempo es importante crear un espacio seguro para recordar momentos significativos de la semana y expresar sinceramente su agradecimiento.",
+  "Una vez que todas las flores tienen sus pétalos, se reúnen en el espacio designado en la escuela para plantarlas juntas, formando un jardín.",
+  "Finalmente, se realiza un cierre general guiado por la reflexión de la actividad."
+ ],
+ reflexion:"Este jardín no es solo un conjunto de flores, sino un reflejo de la convivencia, los vínculos y las experiencias vividas durante la semana. Cada pétalo cuenta una historia, un momento especial que quedó grabado en nosotros. Aunque las flores son temporales, los recuerdos y los vínculos que representan son eternos y nos acompañarán para siempre. Este jardín nos invita a recordar que un acto de agradecimiento y afecto puede crear algo hermoso, como lo es que florezca este jardín.",
+ tips:[]},
+
+{id:"t25-32", nombre:"Volantines de los sueños", habilidades:["AUTOESTIMA","RESILIENCIA"], tiempo:"1 hora", bucket:"larga",
+ materiales:["Palillos de madera (colihue para volantín)","Papel volantín","Hilo de algodón","Cola fría o pegamento","Masking tape","Cortacartón y tijeras","Diario (para apoyarse)","Hojas","Plumones"],
+ proposito:"Que todos hagan un volantín que represente sus sueños y le agreguen a la cola papelitos con las cosas que van a necesitar para cumplirlos. Finalmente, que intenten hacerlo volar. Los NNAJ reflexionan sobre sus sueños personales, las cualidades o cosas que necesitarán para alcanzarlos y los pasos que pueden ser necesarios; recuerdan lo bonito de soñar, pero también que requiere esfuerzo y dedicación.",
+ desarrollo:[
+  "En núcleos, conversar acerca de los sueños de cada uno. En una hoja (una por núcleo) titulada 'nuestros sueños', escribirlos (la cantidad que cada uno quiera).",
+  "Cada persona hace un volantín (las instrucciones están en el video del anexo del manual; deben enseñarle a los voluntarios previamente y pasearse por los núcleos por si necesitan ayuda).",
+  "Ver el video de Mulan.",
+  "Para decorar la cola, escribir las cualidades o características que necesitarán para cumplir sus sueños. Luego colgar esos papelitos en la cola.",
+  "En el espacio más amplio que haya en la escuela, intentar elevar los volantines. Puede ser difícil que vuelen: la idea es vivir un momento divertido y enfocar la actividad en la importancia de la resiliencia para alcanzar nuestros sueños y metas, como los guerreros de Mulan. Dependiendo de la cantidad de niños y del espacio, deben organizar este paso: tal vez no todos puedan correr al mismo tiempo y tengan que hacer turnos.",
+  "Después de dejar un tiempo para que jueguen con los volantines (el suficiente para que aprovechen, pero no tanto para que se dispersen), compartir una pequeña reflexión a modo de cierre de la actividad, hablando a todos los participantes de la zona. Pueden dar espacio para que algún niño comparta lo que piensa. Finalmente, invitar a que hagan la reflexión en grupos."
+ ],
+ reflexion:"Por un lado, se enfoca en lo lindo e importante de soñar, de establecer metas y proyectos. Principalmente, en lo importante de ser resiliente al momento de perseguir esos sueños: queremos que los niños sepan que el hecho de que algo sea difícil o no resulte a la primera no debe ser razón para dejar de intentarlo, ni para olvidar lo felices que nos hace pensar en ese sueño. Por eso, finalizar la reflexión invitando a todos a seguir intentando hacer volar su volantín (seguir persiguiendo sus sueños). También se puede reflexionar sobre el camino personal de cada uno: los sueños son distintos entre cada uno y el esfuerzo que cada uno necesitará para alcanzarlos será distinto; invitar a no compararse con el del al lado y seguir enfocado en los propios sueños.",
+ tips:["Dependiendo de la cantidad de niños y del espacio disponible, no todos podrán correr al mismo tiempo para elevar los volantines: organicen turnos."],
+ nota:"Es un volantín real (para volar), distinto de 'Nuestros volantines', que es de cartulina y sirve para escribir mensajes de agradecimiento. Las instrucciones para armarlo están en el video del anexo del manual."}
 ];
 
 /* ---------- Herramientas (técnicas del manual) ---------- */
