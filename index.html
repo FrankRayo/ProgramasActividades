@@ -227,7 +227,18 @@
   .reflex-dyn{display:grid; gap:16px;}
   .reflex-dyn .tool-card p{margin:0 0 8px; font-size:.9rem; color:var(--ink-soft); line-height:1.5;}
 
+  /* ---------- Finde view ---------- */
+  .finde-head{margin-bottom:6px;}
+  .finde-head h2{font-size:1.25rem;}
+  .finde-fecha{font-size:.85rem; color:var(--ink-soft); margin-top:2px;}
+  .finde-empty{
+    text-align:center; padding:56px 20px; color:var(--ink-soft);
+    border:1px dashed var(--line); border-radius:14px; background:var(--surface-alt);
+  }
+  .finde-empty b{display:block; color:var(--ink); font-size:1.02rem; margin-bottom:4px;}
+
   @media (max-width:640px){
+    .view-btn{padding:8px 10px; font-size:.78rem; white-space:nowrap;}
     .app{padding:14px 14px 48px;}
     .sheet{width:100%;}
     .sheet-body{padding:6px 18px 40px;}
@@ -258,6 +269,7 @@
     <div class="top-actions">
       <div class="view-toggle" role="tablist">
         <button class="view-btn active" data-view="actividades" role="tab" aria-selected="true">Actividades</button>
+        <button class="view-btn" data-view="finde" role="tab" aria-selected="false">Este finde</button>
         <button class="view-btn" data-view="herramientas" role="tab" aria-selected="false">Herramientas</button>
       </div>
       <button class="theme-btn" id="theme-btn" aria-label="Cambiar a modo oscuro">
@@ -285,6 +297,12 @@
 
     <p class="result-count" id="result-count"></p>
     <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="view-finde" hidden>
+    <div class="finde-head" id="finde-head"></div>
+    <p class="result-count" id="finde-count"></p>
+    <div class="grid" id="finde-grid"></div>
   </section>
 
   <section id="view-herramientas" hidden>
@@ -1424,6 +1442,16 @@ const ACTIVITIES = [
  nota:"Es un volantín real (para volar), distinto de 'Nuestros volantines', que es de cartulina y sirve para escribir mensajes de agradecimiento. Las instrucciones para armarlo están en el video del anexo del manual."}
 ];
 
+/* ---------- Actividades de la salida de este fin de semana ----------
+   Cargar aquí las actividades del manual de la salida, con la misma forma
+   que ACTIVITIES (usar ids con prefijo "f" para no chocar con el catálogo).
+   Si "actividades" queda vacío, la pestaña muestra un mensaje de "no hay". */
+const FINDE = {
+  titulo:"Salida de este fin de semana",
+  fecha:"",
+  actividades:[]
+};
+
 /* ---------- Herramientas (técnicas del manual) ---------- */
 const TOOLS = {
   circulo:[
@@ -1556,6 +1584,7 @@ function renderStars(id){
 
 function render(){
   buildChips();
+  renderFinde();
   const grid = document.getElementById("grid");
   const list = ACTIVITIES.filter(matches);
   document.getElementById("result-count").textContent = list.length + (list.length===1 ? " actividad encontrada" : " actividades encontradas");
@@ -1564,7 +1593,25 @@ function render(){
     grid.innerHTML = `<div class="empty-state">No encontramos actividades con esos filtros.<br>Probá sacando alguno.</div>`;
     return;
   }
-  grid.innerHTML = list.map(a=>`
+  grid.innerHTML = list.map(cardHTML).join("");
+  grid.querySelectorAll(".card").forEach(c=>c.addEventListener("click",()=>openDetail(c.dataset.id)));
+}
+
+function renderFinde(){
+  document.getElementById("finde-head").innerHTML = `<h2>${FINDE.titulo}</h2>${FINDE.fecha ? `<div class="finde-fecha">${FINDE.fecha}</div>` : ""}`;
+  const grid = document.getElementById("finde-grid");
+  const list = FINDE.actividades;
+  document.getElementById("finde-count").textContent = list.length ? list.length + (list.length===1 ? " actividad" : " actividades") : "";
+  if(!list.length){
+    grid.innerHTML = `<div class="finde-empty" style="grid-column:1/-1"><b>No hay actividades para este fin de semana</b>Cuando tengamos el manual de la salida, las actividades aparecerán aquí.</div>`;
+    return;
+  }
+  grid.innerHTML = list.map(cardHTML).join("");
+  grid.querySelectorAll(".card").forEach(c=>c.addEventListener("click",()=>openDetail(c.dataset.id)));
+}
+
+function cardHTML(a){
+  return `
     <button class="card" data-id="${a.id}" style="--cc:${primaryColorVar(a.habilidades)}">
       <div class="card-top">
         ${ratingBadgeHTML(a.id)}
@@ -1575,12 +1622,11 @@ function render(){
       <p class="card-desc">${a.proposito}</p>
       <div class="card-mat">${a.materiales.length ? "Materiales: "+a.materiales.slice(0,3).join(", ")+(a.materiales.length>3?"…":"") : "No requiere materiales especiales"}</div>
     </button>
-  `).join("");
-  grid.querySelectorAll(".card").forEach(c=>c.addEventListener("click",()=>openDetail(c.dataset.id)));
+  `;
 }
 
 function openDetail(id){
-  const a = ACTIVITIES.find(x=>x.id===id);
+  const a = ACTIVITIES.find(x=>x.id===id) || FINDE.actividades.find(x=>x.id===id);
   if(!a) return;
   const body = document.getElementById("sheet-body");
   body.innerHTML = `
@@ -1629,6 +1675,7 @@ document.querySelectorAll(".view-btn").forEach(btn=>{
     btn.classList.add("active"); btn.setAttribute("aria-selected","true");
     const v = btn.dataset.view;
     document.getElementById("view-actividades").hidden = v!=="actividades";
+    document.getElementById("view-finde").hidden = v!=="finde";
     document.getElementById("view-herramientas").hidden = v!=="herramientas";
   });
 });
