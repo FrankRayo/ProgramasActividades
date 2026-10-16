@@ -235,6 +235,11 @@
     text-align:center; padding:56px 20px; color:var(--ink-soft);
     border:1px dashed var(--line); border-radius:14px; background:var(--surface-alt);
   }
+  .finde-dia{grid-column:1/-1; margin-top:14px;}
+  .finde-dia:first-child{margin-top:0;}
+  .finde-dia h3{font-size:1.05rem; color:var(--accent-text);}
+  .finde-dia p{margin:2px 0 0; font-size:.8rem; color:var(--ink-soft);}
+  .card-bloque{font-size:.74rem; font-weight:700; color:var(--accent-text); font-variant-numeric:tabular-nums; letter-spacing:.02em;}
   .finde-empty b{display:block; color:var(--ink); font-size:1.02rem; margin-bottom:4px;}
 
   @media (max-width:640px){
@@ -1449,12 +1454,125 @@ const ACTIVITIES = [
 
 /* ---------- Actividades de la salida de este fin de semana ----------
    Cargar aquí las actividades del manual de la salida, con la misma forma
-   que ACTIVITIES (usar ids con prefijo "f" para no chocar con el catálogo).
+   que ACTIVITIES (usar ids con prefijo "f" para no chocar con el catálogo)
+   más "dia" (uno de FINDE.dias) y "bloque" (horario).
    Si "actividades" queda vacío, la pestaña muestra un mensaje de "no hay". */
 const FINDE = {
-  titulo:"Salida de este fin de semana",
-  fecha:"",
-  actividades:[]
+  titulo:"Salida de octubre",
+  fecha:"Sábado 17 y domingo 18 de octubre · Lampa, La Pampilla, Calle Larga y Batuco",
+  dias:[
+    {id:"sabado",  label:"Sábado",  nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"},
+    {id:"domingo", label:"Domingo", nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"}
+  ],
+  actividades:[
+{id:"f1", dia:"sabado", bloque:"10:00 – 10:45", nombre:"Nuestro restaurante", habilidades:["EQUIPO"], tiempo:"~45 min", bucket:"larga",
+ materiales:["Goma eva","Cartulinas","Plumones","Tijeras","Pegamento y cola fría","Otros materiales decorativos","Para el jurado: delantales o gorros de chef, algo para marcar su presencia (campana, cucharón) y paletas o tarjetas para mostrar puntajes"],
+ proposito:"Fortalecer el sentido de pertenencia y que los integrantes de cada núcleo se conozcan mejor creando un restaurante que los represente. Para diseñarlo deben conversar, compartir sus gustos y llegar a acuerdos, y luego presentarlo ante un jurado estilo Masterchef.",
+ desarrollo:[
+  "<b>Presentación del restaurante:</b> los encargados de talleres, vestidos como jurado, hacen una entrada estilo Masterchef y anuncian que hoy cada núcleo abrirá su propio restaurante y que el jurado pasará a evaluarlo. Cada núcleo debe crear desde cero un restaurante que lo represente; si el jurado lo aprueba, el domingo podrá crear los platos de su menú en 'El plato estrella'.",
+  "<b>Conociendo el restaurante y al núcleo:</b> antes de construir, el núcleo conversa sobre las preferencias de cada uno y llega a acuerdos sobre las características del restaurante: nombre, estilo de comida, ambientación, comida típica y cómo funciona (quién atiende, cómo se recibe a los clientes, qué reglas tiene).",
+  "<b>Construcción de la entrada:</b> con la goma eva y los demás materiales, el núcleo construye la entrada de su restaurante, incluyendo el cartel con su nombre.",
+  "<b>Llega el jurado:</b> con ambientación y música, cada núcleo presenta su restaurante y cuenta algunas decisiones que tomaron. El jurado hace preguntas simples ('¿Cómo eligieron el nombre?', '¿Quién tuvo la idea de la entrada?') y califica con comentarios positivos + aprobación.",
+  "<b>Cierre:</b> los restaurantes quedan expuestos, porque mañana serán el escenario de 'El plato estrella'."
+ ],
+ reflexion:"Reforzar que para crear un restaurante que representara a todos tuvieron que escucharse, compartir sus gustos y llegar a acuerdos. Preguntas guía: ¿Cómo decidieron el nombre? ¿Hubo ideas distintas? ¿Cómo se pusieron de acuerdo? ¿Qué descubrieron de sus compañeros que no sabían?",
+ tips:[]},
+
+{id:"f2", dia:"sabado", bloque:"11:00 – 11:45", nombre:"El caso de las Reglas de Oro", habilidades:["EQUIPO","CONVIVENCIA"], tiempo:"~30 min", bucket:"media",
+ materiales:["3 tarjetas gigantes, una por Regla de Oro","Disfraces o accesorios para los sospechosos","Una libreta de detective por grupo (hoja de registro, lápiz y lista de lugares)","Carteles para identificar los lugares","Ficha de personaje para cada voluntario sospechoso"],
+ proposito:"Que los NNAJ reconozcan qué significan las Reglas de Oro (Respeto, Diálogo y Solidaridad) analizando situaciones cotidianas que las cumplen o no, mientras investigan como detectives quién se las robó. Se busca que comprendan que las reglas se reconocen en lo que hacemos y que cuidarlas depende de todos.",
+ desarrollo:[
+  "<b>Presentación del misterio:</b> se reúne a toda la zona en el círculo. Con una pequeña actuación se muestra la caja de las reglas vacía y se anuncia que tres ladrones se robaron las Reglas de Oro de Operación Infancia. Sin ellas la fundación no puede funcionar, y la zona debe ayudar a recuperarlas.",
+  "<b>Formamos los equipos de detectives:</b> se divide la zona en 3 grupos y cada uno recibe su libreta. Cada grupo investiga un caso distinto y debe descubrir quién se robó la regla, dónde estaba y qué regla se llevó. Regla principal: no se puede preguntar directamente '¿tú tienes la regla?'; solo pueden presentar situaciones y observar cómo reacciona cada sospechoso.",
+  "<b>A investigar:</b> los grupos recorren los lugares de su caso y presentan a cada sospechoso una situación (ej: 'Un compañero se ríe de otro porque se equivocó, ¿qué opinas?'). Los inocentes responden con claridad y coherencia en las tres reglas; el ladrón responde bien en las dos reglas que no se robó, pero duda, se confunde o se contradice en la regla robada. Los voluntarios que acompañan ayudan a anotar y a pensar qué otras situaciones probar.",
+  "<b>Acusación:</b> cuando el grupo cree saber quién es el ladrón, lo lleva al centro y lo acusa diciendo quién es, en qué lugar lo encontraron y qué regla se robó. Si acierta, el ladrón confiesa y devuelve la tarjeta; si no, el sospechoso queda libre y el grupo vuelve a investigar con una pequeña pista de su voluntario.",
+  "<b>Las reglas vuelven:</b> cuando los tres ladrones han sido descubiertos, cada grupo cuenta a la zona quién era, qué regla se había robado y qué situación lo delató. Luego se muestran las tres tarjetas a toda la zona y se repasan."
+ ],
+ reflexion:"Reforzar que las Reglas de Oro se reconocen en lo que hacemos y que cuidarlas depende de todos.",
+ tips:["Preparación previa: cada grupo tiene su propio caso con 3 sospechosos (voluntarios caracterizados) en distintos lugares del colegio. Uno de ellos es el ladrón y guarda una de las tarjetas. Cada voluntario recibe una ficha de personaje que indica si es inocente o ladrón y qué regla se robó."]},
+
+{id:"f3", dia:"sabado", bloque:"12:00 – 13:00", nombre:"Mi personaje especial", habilidades:["AUTOESTIMA","EMPATIA"], tiempo:"~30 min", bucket:"media",
+ materiales:["Una hoja con la silueta de un personaje por NNA (anexo B)","Lápices grafito y gomas","Lápices de colores y plumones","Hoja de dimensiones por núcleo (anexo A)"],
+ proposito:"Promover la autoestima y la empatía mediante la creación de un personaje que reúna características positivas de distintos miembros de la zona y una característica propia que lo haga especial.",
+ desarrollo:[
+  "<b>Creación del personaje:</b> cada NNAJ recibe una hoja con la silueta de un personaje y la completa con características de distintos compañeros de la zona (anexo A): características físicas (¿cómo se ve por fuera?), talentos y habilidades (¿qué sabe hacer o qué se le da bien?), gustos e intereses (¿qué disfruta hacer?) y forma de ser y relacionarse (¿cómo es con los demás?).",
+  "<b>El toque personal:</b> reunidos en sus núcleos, cada NNA agrega al personaje una característica positiva propia que lo haga especial, como un talento, un gusto o una cualidad personal.",
+  "<b>Presentación y reflexión:</b> cada NNAJ presenta su personaje al núcleo, explica qué características eligió de sus compañeros y por qué, y comparte la característica propia que agregó."
+ ],
+ reflexion:"Reflexionar sobre cómo conocer a sus compañeros les permite descubrir aquello que los hace únicos y comprender que todas las personas tienen cualidades valiosas, aunque sean diferentes. Preguntas guía: ¿Por qué eligieron esas características de sus compañeros? ¿Descubrieron algo positivo de alguien que no conocían? ¿Cómo creen que se siente una persona cuando los demás reconocen algo bueno en ella? ¿Qué característica propia eligieron y por qué los hace especiales?",
+ tips:["Anexo A, ejemplos para cada dimensión: físicas (pelo, ojos, lentes, ropa); talentos (dibujar, bailar, jugar fútbol, cantar); gustos (animales, música, videojuegos, leer); forma de ser (amable, alegre, generoso, buen compañero)."],
+ nota:"La silueta del personaje (anexo B) y la hoja de dimensiones (anexo A) van impresas desde el manual."},
+
+{id:"f4", dia:"sabado", bloque:"14:30 – 15:15", nombre:"¡Que no te roben tus dulces!", habilidades:["EQUIPO"], tiempo:"~45 min", bucket:"larga",
+ materiales:["Cartones o cartulinas grandes (para armar el gran dulce)","Cartulinas para el letrero de la base de cada núcleo","Plumones, tijeras y pegamento","Conos o lentejas para delimitar las bases","Tarjetas con adivinanzas de Halloween (anexo A)","Caja o piñata para el tesoro final, con dulces o las colaciones"],
+ proposito:"Fomentar el trabajo en equipo con una actividad temática de Halloween: los núcleos crean su identidad grupal, juegan a capturar la bandera y, al final, se ayudan entre todos para encontrar un tesoro escondido. Se busca que reconozcan la importancia de organizarse y comunicarse para alcanzar objetivos comunes.",
+ desarrollo:[
+  "<b>Creación de los equipos:</b> cada núcleo elige una temática de personajes con algo en común (superhéroes, animales, monstruos, etc.), crea un letrero para su base y arma un GRAN dulce de cartón que funciona como su bandera. Luego acuerdan una estrategia y definen roles (que pueden variar): capturadores, defensores, distractores, etc.",
+  "<b>Captura de los dulces:</b> cada núcleo protege su bandera e intenta llevar el dulce rival hasta su propia base. Si un defensor toca a un NNA dentro de su territorio, queda congelado y debe volver a su base antes de seguir jugando; si llevaba una bandera, debe devolverla a su base original. Los equipos pueden recuperar sus banderas llevándolas de vuelta. Al terminar el tiempo gana el núcleo con más banderas rivales en su base.",
+  "<b>(Opcional) Bandera final:</b> talleres anuncia que queda una última bandera y que esta vez deben trabajar todos juntos. Los NNA resuelven adivinanzas de Halloween que los llevan a una pista final (creada por talleres) para encontrar dulces o colaciones escondidos en una caja, piñata u otro recipiente. Al final se reparten entre todos."
+ ],
+ reflexion:"Reforzar que trabajar en equipo implica escuchar las ideas de los demás, organizarse y colaborar para alcanzar un objetivo común. Preguntas guía: ¿Cómo se organizaron para proteger su dulce y capturar los de otros equipos? ¿Qué estrategias les funcionaron? ¿Fue fácil o difícil ponerse de acuerdo? ¿Cómo lograron encontrar la bandera final?",
+ tips:["La duración y cantidad de rondas quedan a criterio de talleres. Si el juego se alarga, se puede eliminar la posibilidad de recuperar banderas.",
+  "Adivinanzas (anexo A, pueden usar otras): vuelo de noche y descanso cabeza abajo → murciélago; sombrero puntiagudo, caldero y escoba → bruja; sin cuerpo, atravieso paredes, vestido de blanco → fantasma; delgada, pegajosa, la fabrica una araña → telaraña; me vacían, me dibujan una cara y me ponen una luz → calabaza; sin músculos ni piel, con los huesos a la vista → esqueleto."]},
+
+{id:"f5", dia:"domingo", bloque:"10:00 – 10:45", nombre:"El plato estrella", habilidades:["AUTOESTIMA"], tiempo:"~45 min", bucket:"larga",
+ materiales:["Un plato de cartón por NNAJ","'Almacén' de ingredientes para crear alimentos (pompones, lana, papeles y goma eva de colores, cartulinas, tapas, palitos, etc.)","Plumones, tijeras y pegamento","Tarjetas de receta (hojas blancas)","Para el jurado: delantales o gorros de chef, algo para marcar su presencia y música de ambientación"],
+ proposito:"Que cada NNAJ se presente a sí mismo a través de un plato que represente sus cualidades, donde cada ingrediente simboliza algo de su forma de ser. Si el restaurante identifica al núcleo, el plato permite que cada integrante construya su propia identidad dentro de él, comprendiendo que todos son distintos y que esas diferencias completan el menú.",
+ desarrollo:[
+  "<b>El jurado vuelve:</b> los encargados de talleres, caracterizados como jurado, retoman el show del sábado y anuncian que los restaurantes aprobados ya están abiertos, pero les falta lo más importante: el menú. Cada integrante creará su 'plato estrella', un plato que lo represente.",
+  "<b>¿Qué plato soy yo?:</b> los ingredientes serán cualidades de quien lo crea. Ejemplo: 'Un plato dulce puede representar a alguien cariñoso; uno picante, a alguien enérgico y movido; uno crujiente, a alguien que se anima a todo'. Cada NNAJ piensa en 3 cualidades que lo representen y las comparte brevemente con su núcleo.",
+  "<b>Al almacén:</b> con música y cuenta regresiva estilo Masterchef, los NNAJ tienen 5 minutos para ir al almacén y buscar ingredientes que representen sus cualidades. Los voluntarios del almacén motivan y orientan: '¿Qué cualidad tuya representa este ingrediente?'.",
+  "<b>A cocinar:</b> cada NNAJ arma su plato y completa su tarjeta de receta con el nombre del plato y qué cualidad representa cada ingrediente. El voluntario acompaña conversando sobre sus elecciones.",
+  "<b>Llega el jurado:</b> los platos se exponen en el restaurante de cada núcleo. El jurado visita cada restaurante, cada NNAJ presenta su plato y explica sus ingredientes. El jurado hace preguntas simples ('¿Qué ingrediente es el más importante de tu plato?') y destaca algo positivo de cada uno.",
+  "<b>Menú completo:</b> los platos se ubican juntos en el restaurante formando el menú del núcleo. Se invita a observar cuántos platos distintos hay y cómo se complementan."
+ ],
+ reflexion:"Reforzar que cada persona tiene cualidades distintas y que todas valen: no existe un ingrediente mejor que otro, y un menú con un solo tipo de plato sería muy aburrido. Preguntas guía: ¿Qué ingredientes elegiste y por qué? ¿Fue fácil o difícil pensar en tus cualidades? ¿Qué descubriste de un compañero a partir de su plato? ¿Qué pasaría si todos los platos del menú fueran iguales? Cerrar conectando con el núcleo: cada uno aporta algo único que hace especial al grupo.",
+ tips:[],
+ nota:"Continúa 'Nuestro restaurante' del sábado: los platos se exponen en los restaurantes que crearon los núcleos."},
+
+{id:"f6", dia:"domingo", bloque:"11:00 – 11:45", nombre:"Al aire en OI", habilidades:["EQUIPO","EMPATIA"], tiempo:"~30 min", bucket:"media",
+ materiales:["Sobres con temas al azar (uno por NNAJ)","Un micrófono y unos audífonos por núcleo","Cronómetro o reloj"],
+ proposito:"Que los NNAJ vivan la experiencia de conversar sin pantallas ni adultos que guíen, primero de forma totalmente libre y luego a partir de un tema al azar que cada uno presenta como en un podcast. Se busca que reconozcan lo importante que es relacionarse mirándose a los ojos y manteniendo conversaciones reales.",
+ desarrollo:[
+  "<b>Presentación:</b> se reúne a los NNAJ por núcleo y se les explica que los voluntarios los dejarán 'solos'. Su único objetivo es conversar de lo que se les ocurra. Los voluntarios no pueden proponer temas ni participar.",
+  "<b>Conversación libre:</b> los voluntarios se alejan del círculo y solo cuidan que nadie se vaya del núcleo. Se deja unos 5 minutos, o hasta que el núcleo se aburra por no lograr conversar, o hasta que logre una conversación fluida.",
+  "<b>Llega el podcast:</b> los voluntarios vuelven y anuncian, con ambiente de locutores, que cada núcleo tendrá su propio programa de podcast. Cada NNAJ saca de un sobre un tema al azar.",
+  "<b>Al aire:</b> cuando le toca, el NNAJ se pone los audífonos, toma el micrófono y habla 1 minuto sobre su tema mientras el núcleo escucha. Micrófono y audífonos se van pasando. Si a alguien no se le ocurre qué decir, puede cambiar de sobre o pedir ayuda a su núcleo.",
+  "<b>Cierre:</b> cuando todos hayan hablado, el voluntario inicia la reflexión."
+ ],
+ reflexion:"Dentro del núcleo, partiendo de lo que vivieron: ¿Qué pasó cuando los dejamos conversar solos? ¿Fue fácil o difícil? ¿Qué cambió cuando tuvieron un tema y un micrófono? ¿Cómo se sintieron al hablar y al ser escuchados? Reforzar que conversar mirándonos a los ojos nos conecta con los demás y que es una habilidad que se practica, especialmente en un mundo donde cada vez nos comunicamos más a través de pantallas.",
+ tips:["Temas para los sobres: zapatos, pan, marcas, helados, mascotas, la lluvia, los videojuegos, el colegio, las vacaciones, los cumpleaños, la pizza, los superhéroes, el fútbol, la música, los celulares, las películas, los dinosaurios, el invierno, los disfraces, los juguetes. Para núcleos con NNAJ mayores: redes sociales, las series, la ropa y la moda, la familia, mejor amigo/a."]},
+
+{id:"f7", dia:"domingo", bloque:"12:00 – 13:00", nombre:"La gran máquina: parte 1", habilidades:["EQUIPO"], tiempo:"~30 min", bucket:"media",
+ materiales:["Fichas de cinco materias primas (maíz, madera, ladrillo, cemento y lana)","Cinco cartas de construcción (una por grupo)","Cuatro sobres de recursos por grupo","Recipientes para guardar los materiales","Elementos para los desafíos"],
+ proposito:"Cada grupo representa un pueblo con la misión de construir una parte de una gigantesca máquina capaz de salvar el mundo. Superando desafíos y recolectando materias primas, descubren que los pueblos tienen recursos distintos y que necesitarán colaborar para completar su misión. Esta etapa prepara el gran mercado de después de almuerzo.",
+ desarrollo:[
+  "Los voluntarios cuentan que el mundo está en peligro y que la única forma de salvarlo es construir una gigantesca máquina, tan grande que ningún pueblo puede construirla solo. Cada grupo es un pueblo que fabricará una pieza distinta, con una materia prima dominante y pequeñas cantidades de otras.",
+  "Cada grupo recibe una carta de construcción con los materiales y cantidades que necesita para su pieza. Deben guardarla, porque es fundamental para la misión. Pronto descubrirán que no pueden conseguirlo todo solo con los recursos de su pueblo.",
+  "Para conseguir materias primas superan cuatro desafíos preparados por sus voluntarios. Por cada desafío completado reciben un sobre con tres recursos (doce en total). Pueden repetir las pruebas hasta conseguir los cuatro sobres. Los voluntarios entregan los sobres en orden y no agregan recursos extra.",
+  "Con los cuatro sobres, cada grupo abre, cuenta sus recursos y revisa su carta: qué les sobra, qué les falta y qué podrían ofrecer a cambio. Los voluntarios invitan a conversar estrategias, sin indicar qué intercambios hacer ni cuánto ofrecer.",
+  "Antes de almorzar, los voluntarios anuncian con entusiasmo que después se abrirá el gran mercado de los pueblos para negociar. ¡Pero no será tan sencillo! Generar expectación: ¿con quién harán negocios?, ¿qué están dispuestos a ofrecer? ¡El futuro del mundo depende de que todos los pueblos construyan sus piezas!"
+ ],
+ reflexion:"Esta etapa no tiene reflexión propia: la experiencia continúa después de almuerzo con el gran mercado, y la reflexión se hace cuando todos los pueblos hayan construido sus piezas y activado la máquina.",
+ tips:["Preparar sobres y cartas antes de empezar, siguiendo exactamente la pauta. Los desafíos deben ser breves, variados y adecuados a la edad. No adelantar intercambios ni decir cuánto vale cada material. Los recursos y cartas quedan guardados por los voluntarios hasta la parte 2.",
+  "Pauta de sobres — G1 Pueblo del Maíz: 2 maíz + 1 madera · 2 maíz + 1 ladrillo · maíz + madera + cemento · maíz + ladrillo + lana. G2 Pueblo de la Madera: 2 madera + 1 ladrillo · 2 madera + 1 cemento · madera + ladrillo + lana · madera + cemento + maíz. G3 Pueblo del Ladrillo: 2 ladrillo + 1 cemento · 2 ladrillo + 1 lana · ladrillo + cemento + maíz · ladrillo + lana + madera. G4 Pueblo del Cemento: 2 cemento + 1 lana · 2 cemento + 1 maíz · cemento + lana + madera · cemento + maíz + ladrillo. G5 Pueblo de la Lana: 2 lana + 1 maíz · 2 lana + 1 madera · lana + maíz + ladrillo · lana + madera + cemento.",
+  "Cartas de construcción (maíz / madera / ladrillo / cemento / lana) — G1 Motor de Energía: 2/3/3/2/1. G2 Torre de Transmisión: 1/2/3/3/2. G3 Núcleo Central: 2/1/2/3/3. G4 Estabilizador: 3/2/1/2/3. G5 Activador Final: 3/3/2/1/2."],
+ nota:"En el cronograma aparece como 'Catanazo parte 1'. Las cartas y la pauta de sobres impresas están en el material de apoyo del manual."},
+
+{id:"f8", dia:"domingo", bloque:"14:30 – 15:15", nombre:"La gran máquina: parte 2", habilidades:["EQUIPO"], tiempo:"~30 min", bucket:"media",
+ materiales:["Fichas de materias primas y cartas de construcción de la parte 1","Mesas o espacios para instalar los mercados","Carteles para identificar los pueblos","Materiales del colegio para la máquina (cartón, plumavit, sillas, mesas, papel, pinturas, cinta adhesiva, reciclados, etc.)"],
+ proposito:"¡Llegó el momento de salvar el mundo! Los pueblos organizan sus mercados y comercian entre ellos para conseguir los materiales de su pieza. Negociando, los NNAJ aprenden a organizarse, llegar a acuerdos y reconocer el valor de sus recursos. Al final cada grupo une su pieza a las demás y descubre que solo colaborando entre todos se completa la misión.",
+ desarrollo:[
+  "Los voluntarios anuncian que se abre el mercado. Cada grupo instala su puesto con el nombre de su pueblo y organiza sus recursos. Se reparten roles (comerciantes que reciben ofertas, negociadores que visitan otros pueblos, encargados de administrar los materiales); todos deben poder negociar e intercambiar roles.",
+  "¡Se abren los mercados! Los NNAJ recorren los pueblos ofreciendo e intercambiando materias primas según su carta. No hay precios ni límites: ellos negocian y llegan a acuerdos, siempre que ambas partes estén de acuerdo. Los voluntarios motivan a recorrer, buscar estrategias y conversar con distintos comerciantes, para que el espacio sea una verdadera feria.",
+  "A medida que avanza, los grupos administran sus recursos y revisan cuánto les falta, cuidando lo que necesitan para su propia construcción. Si un grupo tiene dificultades, se le incentiva a conversar con otros pueblos, hacer nuevas ofertas o buscar acuerdos que beneficien a más de un grupo. Los voluntarios no resuelven los intercambios.",
+  "Cuando un grupo completa su carta, va donde los encargados de la máquina, entrega los recursos y recibe su pieza, que lleva al centro donde se arma la gran máquina. Los que terminan primero pueden ayudar a los demás pueblos.",
+  "Con todas las piezas, los voluntarios reúnen a los NNAJ alrededor de la máquina para el montaje final: cada grupo incorpora su pieza. Convertirlo en un gran espectáculo (actuación, gritos, cuenta regresiva…). ¡Cuando todas las piezas están unidas, la máquina se activa y el mundo está a salvo! Todos celebran que lo lograron colaborando."
+ ],
+ reflexion:"Alrededor de la máquina: ¿Habríamos podido construirla sin los demás pueblos? ¿Qué tenía nuestro pueblo que los otros necesitaban? ¿Qué tuvimos que hacer para conseguir los materiales que nos faltaban? ¿Fue importante ayudar a los demás? Transmitir que todos tenemos habilidades, conocimientos y cualidades distintas que pueden servir a otros: así como cada pueblo tenía recursos que los demás necesitaban, cada persona tiene algo importante que aportar a su comunidad. No necesitamos tenerlo ni saberlo todo; compartiendo, comunicándonos y trabajando juntos logramos cosas imposibles por nuestra cuenta.",
+ tips:["Es fundamental preparar antes los puestos del mercado y las piezas de la gran máquina."],
+ nota:"En el cronograma aparece como 'Catanazo parte 2'. Continúa directamente la parte 1 de la mañana."}
+  ]
 };
 
 /* ---------- Herramientas (técnicas del manual) ---------- */
@@ -1622,8 +1740,17 @@ function renderFinde(){
     grid.innerHTML = `<div class="finde-empty" style="grid-column:1/-1"><b>No hay actividades para este fin de semana</b>Cuando tengamos el manual de la salida, las actividades aparecerán aquí.</div>`;
     return;
   }
-  grid.innerHTML = list.map(cardHTML).join("");
+  grid.innerHTML = FINDE.dias.map(d=>{
+    const acts = list.filter(a=>a.dia===d.id);
+    if(!acts.length) return "";
+    return `<div class="finde-dia"><h3>${d.label}</h3>${d.nota ? `<p>${d.nota}</p>` : ""}</div>${acts.map(cardHTML).join("")}`;
+  }).join("");
   grid.querySelectorAll(".card").forEach(c=>c.addEventListener("click",()=>openDetail(c.dataset.id)));
+}
+
+function findeSlot(a){
+  const d = FINDE.dias.find(x=>x.id===a.dia);
+  return [d && d.label, a.bloque].filter(Boolean).join(" · ");
 }
 
 function cardHTML(a){
@@ -1633,6 +1760,7 @@ function cardHTML(a){
         ${ratingBadgeHTML(a.id)}
         <span class="time-pill">${a.tiempo}</span>
       </div>
+      ${a.bloque ? `<div class="card-bloque">${a.bloque}</div>` : ""}
       <h3>${a.nombre}</h3>
       ${skillChipsHTML(a.habilidades)}
       <p class="card-desc">${a.proposito}</p>
@@ -1651,7 +1779,7 @@ function openDetail(id){
       ${skillChipsHTML(a.habilidades)}
     </div>
     <h2 class="sheet-title">${a.nombre}</h2>
-    <div class="sheet-time">⏱ ${a.tiempo}</div>
+    <div class="sheet-time">⏱ ${a.tiempo}${a.dia ? ` · 📅 ${findeSlot(a)}` : ""}</div>
 
     <h4 class="section-h">Tu calificación</h4>
     ${starsInputHTML(a.id)}
