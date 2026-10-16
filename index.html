@@ -291,6 +291,11 @@
     </div>
 
     <div class="filter-block">
+      <p class="filter-label">Reglas de oro</p>
+      <div class="chip-row" id="rule-chips"></div>
+    </div>
+
+    <div class="filter-block">
       <p class="filter-label">Tiempo disponible</p>
       <div class="chip-row" id="time-chips"></div>
     </div>
@@ -1501,8 +1506,21 @@ const TOOLS = {
   ]
 };
 
+/* ---------- Reglas de oro ---------- */
+// Se detectan por palabras clave en el nombre, propósito y reflexión de cada actividad.
+const RULES = {
+  RESPETO:     {label:"Respeto",        re:/respet/},
+  ESCUCHA:     {label:"Escucha activa", re:/escuch/},
+  SOLIDARIDAD: {label:"Solidaridad",    re:/solidari|ayudar(se| al| a otro| a los demás| a quien)|ayuda mutua|ayudarnos|apoyarse|apoyo mutuo/}
+};
+ACTIVITIES.forEach(a=>{
+  const t = [a.nombre, a.proposito, a.reflexion].join(" ").toLowerCase();
+  const todas = t.includes("reglas de oro");
+  a.reglas = Object.keys(RULES).filter(k=>todas || RULES[k].re.test(t));
+});
+
 /* ---------- State ---------- */
-const state = {view:"actividades", skills:new Set(), timeBucket:"Todos", q:""};
+const state = {view:"actividades", skills:new Set(), rules:new Set(), timeBucket:"Todos", q:""};
 
 function countFor(pred){ return ACTIVITIES.filter(pred).length; }
 
@@ -1519,6 +1537,17 @@ function buildChips(){
     render();
   }));
 
+  const ruleWrap = document.getElementById("rule-chips");
+  ruleWrap.innerHTML = Object.entries(RULES).map(([key,r])=>{
+    const n = countFor(a=>a.reglas.includes(key));
+    return `<button class="chip ${state.rules.has(key)?'active':''}" data-rule="${key}">${r.label} <span class="n">${n}</span></button>`;
+  }).join("");
+  ruleWrap.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.rule;
+    if(state.rules.has(k)) state.rules.delete(k); else state.rules.add(k);
+    render();
+  }));
+
   const timeWrap = document.getElementById("time-chips");
   const buckets = [{id:"Todos",label:"Todos"}, ...TIME_BUCKETS];
   timeWrap.innerHTML = buckets.map(b=>{
@@ -1531,6 +1560,7 @@ function buildChips(){
 function matches(a){
   if(state.timeBucket!=="Todos" && a.bucket!==state.timeBucket) return false;
   if(state.skills.size>0 && !a.habilidades.some(h=>state.skills.has(h))) return false;
+  if(state.rules.size>0 && !a.reglas.some(r=>state.rules.has(r))) return false;
   if(state.q.trim()){
     const q = state.q.trim().toLowerCase();
     const hay = (a.nombre+" "+a.proposito+" "+a.materiales.join(" ")).toLowerCase();
