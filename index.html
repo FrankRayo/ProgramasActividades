@@ -1460,23 +1460,9 @@ const ACTIVITIES = [
  ],
  reflexion:"Por un lado, se enfoca en lo lindo e importante de soñar, de establecer metas y proyectos. Principalmente, en lo importante de ser resiliente al momento de perseguir esos sueños: queremos que los niños sepan que el hecho de que algo sea difícil o no resulte a la primera no debe ser razón para dejar de intentarlo, ni para olvidar lo felices que nos hace pensar en ese sueño. Por eso, finalizar la reflexión invitando a todos a seguir intentando hacer volar su volantín (seguir persiguiendo sus sueños). También se puede reflexionar sobre el camino personal de cada uno: los sueños son distintos entre cada uno y el esfuerzo que cada uno necesitará para alcanzarlos será distinto; invitar a no compararse con el del al lado y seguir enfocado en los propios sueños.",
  tips:["Dependiendo de la cantidad de niños y del espacio disponible, no todos podrán correr al mismo tiempo para elevar los volantines: organicen turnos."],
- nota:"Es un volantín real (para volar), distinto de 'Nuestros volantines', que es de cartulina y sirve para escribir mensajes de agradecimiento. Las instrucciones para armarlo están en el video del anexo del manual."}
-];
+ nota:"Es un volantín real (para volar), distinto de 'Nuestros volantines', que es de cartulina y sirve para escribir mensajes de agradecimiento. Las instrucciones para armarlo están en el video del anexo del manual."},
 
-/* ---------- Actividades de la salida de este fin de semana ----------
-   Cargar aquí las actividades del manual de la salida, con la misma forma
-   que ACTIVITIES (usar ids con prefijo "f" para no chocar con el catálogo)
-   más "dia" (uno de FINDE.dias) y "bloque" (horario).
-   Si "actividades" queda vacío, la pestaña muestra un mensaje de "no hay". */
-const FINDE = {
-  titulo:"Salida de octubre",
-  fecha:"Sábado 17 y domingo 18 de octubre · Lampa, La Pampilla, Calle Larga y Batuco",
-  dias:[
-    {id:"sabado",  label:"Sábado",  nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"},
-    {id:"domingo", label:"Domingo", nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"}
-  ],
-  actividades:[
-{id:"f1", dia:"sabado", bloque:"10:00 – 10:45", nombre:"Nuestro restaurante", habilidades:["EQUIPO"], tiempo:"~45 min", bucket:"larga",
+{id:"f1", nombre:"Nuestro restaurante", habilidades:["EQUIPO"], tiempo:"~45 min", bucket:"larga",
  materiales:["Goma eva","Cartulinas","Plumones","Tijeras","Pegamento y cola fría","Otros materiales decorativos","Para el jurado: delantales o gorros de chef, algo para marcar su presencia (campana, cucharón) y paletas o tarjetas para mostrar puntajes"],
  proposito:"Fortalecer el sentido de pertenencia y que los integrantes de cada núcleo se conozcan mejor creando un restaurante que los represente. Para diseñarlo deben conversar, compartir sus gustos y llegar a acuerdos, y luego presentarlo ante un jurado estilo Masterchef.",
  desarrollo:[
@@ -1489,7 +1475,7 @@ const FINDE = {
  reflexion:"Reforzar que para crear un restaurante que representara a todos tuvieron que escucharse, compartir sus gustos y llegar a acuerdos. Preguntas guía: ¿Cómo decidieron el nombre? ¿Hubo ideas distintas? ¿Cómo se pusieron de acuerdo? ¿Qué descubrieron de sus compañeros que no sabían?",
  tips:[]},
 
-{id:"f2", dia:"sabado", bloque:"11:00 – 11:45", nombre:"El caso de las Reglas de Oro", habilidades:["EQUIPO","CONVIVENCIA"], tiempo:"~30 min", bucket:"media",
+{id:"f2", nombre:"El caso de las Reglas de Oro", habilidades:["EQUIPO","CONVIVENCIA"], tiempo:"~30 min", bucket:"media",
  materiales:["3 tarjetas gigantes, una por Regla de Oro","Disfraces o accesorios para los sospechosos","Una libreta de detective por grupo (hoja de registro, lápiz y lista de lugares)","Carteles para identificar los lugares","Ficha de personaje para cada voluntario sospechoso"],
  proposito:"Que los NNAJ reconozcan qué significan las Reglas de Oro (Respeto, Diálogo y Solidaridad) analizando situaciones cotidianas que las cumplen o no, mientras investigan como detectives quién se las robó. Se busca que comprendan que las reglas se reconocen en lo que hacemos y que cuidarlas depende de todos.",
  desarrollo:[
@@ -1502,7 +1488,7 @@ const FINDE = {
  reflexion:"Reforzar que las Reglas de Oro se reconocen en lo que hacemos y que cuidarlas depende de todos.",
  tips:["Preparación previa: cada grupo tiene su propio caso con 3 sospechosos (voluntarios caracterizados) en distintos lugares del colegio. Uno de ellos es el ladrón y guarda una de las tarjetas. Cada voluntario recibe una ficha de personaje que indica si es inocente o ladrón y qué regla se robó."]},
 
-{id:"f3", dia:"sabado", bloque:"12:00 – 13:00", nombre:"Mi personaje especial", habilidades:["AUTOESTIMA","EMPATIA"], tiempo:"~30 min", bucket:"media",
+{id:"f3", nombre:"Mi personaje especial", habilidades:["AUTOESTIMA","EMPATIA"], tiempo:"~30 min", bucket:"media",
  materiales:["Una hoja con la silueta de un personaje por NNA (anexo B)","Lápices grafito y gomas","Lápices de colores y plumones","Hoja de dimensiones por núcleo (anexo A)"],
  proposito:"Promover la autoestima y la empatía mediante la creación de un personaje que reúna características positivas de distintos miembros de la zona y una característica propia que lo haga especial.",
  desarrollo:[
@@ -1514,7 +1500,7 @@ const FINDE = {
  tips:["Anexo A, ejemplos para cada dimensión: físicas (pelo, ojos, lentes, ropa); talentos (dibujar, bailar, jugar fútbol, cantar); gustos (animales, música, videojuegos, leer); forma de ser (amable, alegre, generoso, buen compañero)."],
  nota:"La silueta del personaje (anexo B) y la hoja de dimensiones (anexo A) van impresas desde el manual."},
 
-{id:"f4", dia:"sabado", bloque:"14:30 – 15:15", nombre:"¡Que no te roben tus dulces!", habilidades:["EQUIPO"], tiempo:"~45 min", bucket:"larga",
+{id:"f4", nombre:"¡Que no te roben tus dulces!", habilidades:["EQUIPO"], tiempo:"~45 min", bucket:"larga",
  materiales:["Cartones o cartulinas grandes (para armar el gran dulce)","Cartulinas para el letrero de la base de cada núcleo","Plumones, tijeras y pegamento","Conos o lentejas para delimitar las bases","Tarjetas con adivinanzas de Halloween (anexo A)","Caja o piñata para el tesoro final, con dulces o las colaciones"],
  proposito:"Fomentar el trabajo en equipo con una actividad temática de Halloween: los núcleos crean su identidad grupal, juegan a capturar la bandera y, al final, se ayudan entre todos para encontrar un tesoro escondido. Se busca que reconozcan la importancia de organizarse y comunicarse para alcanzar objetivos comunes.",
  desarrollo:[
@@ -1526,7 +1512,7 @@ const FINDE = {
  tips:["La duración y cantidad de rondas quedan a criterio de talleres. Si el juego se alarga, se puede eliminar la posibilidad de recuperar banderas.",
   "Adivinanzas (anexo A, pueden usar otras): vuelo de noche y descanso cabeza abajo → murciélago; sombrero puntiagudo, caldero y escoba → bruja; sin cuerpo, atravieso paredes, vestido de blanco → fantasma; delgada, pegajosa, la fabrica una araña → telaraña; me vacían, me dibujan una cara y me ponen una luz → calabaza; sin músculos ni piel, con los huesos a la vista → esqueleto."]},
 
-{id:"f5", dia:"domingo", bloque:"10:00 – 10:45", nombre:"El plato estrella", habilidades:["AUTOESTIMA"], tiempo:"~45 min", bucket:"larga",
+{id:"f5", nombre:"El plato estrella", habilidades:["AUTOESTIMA"], tiempo:"~45 min", bucket:"larga",
  materiales:["Un plato de cartón por NNAJ","'Almacén' de ingredientes para crear alimentos (pompones, lana, papeles y goma eva de colores, cartulinas, tapas, palitos, etc.)","Plumones, tijeras y pegamento","Tarjetas de receta (hojas blancas)","Para el jurado: delantales o gorros de chef, algo para marcar su presencia y música de ambientación"],
  proposito:"Que cada NNAJ se presente a sí mismo a través de un plato que represente sus cualidades, donde cada ingrediente simboliza algo de su forma de ser. Si el restaurante identifica al núcleo, el plato permite que cada integrante construya su propia identidad dentro de él, comprendiendo que todos son distintos y que esas diferencias completan el menú.",
  desarrollo:[
@@ -1541,7 +1527,7 @@ const FINDE = {
  tips:[],
  nota:"Continúa 'Nuestro restaurante' del sábado: los platos se exponen en los restaurantes que crearon los núcleos."},
 
-{id:"f6", dia:"domingo", bloque:"11:00 – 11:45", nombre:"Al aire en OI", habilidades:["EQUIPO","EMPATIA"], tiempo:"~30 min", bucket:"media",
+{id:"f6", nombre:"Al aire en OI", habilidades:["EQUIPO","EMPATIA"], tiempo:"~30 min", bucket:"media",
  materiales:["Sobres con temas al azar (uno por NNAJ)","Un micrófono y unos audífonos por núcleo","Cronómetro o reloj"],
  proposito:"Que los NNAJ vivan la experiencia de conversar sin pantallas ni adultos que guíen, primero de forma totalmente libre y luego a partir de un tema al azar que cada uno presenta como en un podcast. Se busca que reconozcan lo importante que es relacionarse mirándose a los ojos y manteniendo conversaciones reales.",
  desarrollo:[
@@ -1554,7 +1540,7 @@ const FINDE = {
  reflexion:"Dentro del núcleo, partiendo de lo que vivieron: ¿Qué pasó cuando los dejamos conversar solos? ¿Fue fácil o difícil? ¿Qué cambió cuando tuvieron un tema y un micrófono? ¿Cómo se sintieron al hablar y al ser escuchados? Reforzar que conversar mirándonos a los ojos nos conecta con los demás y que es una habilidad que se practica, especialmente en un mundo donde cada vez nos comunicamos más a través de pantallas.",
  tips:["Temas para los sobres: zapatos, pan, marcas, helados, mascotas, la lluvia, los videojuegos, el colegio, las vacaciones, los cumpleaños, la pizza, los superhéroes, el fútbol, la música, los celulares, las películas, los dinosaurios, el invierno, los disfraces, los juguetes. Para núcleos con NNAJ mayores: redes sociales, las series, la ropa y la moda, la familia, mejor amigo/a."]},
 
-{id:"f7", dia:"domingo", bloque:"12:00 – 13:00", nombre:"La gran máquina: parte 1", habilidades:["EQUIPO"], tiempo:"~30 min", bucket:"media",
+{id:"f7", nombre:"La gran máquina: parte 1", habilidades:["EQUIPO"], tiempo:"~30 min", bucket:"media",
  materiales:["Fichas de cinco materias primas (maíz, madera, ladrillo, cemento y lana)","Cinco cartas de construcción (una por grupo)","Cuatro sobres de recursos por grupo","Recipientes para guardar los materiales","Elementos para los desafíos"],
  proposito:"Cada grupo representa un pueblo con la misión de construir una parte de una gigantesca máquina capaz de salvar el mundo. Superando desafíos y recolectando materias primas, descubren que los pueblos tienen recursos distintos y que necesitarán colaborar para completar su misión. Esta etapa prepara el gran mercado de después de almuerzo.",
  desarrollo:[
@@ -1570,7 +1556,7 @@ const FINDE = {
   "Cartas de construcción (maíz / madera / ladrillo / cemento / lana) — G1 Motor de Energía: 2/3/3/2/1. G2 Torre de Transmisión: 1/2/3/3/2. G3 Núcleo Central: 2/1/2/3/3. G4 Estabilizador: 3/2/1/2/3. G5 Activador Final: 3/3/2/1/2."],
  nota:"En el cronograma aparece como 'Catanazo parte 1'. Las cartas y la pauta de sobres impresas están en el material de apoyo del manual."},
 
-{id:"f8", dia:"domingo", bloque:"14:30 – 15:15", nombre:"La gran máquina: parte 2", habilidades:["EQUIPO"], tiempo:"~30 min", bucket:"media",
+{id:"f8", nombre:"La gran máquina: parte 2", habilidades:["EQUIPO"], tiempo:"~30 min", bucket:"media",
  materiales:["Fichas de materias primas y cartas de construcción de la parte 1","Mesas o espacios para instalar los mercados","Carteles para identificar los pueblos","Materiales del colegio para la máquina (cartón, plumavit, sillas, mesas, papel, pinturas, cinta adhesiva, reciclados, etc.)"],
  proposito:"¡Llegó el momento de salvar el mundo! Los pueblos organizan sus mercados y comercian entre ellos para conseguir los materiales de su pieza. Negociando, los NNAJ aprenden a organizarse, llegar a acuerdos y reconocer el valor de sus recursos. Al final cada grupo une su pieza a las demás y descubre que solo colaborando entre todos se completa la misión.",
  desarrollo:[
@@ -1583,6 +1569,21 @@ const FINDE = {
  reflexion:"Alrededor de la máquina: ¿Habríamos podido construirla sin los demás pueblos? ¿Qué tenía nuestro pueblo que los otros necesitaban? ¿Qué tuvimos que hacer para conseguir los materiales que nos faltaban? ¿Fue importante ayudar a los demás? Transmitir que todos tenemos habilidades, conocimientos y cualidades distintas que pueden servir a otros: así como cada pueblo tenía recursos que los demás necesitaban, cada persona tiene algo importante que aportar a su comunidad. No necesitamos tenerlo ni saberlo todo; compartiendo, comunicándonos y trabajando juntos logramos cosas imposibles por nuestra cuenta.",
  tips:["Es fundamental preparar antes los puestos del mercado y las piezas de la gran máquina."],
  nota:"En el cronograma aparece como 'Catanazo parte 2'. Continúa directamente la parte 1 de la mañana."}
+];
+
+/* ---------- Actividades de la salida de este fin de semana ----------
+   Cargar aquí las actividades del manual de la salida, con la misma forma
+   que ACTIVITIES (usar ids con prefijo "f" para no chocar con el catálogo)
+   más "dia" (uno de FINDE.dias) y "bloque" (horario).
+   Si "actividades" queda vacío, la pestaña muestra un mensaje de "no hay". */
+const FINDE = {
+  titulo:"Próxima salida",
+  fecha:"",
+  dias:[
+    {id:"sabado",  label:"Sábado",  nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"},
+    {id:"domingo", label:"Domingo", nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"}
+  ],
+  actividades:[
   ]
 };
 
@@ -1748,7 +1749,7 @@ function renderFinde(){
   const list = FINDE.actividades;
   document.getElementById("finde-count").textContent = list.length ? list.length + (list.length===1 ? " actividad" : " actividades") : "";
   if(!list.length){
-    grid.innerHTML = `<div class="finde-empty" style="grid-column:1/-1"><b>No hay actividades para este fin de semana</b>Cuando tengamos el manual de la salida, las actividades aparecerán aquí.</div>`;
+    grid.innerHTML = `<div class="finde-empty" style="grid-column:1/-1"><b>No hay actividades dictadas para la salida más próxima</b>Cuando tengamos el manual de la próxima salida, sus actividades aparecerán aquí.</div>`;
     return;
   }
   grid.innerHTML = FINDE.dias.map(d=>{
