@@ -30,7 +30,7 @@
     --surface:#FFFFFF;
     --surface-alt:#ECDFD2;
     --ink:#36262F;
-    --ink-soft:#8D7583;
+    --ink-soft:#75606C;
     --line:#ECDFD2;
     --accent:#800061;
     --accent-2:#F83860;
@@ -78,13 +78,13 @@
   button{font-family:inherit;}
   input:focus-visible, button:focus-visible, .card:focus-visible{outline:2px solid var(--accent-text); outline-offset:2px;}
 
-  .app{max-width:1180px; margin:0 auto; padding:20px 20px 64px;}
+  .app{max-width:1180px; margin:0 auto; padding:20px 20px 120px;}
   .site-footer{margin-top:48px; padding-top:18px; border-top:1px solid var(--line); text-align:center; font-size:.82rem; color:var(--ink-soft);}
 
   /* ---------- Header ---------- */
   .top-stripe{height:8px; background:var(--accent); width:100%;}
   .topbar{
-    display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
     flex-wrap:wrap; padding-bottom:18px; border-bottom:1px solid var(--line); margin-bottom:20px;
   }
   .brand{display:flex; align-items:center; gap:12px;}
@@ -97,12 +97,60 @@
   .brand-name{font-family:"Poppins"; font-weight:700; font-size:1.5rem; letter-spacing:-.01em;}
   .brand-sub{font-size:.82rem; color:var(--ink-soft);}
 
-  .view-toggle{display:flex; gap:4px; background:var(--surface-alt); padding:4px; border-radius:11px; height:fit-content;}
-  .view-btn{
-    border:none; background:transparent; color:var(--ink-soft); font-weight:600; font-size:.85rem;
-    padding:9px 16px; border-radius:8px; cursor:pointer; transition:.15s;
+  /* ---------- Bottom tab bar ---------- */
+  .tabbar{
+    position:fixed; left:0; right:0; bottom:0; z-index:30; background:var(--surface); border-top:1px solid var(--line);
+    display:flex; justify-content:center; padding:6px 6px calc(8px + env(safe-area-inset-bottom));
   }
-  .view-btn.active{background:var(--surface); color:var(--ink); box-shadow:var(--shadow);}
+  .view-btn{
+    flex:1; max-width:140px; border:none; background:transparent; color:var(--ink-soft); font-weight:500; font-size:.75rem;
+    padding:6px 2px; border-radius:12px; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:3px;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .view-btn svg{width:24px; height:24px;}
+  .view-btn.active{color:var(--accent-text); font-weight:700;}
+
+  /* ---------- Finde banner ---------- */
+  .finde-banner{
+    width:100%; display:flex; align-items:center; gap:10px; text-align:left; border:none; cursor:pointer;
+    background:var(--accent-3); color:#36262F; border-radius:16px; padding:12px 14px; margin-bottom:18px;
+    font-family:inherit; font-size:.86rem;
+  }
+  .finde-banner[hidden]{display:none;}
+  .finde-banner b{display:block; font-size:.9rem;}
+  .finde-banner svg{width:20px; height:20px; flex:none; margin-left:auto;}
+
+  /* ---------- Guided home ---------- */
+  .guide-title{font-size:1.65rem; line-height:1.12; font-weight:700; letter-spacing:-.015em; color:var(--accent-text); margin-bottom:4px;}
+  .guide-q{display:flex; align-items:center; gap:10px; font-size:1rem; font-weight:600; margin:22px 0 10px;}
+  .guide-q span{width:26px; height:26px; border-radius:50%; background:var(--accent); color:var(--accent-contrast); display:grid; place-items:center; font-size:.82rem; flex:none;}
+  .guide-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px;}
+  .guide-opt{
+    min-height:58px; display:flex; flex-direction:column; justify-content:center; text-align:left; cursor:pointer;
+    background:var(--surface); color:var(--ink); border:2px solid var(--line); border-radius:16px; padding:8px 14px;
+    font-family:inherit; -webkit-tap-highlight-color:transparent; transition:border-color .15s, background .15s;
+  }
+  .guide-opt b{font-size:1.05rem; line-height:1.15;}
+  .guide-opt span{font-size:.8rem; color:var(--ink-soft);}
+  .guide-opt.active{border-color:var(--accent-text); background:var(--accent-soft);}
+  .guide-skill{flex-direction:row; justify-content:flex-start; align-items:center; gap:10px; font-weight:600; font-size:.9rem;}
+  .guide-skill i{width:22px; height:22px; flex:none; background:var(--sc); clip-path:polygon(0 0,100% 0,0 100%);}
+  .guide-skill.active{border-color:var(--sc); background:color-mix(in srgb, var(--sc) 12%, var(--surface));}
+  .guide-go{
+    position:sticky; bottom:calc(84px + env(safe-area-inset-bottom)); width:100%; margin-top:24px; height:54px; border:none; border-radius:16px; cursor:pointer;
+    background:var(--accent); color:var(--accent-contrast); font-family:inherit; font-weight:600; font-size:1rem;
+    display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 10px 24px -10px rgba(128,0,97,.6);
+  }
+  .guide-summary{display:none;}
+  #view-actividades.guided .filter-block{display:none;}
+  #view-actividades.guided .guide-summary{
+    display:flex; align-items:center; gap:10px; width:100%; min-height:52px; text-align:left; cursor:pointer;
+    background:var(--surface); color:var(--ink); border:1.5px solid var(--line); border-radius:14px; padding:10px 14px;
+    font-family:inherit; font-size:.92rem; font-weight:600;
+  }
+  .guide-summary svg{width:20px; height:20px; flex:none; color:var(--accent-text);}
+  .guide-summary b{margin-left:auto; color:var(--accent-text); font-size:.85rem;}
+  .guide-go span{background:var(--accent-3); color:#36262F; border-radius:999px; padding:1px 10px; font-size:.82rem; font-variant-numeric:tabular-nums;}
 
   .top-actions{display:flex; align-items:center; gap:10px;}
   .theme-btn{
@@ -117,7 +165,7 @@
 
   /* ---------- Filters ---------- */
   .intro-line{color:var(--ink-soft); font-size:.92rem; margin:0 0 18px; max-width:62ch;}
-  .search-row{position:relative; margin-bottom:14px;}
+  .search-row{position:relative; flex:1; min-width:0; max-width:560px;}
   .search-row input{
     width:100%; padding:13px 16px 13px 42px; border-radius:12px; border:1px solid var(--line);
     background:var(--surface); color:var(--ink); font-size:.95rem; font-family:inherit;
@@ -190,7 +238,8 @@
     box-shadow:-24px 0 48px -20px rgba(0,0,0,.35); animation:slidein .22s ease-out;
   }
   @keyframes slidein{from{transform:translateX(24px); opacity:0;} to{transform:translateX(0); opacity:1;}}
-  @media (prefers-reduced-motion:reduce){ .sheet{animation:none;} }
+  @keyframes slideup{from{transform:translateY(40%); opacity:.4;} to{transform:none; opacity:1;}}
+  @media (prefers-reduced-motion:reduce){ .sheet{animation:none !important;} }
   .sheet-close{
     position:sticky; top:14px; margin:14px 14px 0 auto; display:flex; float:right;
     width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--surface);
@@ -235,8 +284,64 @@
   .tool-card ul li b{color:var(--ink);}
   .song-wrap{display:flex; flex-wrap:wrap; gap:8px;}
   .song-tag{background:var(--surface-alt); color:var(--ink-soft); font-size:.82rem; font-weight:600; padding:6px 12px; border-radius:999px;}
-  .reflex-dyn{display:grid; gap:16px;}
-  .reflex-dyn .tool-card p{margin:0 0 8px; font-size:.9rem; color:var(--ink-soft); line-height:1.5;}
+  .dice-btn{
+    width:100%; display:flex; align-items:center; gap:14px; text-align:left; cursor:pointer; margin:4px 0 12px;
+    background:var(--accent); color:var(--accent-contrast); border:none; border-radius:18px; padding:14px 16px;
+    font-family:inherit; font-size:.9rem; -webkit-tap-highlight-color:transparent; transition:transform .15s;
+  }
+  .dice-btn:active{transform:scale(.98);}
+  .dice-btn svg{width:34px; height:34px; flex:none; color:var(--accent-3);}
+  /* Dado 3D: cubo de 6 caras; el JS lo rota para dejar al frente la cara que salió. */
+  .die{width:34px; height:34px; flex:none; perspective:220px;}
+  .cube{position:relative; display:block; width:100%; height:100%; transform-style:preserve-3d; transition:transform .85s cubic-bezier(.2,.75,.25,1.08);}
+  .cube svg{position:absolute; inset:0; background:var(--accent); border-radius:7px; backface-visibility:hidden;}
+  .cube .f1{transform:translateZ(17px);}
+  .cube .f6{transform:rotateY(180deg) translateZ(17px);}
+  .cube .f3{transform:rotateY(90deg) translateZ(17px);}
+  .cube .f4{transform:rotateY(-90deg) translateZ(17px);}
+  .cube .f2{transform:rotateX(90deg) translateZ(17px);}
+  .cube .f5{transform:rotateX(-90deg) translateZ(17px);}
+  .dice-btn b{display:block; font-size:1.02rem;}
+  .dice-card{
+    position:relative; overflow:hidden; background:var(--surface); border:1.5px solid var(--line); border-radius:18px;
+    padding:16px 18px 16px 18px; margin-bottom:18px;
+  }
+  .dice-card[hidden]{display:none;}
+  .dice-card::after{content:""; position:absolute; top:0; right:0; width:34px; height:34px; background:var(--mc); clip-path:polygon(0 0,100% 0,100% 100%);}
+  .dice-card b{display:block; font-size:1.12rem; line-height:1.25; padding-right:28px;}
+  .dice-card p{margin:6px 0 0; font-size:.92rem; line-height:1.5; color:var(--ink-soft);}
+  .dice-moment{font-size:.78rem; font-weight:700; color:var(--accent-text);}
+  .dice-card.pop{animation:pop .42s cubic-bezier(.2,.9,.3,1.25);}
+  @keyframes pop{from{transform:translateY(10px) scale(.96); opacity:0;} to{transform:none; opacity:1;}}
+
+  .moments{display:grid; gap:10px;}
+  .moment{background:var(--surface); border:1.5px solid var(--line); border-radius:18px; overflow:hidden; interpolate-size:allow-keywords;}
+  .moment summary{
+    list-style:none; display:flex; align-items:center; gap:14px; padding:14px 16px; min-height:64px; cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .moment summary::-webkit-details-marker{display:none;}
+  .moment summary i{width:26px; height:26px; flex:none; background:var(--mc); clip-path:polygon(0 0,100% 0,0 100%); transition:transform .3s cubic-bezier(.2,.9,.3,1.2);}
+  .moment[open] summary i{transform:rotate(-45deg) scale(.9);}
+  .moment summary span{display:flex; flex-direction:column; font-size:.82rem; color:var(--ink-soft);}
+  .moment summary b{font-size:1rem; color:var(--ink);}
+  .moment summary em{
+    margin-left:auto; font-style:normal; font-size:.8rem; font-weight:700; font-variant-numeric:tabular-nums;
+    min-width:28px; height:28px; border-radius:999px; display:grid; place-items:center;
+    background:color-mix(in srgb, var(--mc) 16%, var(--surface)); color:var(--ink);
+  }
+  .moment::details-content{height:0; overflow:clip; transition:height .3s ease, content-visibility .3s allow-discrete;}
+  .moment[open]::details-content{height:auto;}
+  .moment-body{padding:0 16px 16px;}
+  .tool-list{list-style:none; margin:0; padding:0; display:grid; gap:2px;}
+  .tool-list li{padding:10px 0; border-top:1px solid var(--line); font-size:.9rem; line-height:1.5; color:var(--ink-soft);}
+  .tool-list li b{display:block; color:var(--ink); font-size:.95rem;}
+  .moment-nota{margin:10px 0 0; font-size:.85rem; background:color-mix(in srgb, var(--accent-3) 16%, var(--surface)); border-radius:12px; padding:10px 12px;}
+  @media (prefers-reduced-motion:reduce){
+    .dice-card.pop{animation:none;}
+    .cube{transition:none;}
+    .moment::details-content, .moment summary i{transition:none;}
+  }
 
   /* ---------- Finde view ---------- */
   .finde-head{margin-bottom:6px;}
@@ -254,9 +359,13 @@
   .finde-empty b{display:block; color:var(--ink); font-size:1.02rem; margin-bottom:4px;}
 
   @media (max-width:640px){
-    .view-btn{padding:8px 10px; font-size:.78rem; white-space:nowrap;}
-    .app{padding:14px 14px 48px;}
-    .sheet{width:100%;}
+    .brand-text{display:none;}
+    .topbar{gap:10px; padding-bottom:14px; margin-bottom:14px; align-items:center; flex-wrap:nowrap;}
+    .app{padding:14px 14px 110px;}
+    /* En celular la ficha sube desde abajo como hoja. */
+    .overlay{align-items:flex-end;}
+    .sheet{width:100%; height:92dvh; border-radius:24px 24px 0 0; animation:slideup .32s cubic-bezier(.2,.9,.3,1);}
+    .sheet::before{content:""; position:sticky; top:0; display:block; width:44px; height:5px; border-radius:999px; background:var(--line); margin:10px auto 0;}
     .sheet-body{padding:6px 18px 40px;}
     .grid{grid-template-columns:1fr 1fr; gap:10px;}
     .card{padding:12px; gap:7px;}
@@ -282,12 +391,10 @@
         <span class="brand-sub">Manual de Programas</span>
       </div>
     </div>
+    <div class="search-row">
+      <input type="search" id="search" placeholder="Buscar actividad o material" aria-label="Buscar actividad">
+    </div>
     <div class="top-actions">
-      <div class="view-toggle" role="tablist">
-        <button class="view-btn active" data-view="actividades" role="tab" aria-selected="true">Actividades</button>
-        <button class="view-btn" data-view="finde" role="tab" aria-selected="false">Este finde</button>
-        <button class="view-btn" data-view="herramientas" role="tab" aria-selected="false">Herramientas</button>
-      </div>
       <button class="theme-btn" id="theme-btn" aria-label="Cambiar a modo oscuro">
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -295,11 +402,20 @@
     </div>
   </header>
 
-  <section id="view-actividades">
+  <button class="finde-banner" id="finde-banner" hidden></button>
 
-    <div class="search-row">
-      <input type="search" id="search" placeholder="Buscar por nombre, material o palabra clave…" aria-label="Buscar actividad">
-    </div>
+  <section id="view-inicio">
+    <h1 class="guide-title">¿Qué hacemos hoy con los niños?</h1>
+    <h2 class="guide-q"><span>1</span>¿Cuánto tiempo tienen?</h2>
+    <div class="guide-grid" id="guide-time"></div>
+    <h2 class="guide-q"><span>2</span>¿Qué quieren trabajar?</h2>
+    <div class="guide-grid" id="guide-skills"></div>
+    <button class="guide-go" id="guide-go"></button>
+  </section>
+
+  <section id="view-actividades" hidden>
+
+    <button class="guide-summary" id="guide-summary"></button>
 
     <div class="filter-block">
       <p class="filter-label">Habilidad socioemocional</p>
@@ -327,43 +443,28 @@
   </section>
 
   <section id="view-herramientas" hidden>
-    <p class="intro-line">Técnicas de facilitación del manual: cómo llamar al círculo, traer la calma, captar la atención antes de una actividad y guiar las reflexiones generales de cada bloque.</p>
+    <h1 class="guide-title">Caja de herramientas</h1>
+    <p class="intro-line">Trucos del manual para cada momento del bloque: juntar al grupo, calmarlo, captar su atención y cerrar con una buena reflexión.</p>
 
-    <div class="tools-grid">
-      <div class="tool-card">
-        <h3>Cómo llamar al círculo</h3>
-        <ul id="tool-circulo"></ul>
-      </div>
-      <div class="tool-card">
-        <h3>Para traer la calma</h3>
-        <ul id="tool-calma"></ul>
-      </div>
-      <div class="tool-card">
-        <h3>Antes de comenzar la actividad</h3>
-        <ul id="tool-antes"></ul>
-        <p style="margin-top:10px; font-size:.82rem; color:var(--ink-soft);">Ojo: recién empiecen a explicar cuando <b>todos</b> estén prestando atención — si no, la explicación será en vano.</p>
-      </div>
-      <div class="tool-card">
-        <h3>Durante la actividad</h3>
-        <ul id="tool-durante"></ul>
-      </div>
-      <div class="tool-card">
-        <h3>Escucha activa</h3>
-        <ul id="tool-escucha"></ul>
-      </div>
-      <div class="tool-card">
-        <h3>Canciones de círculo</h3>
-        <div class="song-wrap" id="tool-canciones"></div>
-      </div>
-    </div>
+    <button class="dice-btn" id="dice-btn">
+      <span class="die" aria-hidden="true"><span class="cube" id="dice-cube"></span></span>
+      <span><b>¿Sin ideas?</b>Dame una técnica al azar</span>
+    </button>
+    <div class="dice-card" id="dice-card" hidden aria-live="polite"></div>
 
-    <h4 class="section-h" style="margin-top:34px;">Dinámicas de reflexión general (cierre de bloque AM / PM)</h4>
-    <div class="reflex-dyn" id="tool-reflexiones"></div>
+    <div class="moments" id="moments"></div>
   </section>
 
   <footer class="site-footer">Hecho por La Pampilla con cariño para ustedes - Felipe Fesser<br>© 2026 Felipe Fesser. Todos los derechos reservados.</footer>
 
 </div>
+
+<nav class="tabbar" aria-label="Secciones">
+  <button class="view-btn active" data-view="inicio" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</button>
+  <button class="view-btn" data-view="actividades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Todas</button>
+  <button class="view-btn" data-view="finde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Este finde</button>
+  <button class="view-btn" data-view="herramientas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0 5 5L12 19l-4 1 1-4z"/></svg>Herramientas</button>
+</nav>
 
 <div class="overlay" id="overlay" hidden>
   <div class="sheet" id="sheet" tabindex="-1">
@@ -1643,7 +1744,7 @@ ACTIVITIES.forEach(a=>{
 });
 
 /* ---------- State ---------- */
-const state = {view:"actividades", skills:new Set(), reglasOro:false, timeBucket:"Todos", q:""};
+const state = {view:"inicio", skills:new Set(), reglasOro:false, timeBucket:"Todos", q:""};
 
 function countFor(pred){ return ACTIVITIES.filter(pred).length; }
 
@@ -1728,8 +1829,41 @@ function renderStars(id){
     : "Sé el primero en calificar esta actividad.";
 }
 
+function renderGuide(){
+  const timeLabels = {corta:["Hasta 20","minutos"], media:["20–40","minutos"], larga:["Más de 40","minutos"], jornada:["Bloque","o jornada"]};
+  const timeWrap = document.getElementById("guide-time");
+  timeWrap.innerHTML = TIME_BUCKETS.map(b=>`<button class="guide-opt ${state.timeBucket===b.id?'active':''}" data-bucket="${b.id}" aria-pressed="${state.timeBucket===b.id}"><b>${timeLabels[b.id][0]}</b><span>${timeLabels[b.id][1]}</span></button>`).join("");
+  // Tocar la opción ya elegida la desmarca (vuelve a "Todos").
+  timeWrap.querySelectorAll(".guide-opt").forEach(b=>b.addEventListener("click",()=>{ state.timeBucket = state.timeBucket===b.dataset.bucket ? "Todos" : b.dataset.bucket; render(); }));
+
+  const skillWrap = document.getElementById("guide-skills");
+  skillWrap.innerHTML = Object.entries(SKILLS).map(([key,s])=>`<button class="guide-opt guide-skill ${state.skills.has(key)?'active':''}" data-skill="${key}" aria-pressed="${state.skills.has(key)}" style="--sc:var(${s.css})"><i></i>${s.label}</button>`).join("");
+  skillWrap.querySelectorAll(".guide-opt").forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.skill;
+    if(state.skills.has(k)) state.skills.delete(k); else state.skills.add(k);
+    render();
+  }));
+
+  const n = ACTIVITIES.filter(matches).length;
+  document.getElementById("guide-go").innerHTML = `Ver actividades <span>${n}</span>`;
+
+  const picked = [...state.skills].map(k=>SKILLS[k].label);
+  if(state.timeBucket!=="Todos") picked.push(TIME_BUCKETS.find(b=>b.id===state.timeBucket).label);
+  document.getElementById("guide-summary").innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 5-7 7 7 7"/></svg><span>${picked.join(" · ") || "Sin filtros"}</span><b>Cambiar</b>`;
+}
+
+function renderBanner(){
+  const banner = document.getElementById("finde-banner");
+  const n = FINDE.actividades.length;
+  banner.hidden = !n; // sin salida anunciada no hay franja
+  if(!n) return;
+  banner.innerHTML = `<span><b>${FINDE.titulo}${FINDE.fecha ? " · "+FINDE.fecha : ""}</b>${n} actividad${n===1?"":"es"} programada${n===1?"":"s"}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 5 7 7-7 7"/></svg>`;
+}
+
 function render(){
   buildChips();
+  renderGuide();
+  renderBanner();
   renderFinde();
   const grid = document.getElementById("grid");
   const list = ACTIVITIES.filter(matches);
@@ -1823,17 +1957,28 @@ document.getElementById("sheet-close").addEventListener("click", closeDetail);
 document.getElementById("overlay").addEventListener("click", e=>{ if(e.target.id==="overlay") closeDetail(); });
 document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeDetail(); });
 
-document.getElementById("search").addEventListener("input", e=>{ state.q = e.target.value; render(); });
-
-document.querySelectorAll(".view-btn").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    document.querySelectorAll(".view-btn").forEach(b=>{b.classList.remove("active"); b.setAttribute("aria-selected","false");});
-    btn.classList.add("active"); btn.setAttribute("aria-selected","true");
-    const v = btn.dataset.view;
-    document.getElementById("view-actividades").hidden = v!=="actividades";
-    document.getElementById("view-finde").hidden = v!=="finde";
-    document.getElementById("view-herramientas").hidden = v!=="herramientas";
+const VIEWS = ["inicio","actividades","finde","herramientas"];
+function setView(v, guided=false){
+  state.view = v;
+  // Llegando desde "Ver actividades" se muestra solo el resultado, sin los filtros.
+  document.getElementById("view-actividades").classList.toggle("guided", guided);
+  VIEWS.forEach(x=>{ document.getElementById("view-"+x).hidden = x!==v; });
+  document.querySelectorAll(".view-btn").forEach(b=>{
+    const on = b.dataset.view===v;
+    b.classList.toggle("active", on);
+    if(on) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current");
   });
+  window.scrollTo(0,0);
+}
+document.querySelectorAll(".view-btn").forEach(btn=>btn.addEventListener("click", ()=>setView(btn.dataset.view)));
+document.getElementById("guide-go").addEventListener("click", ()=>setView("actividades", true));
+document.getElementById("guide-summary").addEventListener("click", ()=>setView("inicio"));
+document.getElementById("finde-banner").addEventListener("click", ()=>setView("finde"));
+
+document.getElementById("search").addEventListener("input", e=>{
+  state.q = e.target.value;
+  if(state.view!=="actividades") setView("actividades");
+  render();
 });
 
 const themeBtn = document.getElementById("theme-btn");
@@ -1849,15 +1994,67 @@ themeBtn.addEventListener("click", ()=>{
 });
 syncThemeBtn();
 
+const MOMENTS = [
+  {id:"circulo",  t:"Llamar al círculo",       sub:"Juntar al grupo sin gritar", c:"--accent-2"},
+  {id:"calma",    t:"Traer la calma",          sub:"Bajar las revoluciones",     c:"--skill-convivencia"},
+  {id:"antes",    t:"Antes de explicar",       sub:"Captar la atención de todos", c:"--accent-3",
+   nota:"Recién empiecen a explicar cuando <b>todos</b> estén prestando atención; si no, la explicación será en vano."},
+  {id:"durante",  t:"Durante la actividad",    sub:"Que fluya y nadie se pierda", c:"--skill-equipo"},
+  {id:"escucha",  t:"Escucha activa",          sub:"Cómo escuchar de verdad",    c:"--skill-resiliencia"},
+  {id:"canciones",t:"Canciones de círculo",    sub:"Para animar entre bloques",  c:"--skill-emociones"},
+  {id:"reflexiones",t:"Reflexión de cierre",   sub:"Dinámicas para el final del bloque AM / PM", c:"--accent"}
+];
+function momentItems(id){
+  if(id==="canciones") return TOOLS.canciones.map(c=>[c,""]);
+  if(id==="reflexiones") return TOOLS.reflexiones.map(r=>[r.n,r.d]);
+  return TOOLS[id];
+}
 function fillTools(){
-  const li = (arr)=>arr.map(([t,d])=>`<li><b>${t}:</b> ${d}</li>`).join("");
-  document.getElementById("tool-circulo").innerHTML = li(TOOLS.circulo);
-  document.getElementById("tool-calma").innerHTML = li(TOOLS.calma);
-  document.getElementById("tool-antes").innerHTML = li(TOOLS.antes);
-  document.getElementById("tool-durante").innerHTML = li(TOOLS.durante);
-  document.getElementById("tool-escucha").innerHTML = li(TOOLS.escucha);
-  document.getElementById("tool-canciones").innerHTML = TOOLS.canciones.map(c=>`<span class="song-tag">${c}</span>`).join("");
-  document.getElementById("tool-reflexiones").innerHTML = TOOLS.reflexiones.map(r=>`<div class="tool-card"><h3>${r.n}</h3><p>${r.d}</p></div>`).join("");
+  document.getElementById("moments").innerHTML = MOMENTS.map(m=>{
+    const items = momentItems(m.id);
+    const body = m.id==="canciones"
+      ? `<div class="song-wrap">${items.map(([t])=>`<span class="song-tag">${t}</span>`).join("")}</div>`
+      : `<ul class="tool-list">${items.map(([t,d])=>`<li><b>${t}</b>${d}</li>`).join("")}</ul>`;
+    return `<details class="moment" style="--mc:var(${m.c})">
+      <summary><i></i><span><b>${m.t}</b>${m.sub}</span><em>${items.length}</em></summary>
+      <div class="moment-body">${body}${m.nota ? `<p class="moment-nota">${m.nota}</p>` : ""}</div>
+    </details>`;
+  }).join("");
+
+  // Técnica al azar: excluye canciones (no tienen descripción) y evita repetir la anterior.
+  const pool = MOMENTS.filter(m=>m.id!=="canciones").flatMap(m=>momentItems(m.id).map(([t,d])=>({m,t,d})));
+  let last = -1;
+
+  // Dado: sale cada cara (1–6) una vez antes de repetir; parte en una cara al azar del 2 al 6.
+  const P = {tl:[8,8], tr:[16,8], ml:[8,12], c:[12,12], mr:[16,12], bl:[8,16], br:[16,16]};
+  const FACES = [["c"],["tl","br"],["tl","c","br"],["tl","tr","bl","br"],["tl","tr","c","bl","br"],["tl","tr","ml","mr","bl","br"]];
+  const cube = document.getElementById("dice-cube");
+  cube.innerHTML = FACES.map((dots,i)=>`<svg class="f${i+1}" viewBox="2 2 20 20" fill="none" stroke="var(--accent-3)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><g fill="var(--accent-3)" stroke="none">${dots.map(k=>`<circle cx="${P[k][0]}" cy="${P[k][1]}" r="1.6"/>`).join("")}</g></svg>`).join("");
+  // Giro que deja cada cara (índice 0–5 = caras 1–6) mirando al frente: [rotateX, rotateY].
+  const FRONT = [[0,0],[-90,0],[0,-90],[0,90],[90,0],[0,180]];
+  let spins = 0;
+  const showFace = f=>{ cube.style.transform = `rotateX(${FRONT[f][0] + spins*360}deg) rotateY(${FRONT[f][1] + spins*360}deg)`; };
+  let lastFace = 1 + Math.floor(Math.random()*5);
+  let shown = new Set([lastFace]);
+  showFace(lastFace);
+
+  document.getElementById("dice-btn").addEventListener("click", ()=>{
+    let i; do{ i = Math.floor(Math.random()*pool.length); }while(i===last && pool.length>1);
+    last = i;
+    const {m,t,d} = pool[i];
+    const card = document.getElementById("dice-card");
+    card.hidden = false;
+    card.style.setProperty("--mc", `var(${m.c})`);
+    card.innerHTML = `<span class="dice-moment">${m.t}</span><b>${t}</b><p>${d}</p>`;
+    card.classList.remove("pop"); void card.offsetWidth; card.classList.add("pop");
+
+    if(shown.size===6) shown = new Set(); // ronda completa: empieza otra
+    const choices = [0,1,2,3,4,5].filter(x=>!shown.has(x) && x!==lastFace);
+    lastFace = choices[Math.floor(Math.random()*choices.length)];
+    shown.add(lastFace);
+    spins++; // una vuelta completa extra en cada tirada para que se vea rodar
+    showFace(lastFace);
+  });
 }
 
 fillTools();
