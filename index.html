@@ -234,6 +234,22 @@
   .star-btn.filled{color:var(--accent-3);}
   .rating-summary{font-size:.82rem; color:var(--ink-soft); margin-bottom:4px;}
 
+  /* ---------- Comentarios ---------- */
+  .comment-form{display:flex; flex-direction:column; gap:8px; margin:4px 0 12px;}
+  .comment-form input, .comment-form textarea{
+    background:var(--surface); color:var(--ink); border:1.5px solid var(--line); border-radius:12px; padding:10px 12px;
+    font-family:inherit; font-size:.92rem; resize:vertical;
+  }
+  .comment-form button{
+    align-self:flex-end; border:none; border-radius:12px; padding:9px 16px; cursor:pointer;
+    background:var(--accent); color:var(--accent-contrast); font-family:inherit; font-weight:600;
+  }
+  .comment-form button:disabled{opacity:.6; cursor:default;}
+  .comment-list{list-style:none; padding:0; margin:0 0 8px; display:flex; flex-direction:column; gap:8px;}
+  .comment-list li{background:var(--surface-alt); border-radius:12px; padding:10px 12px; font-size:.9rem; white-space:pre-wrap; overflow-wrap:anywhere;}
+  .comment-list .c-meta{display:block; font-size:.75rem; color:var(--ink-soft); margin-bottom:4px; white-space:normal;}
+  .comment-empty{font-size:.82rem; color:var(--ink-soft);}
+
   /* ---------- Detail sheet ---------- */
   .overlay{position:fixed; inset:0; background:rgba(20,10,20,.45); backdrop-filter:blur(2px); z-index:40; display:flex; justify-content:flex-end;}
   .overlay[hidden]{display:none;}
@@ -568,7 +584,7 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-import { getFirestore, doc, getDocs, collection, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+import { getFirestore, doc, getDocs, collection, updateDoc, setDoc, addDoc, query, where, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCJIP8_UJUUfxB3owAeBAaDBt--BCpTu8Q",
@@ -617,6 +633,55 @@ async function rateActivity(id, stars){
     try{ await setDoc(doc(db,"ratings",id), {votes:{[VOTER_ID]: stars}}, {merge:true}); }
     catch(err2){ console.error("No se pudo guardar la calificación", err2); }
   }
+}
+
+async function loadComments(id){
+  const list = document.getElementById("comment-list");
+  try{
+    // Sin orderBy para no requerir índice compuesto; se ordena en el cliente.
+    const snap = await getDocs(query(collection(db,"comments"), where("actividad","==",id)));
+    const items = snap.docs.map(d=>d.data()).sort((a,b)=>(b.fecha?.seconds||0)-(a.fecha?.seconds||0));
+    if(list && list.dataset.id===id) renderComments(list, items);
+  }catch(err){
+    console.error("No se pudieron cargar los comentarios", err);
+    if(list) list.innerHTML = `<li class="comment-empty">No se pudieron cargar los comentarios.</li>`;
+  }
+}
+
+function renderComments(list, items){
+  list.replaceChildren();
+  if(!items.length){ list.innerHTML = `<li class="comment-empty">Todavía no hay comentarios.</li>`; return; }
+  for(const c of items){
+    const li = document.createElement("li");
+    const meta = document.createElement("span");
+    meta.className = "c-meta";
+    const fecha = c.fecha?.toDate ? c.fecha.toDate().toLocaleDateString("es-CL",{day:"numeric",month:"short",year:"numeric"}) : "recién";
+    meta.textContent = `${c.nombre || "Anónimo"} · ${fecha}`;
+    li.append(meta, c.texto); // textContent: nunca se interpreta como HTML
+    list.append(li);
+  }
+}
+
+function wireCommentForm(id){
+  const form = document.getElementById("comment-form");
+  const nombre = form.elements.nombre, texto = form.elements.texto, btn = form.querySelector("button");
+  nombre.value = localStorage.getItem("oiNombre") || "";
+  form.onsubmit = async (e)=>{
+    e.preventDefault();
+    const t = texto.value.trim();
+    if(!t) return;
+    btn.disabled = true;
+    try{
+      const n = nombre.value.trim().slice(0,60);
+      localStorage.setItem("oiNombre", n);
+      await addDoc(collection(db,"comments"), {actividad:id, texto:t.slice(0,1000), nombre:n, autor:VOTER_ID, fecha:serverTimestamp()});
+      texto.value = "";
+      await loadComments(id);
+    }catch(err){
+      console.error("No se pudo guardar el comentario", err);
+      alert("No se pudo guardar el comentario. Intenta de nuevo.");
+    }finally{ btn.disabled = false; }
+  };
 }
 
 const SKILLS = {
@@ -2037,11 +2102,21 @@ function openDetail(id){
 
     <h4 class="section-h">Reflexión</h4>
     <div class="reflexion-box">${a.reflexion}</div>
+
+    <h4 class="section-h">Comentarios</h4>
+    <ul class="comment-list" id="comment-list" data-id="${a.id}"><li class="comment-empty">Cargando…</li></ul>
+    <form class="comment-form" id="comment-form">
+      <input name="nombre" maxlength="60" placeholder="Tu nombre (opcional)" aria-label="Tu nombre">
+      <textarea name="texto" rows="3" maxlength="1000" required placeholder="¿Cómo te fue con esta actividad?" aria-label="Comentario"></textarea>
+      <button type="submit">Comentar</button>
+    </form>
   `;
   document.getElementById("overlay").hidden = false;
   document.getElementById("sheet").focus();
   document.body.style.overflow = "hidden";
   renderStars(a.id);
+  wireCommentForm(a.id);
+  loadComments(a.id);
 }
 function closeDetail(){
   document.getElementById("overlay").hidden = true;
