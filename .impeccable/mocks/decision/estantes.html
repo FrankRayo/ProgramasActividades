@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<title>Estantes por habilidad</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--plum:#800061;--coral:#F83860;--sun:#F8B840;--cream:#FAF4EA;--ink:#36262F;--soft:#7A6370;--line:#EADCCD;
+--equipo:#2E7D6B;--emociones:#C07A1A;--empatia:#E0304F;--resiliencia:#6D4A9C;--autoestima:#B23073;--convivencia:#3F6AA6}
+*{box-sizing:border-box;margin:0}
+html,body{width:1440px;height:900px;overflow:hidden}
+body{background:var(--cream);color:var(--ink);font:15px/1.45 Poppins,system-ui,sans-serif}
+.bar{height:76px;display:flex;align-items:center;gap:28px;padding:0 48px;background:#fff;border-bottom:1px solid var(--line)}
+.bar img{height:48px}
+.title{display:flex;flex-direction:column;line-height:1.15}
+.title b{font-size:19px;color:var(--plum)}.title span{font-size:12.5px;color:var(--soft)}
+.search{flex:1;max-width:520px;margin-left:24px;display:flex;align-items:center;gap:10px;height:46px;padding:0 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--cream);color:var(--soft)}
+.tabs{display:flex;gap:6px;margin-left:auto}
+.tabs a{padding:10px 18px;border-radius:12px;font-weight:600;font-size:14.5px;color:var(--soft);text-decoration:none}
+.tabs a.on{background:var(--plum);color:#fff}
+main{padding:28px 48px 0}
+.finde{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:0;background:var(--plum);color:#fff;border-radius:22px;overflow:hidden;position:relative}
+.finde .head{padding:26px 30px}
+.finde h1{font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-.01em}
+.finde .date{margin-top:6px;color:#F6C9E4;font-size:14px}
+.finde .go{display:inline-flex;margin-top:18px;padding:11px 18px;border-radius:12px;background:var(--sun);color:var(--ink);font-weight:600;font-size:14px}
+.day{padding:22px 26px;border-left:1px solid rgba(255,255,255,.16)}
+.day h2{font-size:15px;font-weight:600;color:var(--sun);margin-bottom:10px}
+.slot{display:flex;gap:12px;align-items:baseline;padding:7px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px}
+.slot i{font-style:normal;color:#F6C9E4;width:52px;font-variant-numeric:tabular-nums;font-size:13px}
+.kite{position:absolute;right:-30px;top:-40px;width:180px;opacity:.14}
+.time{display:flex;gap:10px;align-items:center;margin:26px 0 6px}
+.time b{font-size:14px;margin-right:6px}
+.chip{padding:8px 15px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:13.5px;font-weight:500}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.shelf{margin-top:20px}
+.shelf h2{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:600}
+.shelf h2 svg{width:18px;height:18px}
+.shelf h2 small{font-size:13px;color:var(--soft);font-weight:500}
+.shelf h2 a{margin-left:auto;font-size:13.5px;color:var(--plum);font-weight:600;text-decoration:none}
+.row{display:flex;gap:16px;margin-top:12px}
+.card{width:316px;flex:none;background:#fff;border-radius:18px;padding:18px 18px 16px;position:relative;overflow:hidden;box-shadow:0 6px 18px -10px rgba(54,38,47,.25)}
+.card:after{content:"";position:absolute;right:0;top:0;width:38px;height:38px;background:var(--c);clip-path:polygon(0 0,100% 0,100% 100%)}
+.card h3{font-size:16px;font-weight:600;line-height:1.25;padding-right:24px}
+.card p{font-size:13px;color:var(--soft);margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;gap:10px;margin-top:12px;font-size:12.5px;font-weight:600;color:var(--ink)}
+.meta span{padding:4px 10px;border-radius:8px;background:var(--cream)}
+</style></head><body>
+<header class="bar">
+  <img src="logo-oi.png" alt="Operación Infancia">
+  <div class="title"><b>Catálogo de Actividades</b><span>Manual de Programas</span></div>
+  <div class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Buscar actividad, material o palabra…</div>
+  <nav class="tabs"><a class="on">Inicio</a><a>Actividades</a><a>Herramientas</a></nav>
+</header>
+<main>
+  <section class="finde">
+    <svg class="kite" viewBox="0 0 100 100"><path d="M0 30 30 0v30z" fill="#fff"/><path d="M34 0l30 30H34z" fill="#fff"/><path d="M0 34h30v60z" fill="#fff"/></svg>
+    <div class="head">
+      <h1>Próxima salida</h1>
+      <div class="date">Sábado 8 y domingo 9 de noviembre</div>
+      <span class="go">Ver programa completo</span>
+    </div>
+    <div class="day"><h2>Sábado</h2>
+      <div class="slot"><i>AM</i>Mucho gusto, yo soy…</div>
+      <div class="slot"><i>13:00</i>Almuerzo y recreo activo</div>
+      <div class="slot"><i>15:30</i>Reflexión general</div>
+    </div>
+    <div class="day"><h2>Domingo</h2>
+      <div class="slot"><i>AM</i>Misión: Operación Infancia</div>
+      <div class="slot"><i>13:00</i>Almuerzo y recreo activo</div>
+      <div class="slot"><i>15:30</i>Reflexión general</div>
+    </div>
+  </section>
+
+  <div class="time"><b>Tiempo disponible</b>
+    <span class="chip on">Cualquiera</span><span class="chip">Hasta 20 min</span><span class="chip">20–40 min</span><span class="chip">Más de 40 min</span><span class="chip">Todo el bloque</span>
+  </div>
+
+  <section class="shelf">
+    <h2><svg viewBox="0 0 10 10"><path d="M0 0h10L0 10z" fill="#2E7D6B"/></svg>Trabajo en equipo <small>37 actividades</small><a>Ver todas</a></h2>
+    <div class="row">
+      <div class="card" style="--c:var(--equipo)"><h3>Misión: Operación Infancia</h3><p>Una misión imposible con desafíos irresolubles: los NNA aprenden que no todo se logra solo.</p><div class="meta"><span>45–60 min</span><span>Papelito, telas</span></div></div>
+      <div class="card" style="--c:var(--equipo)"><h3>Talleres: ¡Probemos!</h3><p>Estaciones rotativas donde cada núcleo prueba algo nuevo y se apoya para lograrlo.</p><div class="meta"><span>35–45 min</span><span>Varios</span></div></div>
+      <div class="card" style="--c:var(--equipo)"><h3>La torre de papel</h3><p>Construir la torre más alta solo con papel y cinta, repartiendo roles en el equipo.</p><div class="meta"><span>20–30 min</span><span>Papel, cinta</span></div></div>
+      <div class="card" style="--c:var(--equipo)"><h3>Cruzar el río</h3><p>Todo el grupo debe cruzar usando pocas “piedras” sin que nadie quede atrás.</p><div class="meta"><span>20 min</span><span>Cartones</span></div></div>
+    </div>
+  </section>
+  <section class="shelf">
+    <h2><svg viewBox="0 0 10 10"><path d="M0 0h10L0 10z" fill="#E0304F"/></svg>Empatía <small>25 actividades</small><a>Ver todas</a></h2>
+    <div class="row">
+      <div class="card" style="--c:var(--empatia)"><h3>En los zapatos del otro</h3></div>
+      <div class="card" style="--c:var(--empatia)"><h3>Laberinto de las emociones</h3></div>
+      <div class="card" style="--c:var(--empatia)"><h3>Cartas a un amigo</h3></div>
+      <div class="card" style="--c:var(--empatia)"><h3>El espejo</h3></div>
+    </div>
+  </section>
+</main>
+</body></html>

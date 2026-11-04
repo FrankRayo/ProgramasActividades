@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<title>Lista y ficha</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--plum:#800061;--plum2:#6A0050;--coral:#F83860;--sun:#F8B840;--cream:#FAF4EA;--ink:#36262F;--soft:#7A6370;--line:#EADCCD;
+--equipo:#2E7D6B;--emociones:#C07A1A;--empatia:#E0304F;--resiliencia:#6D4A9C;--autoestima:#B23073;--convivencia:#3F6AA6}
+*{box-sizing:border-box;margin:0}
+html,body{width:1440px;height:900px;overflow:hidden}
+body{background:var(--cream);color:var(--ink);font:15px/1.45 Poppins,system-ui,sans-serif;display:grid;grid-template-columns:232px 264px 330px 1fr}
+.rail{background:var(--plum);color:#fff;padding:22px 18px;display:flex;flex-direction:column;gap:6px}
+.logo{background:#fff;border-radius:16px;padding:12px;margin-bottom:18px;display:flex;justify-content:center}
+.logo img{height:64px}
+.nav{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;font-weight:500;color:#F6C9E4}
+.nav.on{background:var(--plum2);color:#fff;font-weight:600}
+.nav svg{width:20px;height:20px}
+.nav b{margin-left:auto;background:var(--sun);color:var(--ink);font-size:12px;padding:2px 8px;border-radius:999px}
+.rail .foot{margin-top:auto;font-size:12.5px;color:#E7A9CF}
+.filters{padding:26px 22px;border-right:1px solid var(--line)}
+.search{display:flex;align-items:center;gap:10px;height:44px;padding:0 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--soft);font-size:14px}
+.fl{margin-top:24px;font-size:13px;font-weight:600}
+.opt{display:flex;align-items:center;gap:10px;padding:8px 2px;font-size:14px}
+.box{width:18px;height:18px;border-radius:5px;border:1.5px solid #CDBBAE;background:#fff}
+.box.on{background:var(--plum);border-color:var(--plum)}
+.tri{width:12px;height:12px;clip-path:polygon(0 0,100% 0,0 100%);background:var(--c)}
+.opt small{margin-left:auto;color:var(--soft);font-size:12.5px;font-variant-numeric:tabular-nums}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.seg span{padding:9px 6px;text-align:center;border:1.5px solid var(--line);border-radius:10px;font-size:13px;background:#fff}
+.seg .on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.list{padding:26px 0;border-right:1px solid var(--line);background:#fff}
+.list .count{padding:0 24px 12px;font-size:13px;color:var(--soft)}
+.item{display:flex;gap:14px;padding:15px 24px;border-top:1px solid var(--line)}
+.item.on{background:#FBEAF4}
+.item .tri{width:14px;height:14px;margin-top:4px;flex:none}
+.item b{display:block;font-size:15px;font-weight:600;line-height:1.3}
+.item div span{font-size:12.5px;color:var(--soft)}
+.ficha{padding:30px 44px;overflow:hidden}
+.tags{display:flex;gap:8px}
+.tag{padding:5px 12px;border-radius:999px;font-size:12.5px;font-weight:600;color:#fff;background:var(--c)}
+.ficha h1{font-size:34px;font-weight:700;letter-spacing:-.015em;margin-top:12px;line-height:1.1}
+.facts{display:flex;gap:26px;margin-top:12px;color:var(--soft);font-size:14px}
+.facts b{color:var(--ink)}
+.cols{display:grid;grid-template-columns:1.5fr 1fr;gap:34px;margin-top:24px}
+h2{font-size:15px;font-weight:600;margin:0 0 10px;color:var(--plum)}
+.prop{font-size:15px;max-width:62ch}
+.step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:14.5px}
+.step .box{flex:none;margin-top:2px}
+.step.done{color:var(--soft);text-decoration:line-through}
+.mat{background:#fff;border-radius:16px;padding:18px 20px}
+.mat li{list-style:none;padding:7px 0;border-top:1px solid var(--line);font-size:14px}
+.mat li:first-of-type{border-top:0}
+.tip{margin-top:16px;background:#FEF1D6;border-radius:16px;padding:16px 18px;font-size:13.5px}
+.tip b{display:block;margin-bottom:4px}
+.stars{margin-top:16px;display:flex;gap:4px;color:var(--sun)}
+.stars svg{width:22px;height:22px}
+</style></head><body>
+<aside class="rail">
+  <div class="logo"><img src="logo-oi.png" alt="Operación Infancia"></div>
+  <div class="nav on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Actividades</div>
+  <div class="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Este finde<b>6</b></div>
+  <div class="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0 5 5L12 19l-4 1 1-4z"/></svg>Herramientas</div>
+  <div class="foot">Hecho por La Pampilla con cariño para ustedes</div>
+</aside>
+<section class="filters">
+  <div class="search"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Buscar…</div>
+  <p class="fl">Tiempo disponible</p>
+  <div class="seg"><span>Hasta 20</span><span class="on">20–40 min</span><span>+40 min</span><span>Bloque</span></div>
+  <p class="fl">Habilidad</p>
+  <div class="opt"><span class="box on"></span><span class="tri" style="--c:var(--autoestima)"></span>Autoestima<small>22</small></div>
+  <div class="opt"><span class="box"></span><span class="tri" style="--c:var(--equipo)"></span>Trabajo en equipo<small>37</small></div>
+  <div class="opt"><span class="box"></span><span class="tri" style="--c:var(--emociones)"></span>Emociones<small>24</small></div>
+  <div class="opt"><span class="box"></span><span class="tri" style="--c:var(--empatia)"></span>Empatía<small>25</small></div>
+  <div class="opt"><span class="box"></span><span class="tri" style="--c:var(--resiliencia)"></span>Resiliencia<small>21</small></div>
+  <div class="opt"><span class="box"></span><span class="tri" style="--c:var(--convivencia)"></span>Convivencia<small>4</small></div>
+  <p class="fl">Tema</p>
+  <div class="opt"><span class="box"></span>Reglas de oro<small>3</small></div>
+</section>
+<section class="list">
+  <p class="count">9 actividades</p>
+  <div class="item on"><span class="tri" style="--c:var(--autoestima)"></span><div><b>Mucho gusto, yo soy…</b><span>25–30 min · Cartulinas, lana</span></div></div>
+  <div class="item"><span class="tri" style="--c:var(--autoestima)"></span><div><b>Sembrando mi ser</b><span>20–30 min · Semillas, vasos</span></div></div>
+  <div class="item"><span class="tri" style="--c:var(--autoestima)"></span><div><b>Mi escudo</b><span>30 min · Cartón, plumones</span></div></div>
+  <div class="item"><span class="tri" style="--c:var(--autoestima)"></span><div><b>El árbol de las virtudes</b><span>35 min · Papelógrafo</span></div></div>
+  <div class="item"><span class="tri" style="--c:var(--autoestima)"></span><div><b>Lo que me hace único</b><span>25 min · Sin materiales</span></div></div>
+  <div class="item"><span class="tri" style="--c:var(--autoestima)"></span><div><b>Carta a mi yo del futuro</b><span>30 min · Hojas, sobres</span></div></div>
+</section>
+<article class="ficha">
+  <div class="tags"><span class="tag" style="--c:var(--autoestima)">Autoestima</span></div>
+  <h1>Mucho gusto, yo soy…</h1>
+  <div class="facts"><span><b>25–30 min</b></span><span>En núcleos</span><span>★ 4,6 (12)</span></div>
+  <div class="cols">
+    <div>
+      <h2>Propósito</h2>
+      <p class="prop">Cada NNA crea su propia tarjeta de identificación, decorada a su gusto, para usar toda la semana. Ayuda a conocerse y potencia el sentido de comunidad.</p>
+      <h2 style="margin-top:22px">Desarrollo</h2>
+      <div class="step done"><span class="box on"></span>Reunir a NNA y voluntarios en núcleos; conversar qué le gusta a cada uno.</div>
+      <div class="step"><span class="box"></span>Escribir nombre/apodo, edad y curso; al reverso, comida o música favorita.</div>
+      <div class="step"><span class="box"></span>Decorar la tarjeta con los materiales disponibles.</div>
+      <div class="step"><span class="box"></span>Hacer dos orificios y pasar un lazo de lana para colgarla.</div>
+    </div>
+    <div>
+      <h2>Materiales</h2>
+      <ul class="mat"><li>Cartulinas</li><li>Lápices o marcadores</li><li>Lana</li><li>Perforadora</li></ul>
+      <div class="tip"><b>Reflexión</b>Conversar con cada NNA por qué eligió esos elementos.</div>
+    </div>
+  </div>
+</article>
+</body></html>

@@ -1,0 +1,46 @@
+{
+  "title": "Bocetos: rediseño del Catálogo de Actividades",
+  "question": "Tres maneras de organizar la app con la misma paleta y el logo de Operación Infancia. Elige una, ajústala con un comentario o pide otras tres.",
+  "options": [
+    {
+      "id": "estantes",
+      "kind": "assigned",
+      "label": "Estantes por habilidad",
+      "kicker": "THE ROLL",
+      "lineage": "Portada con el finde arriba y una fila por habilidad",
+      "thesis": "Entras y ves qué toca este finde; debajo, cada habilidad es un estante de actividades.",
+      "palette": ["#800061", "#F83860", "#F8B840", "#FAF4EA", "#36262F"],
+      "materials": ["triángulos de la cometa como marca de habilidad", "filas con scroll lateral"],
+      "viewport": "Barra superior con logo, búsqueda y tres pestañas; tarjeta ciruela del próximo finde con sábado/domingo; estantes de colores por habilidad.",
+      "risk": "Con 6 estantes la página es larga; los filtros de tiempo quedan menos a mano.",
+      "html": ".impeccable/mocks/decision/estantes.html"
+    },
+    {
+      "id": "lista-ficha",
+      "kind": "dealt",
+      "label": "Lista y ficha lado a lado",
+      "lineage": "Filtros a la izquierda, lista al centro, ficha completa a la derecha",
+      "thesis": "Planificar sin abrir y cerrar ventanas: tocas una actividad y la ficha queda al lado.",
+      "palette": ["#800061", "#F83860", "#F8B840", "#FAF4EA", "#36262F"],
+      "materials": ["riel lateral ciruela con logo", "pasos como checklist marcable"],
+      "viewport": "Riel ciruela con logo y navegación; filtros fijos; lista compacta con tiempo y habilidad; ficha con materiales y pasos para marcar.",
+      "risk": "En celular se vuelve lista → ficha a pantalla completa; el lado a lado solo luce en computador.",
+      "html": ".impeccable/mocks/decision/lista-ficha.html"
+    },
+    {
+      "id": "guiado",
+      "kind": "dealt",
+      "label": "Buscador guiado",
+      "lineage": "Dos preguntas grandes antes de la lista",
+      "thesis": "La app pregunta lo que el voluntario ya sabe: cuánto tiempo hay y qué quieren trabajar.",
+      "palette": ["#800061", "#F83860", "#F8B840", "#FAF4EA", "#36262F"],
+      "materials": ["botones grandes para el pulgar", "habilidades como triángulos de la cometa"],
+      "viewport": "Logo grande; pregunta 1 con 4 botones de tiempo; pregunta 2 con 6 habilidades; resultados al instante; franja del finde.",
+      "risk": "Para quien ya sabe el nombre de la actividad, las preguntas son un paso de más (la búsqueda queda arriba).",
+      "html": ".impeccable/mocks/decision/guiado.html"
+    }
+  ],
+  "reroll": true,
+  "buildPath": { "value": "code" },
+  "steer": true
+}

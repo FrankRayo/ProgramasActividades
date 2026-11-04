@@ -1,0 +1,49 @@
+{
+  "title": "Bocetos móviles: Catálogo de Actividades",
+  "question": "Tres maneras de usar la app en el celular, con la misma paleta y el logo. Elige una, ajústala con un comentario o pide otras tres.",
+  "options": [
+    {
+      "id": "m-estantes",
+      "kind": "assigned",
+      "label": "Inicio con estantes",
+      "kicker": "THE ROLL",
+      "lineage": "Portada con el finde y filas por habilidad",
+      "thesis": "Abres la app y ves qué toca este finde; debajo, cada habilidad es una fila que se desliza con el dedo.",
+      "palette": ["#800061", "#F83860", "#F8B840", "#FAF4EA", "#36262F"],
+      "materials": ["barra de 4 pestañas abajo", "triángulo de la cometa en cada tarjeta"],
+      "viewport": "Logo y búsqueda arriba; tarjeta ciruela con sábado y domingo; chips de tiempo; estantes deslizables; pestañas abajo.",
+      "risk": "Para filtrar por varias cosas a la vez hay que ir a la pestaña Actividades.",
+      "html": ".impeccable/mocks/decision/m-estantes.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "m-ficha",
+      "kind": "dealt",
+      "label": "Ficha para terreno",
+      "lineage": "La ficha pensada para usarse mientras se hace la actividad",
+      "thesis": "La ficha se sigue paso a paso con un botón grande abajo, sin tener que leer todo de corrido.",
+      "palette": ["#800061", "#F83860", "#F8B840", "#FAF4EA", "#36262F"],
+      "materials": ["pestañas Propósito / Pasos / Reflexión", "paso actual destacado"],
+      "viewport": "Encabezado ciruela con nombre, tiempo y habilidad; materiales como chips; pasos numerados con el actual marcado; botón Siguiente paso abajo.",
+      "risk": "Es la pantalla de detalle; la lista y el inicio se combinan con cualquiera de las otras dos opciones.",
+      "html": ".impeccable/mocks/decision/m-ficha.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "m-guiado",
+      "kind": "dealt",
+      "label": "Buscador guiado",
+      "lineage": "Dos preguntas con botones grandes",
+      "thesis": "La app pregunta cuánto tiempo hay y qué quieren trabajar; todo se toca con el pulgar.",
+      "palette": ["#800061", "#F83860", "#F8B840", "#FAF4EA", "#36262F"],
+      "materials": ["botones grandes de 2 columnas", "botón fijo Ver actividades con contador"],
+      "viewport": "Logo y Buscar arriba; franja amarilla del finde; pregunta de tiempo; pregunta de habilidad; botón ciruela con cuántas actividades calzan; 3 pestañas abajo.",
+      "risk": "Quien ya sabe el nombre usa el botón Buscar de arriba, un toque más.",
+      "html": ".impeccable/mocks/decision/m-guiado.html",
+      "htmlFrame": "390x844"
+    }
+  ],
+  "reroll": true,
+  "buildPath": { "value": "code" },
+  "steer": true
+}

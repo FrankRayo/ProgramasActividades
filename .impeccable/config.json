@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/*.html"
+        ],
+        "createdAt": "2026-11-04T06:58:23.305Z",
+        "reason": "PRODUCT.md brand commitment: user asked to keep the existing palette, cream ground #FAF4EA"
+      }
+    ]
+  }
+}
