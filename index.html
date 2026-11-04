@@ -14,6 +14,9 @@
 <meta name="tdm-reservation" content="1">
 <link rel="icon" href="icon-oi.png">
 <link rel="apple-touch-icon" href="icon-oi.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bitácora OI">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -337,6 +340,31 @@
   .tool-list{list-style:none; margin:0; padding:0; display:grid; gap:2px;}
   .tool-list li{padding:10px 0; border-top:1px solid var(--line); font-size:.9rem; line-height:1.5; color:var(--ink-soft);}
   .tool-list li b{display:block; color:var(--ink); font-size:.95rem;}
+  .install{margin-top:18px; border-color:color-mix(in srgb, var(--accent) 35%, var(--line));}
+  .install-steps{list-style:none; margin:0; padding:0; display:grid; gap:14px; counter-reset:paso;}
+  .install-steps li{display:grid; grid-template-columns:104px 1fr; gap:14px; align-items:center; padding-top:14px; border-top:1px solid var(--line); counter-increment:paso; font-size:.88rem; line-height:1.5; color:var(--ink-soft);}
+  .install-steps li > div b{display:block; color:var(--ink); font-size:.95rem; margin-bottom:2px;}
+  .install-steps li > div b::before{content:counter(paso) ". "; color:var(--accent-text);}
+  .install-steps li > div b.inline{display:inline; font-size:inherit;}
+  .install-steps li > div b.inline::before{content:none;}
+  .install-steps svg{width:104px; height:auto; display:block;}
+  .ph-body{fill:#2B2128;}
+  .ph-screen{fill:#F4EFEA;}
+  .ph-sheet{fill:#FFFFFF;}
+  .ph-home{fill:#6A4C63;}
+  .ph-app rect{fill:rgba(255,255,255,.28);}
+  .ph-card{fill:#EFE7E0;}
+  .ph-line{fill:#D8CCC3;}
+  .ph-bar{fill:#FFFFFF;}
+  .ph-ico{fill:none; stroke:#8A7A84; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+  .ph-ico-on{stroke:#36262F;}
+  .ph-hit{fill:none; stroke:var(--accent-3); stroke-width:3;}
+  .ph-hit-row{stroke:var(--accent-3); stroke-width:2.5;}
+  .ph-hit-pill{fill:none; stroke:var(--accent-3); stroke-width:3;}
+  .ph-txt{font:600 8px Poppins, sans-serif; fill:#36262F;}
+  .ph-soft{fill:#8A7A84; font-weight:500;}
+  .ph-strong{font-weight:700;}
+  .ph-tiny{font-size:5.5px; fill:#fff; font-weight:500;}
   .moment-nota{margin:10px 0 0; font-size:.85rem; background:color-mix(in srgb, var(--accent-3) 16%, var(--surface)); border-radius:12px; padding:10px 12px;}
   @media (prefers-reduced-motion:reduce){
     .dice-card.pop{animation:none;}
@@ -454,6 +482,70 @@
     <div class="dice-card" id="dice-card" hidden aria-live="polite"></div>
 
     <div class="moments" id="moments"></div>
+
+    <details class="moment install" id="install-ios" style="--mc:var(--accent)">
+      <summary><i></i><span><b>Instálala en tu iPhone</b>Tenla en tu pantalla de inicio como una app</span></summary>
+      <div class="moment-body">
+        <ol class="install-steps">
+          <li>
+            <svg viewBox="0 0 140 200" role="img" aria-label="Safari con el botón Compartir marcado en la barra de abajo">
+              <rect x="2" y="2" width="136" height="196" rx="20" class="ph-body"/>
+              <rect x="10" y="22" width="120" height="132" rx="6" class="ph-screen"/>
+              <rect x="20" y="34" width="34" height="34" rx="4" fill="var(--accent)"/><rect x="60" y="38" width="58" height="8" rx="4" class="ph-line"/><rect x="60" y="52" width="40" height="8" rx="4" class="ph-line"/>
+              <rect x="20" y="80" width="100" height="24" rx="6" class="ph-card"/><rect x="20" y="110" width="100" height="24" rx="6" class="ph-card"/>
+              <rect x="10" y="158" width="120" height="30" rx="8" class="ph-bar"/>
+              <path d="M24 168l-5 5 5 5M42 168l5 5-5 5" class="ph-ico"/>
+              <circle cx="70" cy="173" r="13" class="ph-hit"/>
+              <path d="M70 165v11M66 169l4-4 4 4M64 172v7h12v-7" class="ph-ico ph-ico-on"/>
+              <rect x="94" y="167" width="12" height="12" rx="2" class="ph-ico"/><rect x="113" y="167" width="12" height="12" rx="2" class="ph-ico"/>
+            </svg>
+            <div><b>Abre la página en Safari y toca Compartir</b>Es el cuadrado con una flecha hacia arriba, en la barra de abajo. Si no lo ves, toca primero el botón <b class="inline">···</b>.</div>
+          </li>
+          <li>
+            <svg viewBox="0 0 140 200" role="img" aria-label="Menú Compartir con la opción Agregar a pantalla de inicio marcada">
+              <rect x="2" y="2" width="136" height="196" rx="20" class="ph-body"/>
+              <rect x="10" y="22" width="120" height="166" rx="6" class="ph-screen"/>
+              <rect x="10" y="64" width="120" height="124" rx="12" class="ph-sheet"/>
+              <rect x="56" y="70" width="28" height="4" rx="2" class="ph-line"/>
+              <rect x="18" y="82" width="104" height="20" rx="5" class="ph-card"/><rect x="26" y="90" width="50" height="5" rx="2.5" class="ph-line"/>
+              <rect x="18" y="108" width="104" height="22" rx="5" class="ph-card ph-hit-row"/>
+              <text x="24" y="122" class="ph-txt" textLength="76" lengthAdjust="spacingAndGlyphs">Agregar a pantalla de inicio</text>
+              <rect x="105" y="113" width="12" height="12" rx="3" class="ph-ico ph-ico-on"/><path d="M111 116v6M108 119h6" class="ph-ico ph-ico-on"/>
+              <rect x="18" y="136" width="104" height="20" rx="5" class="ph-card"/><rect x="26" y="144" width="40" height="5" rx="2.5" class="ph-line"/>
+              <rect x="18" y="160" width="104" height="20" rx="5" class="ph-card"/><rect x="26" y="168" width="56" height="5" rx="2.5" class="ph-line"/>
+            </svg>
+            <div><b>Toca “Agregar a pantalla de inicio”</b>Desliza hacia abajo en el menú hasta encontrarla. Tiene un ícono de cuadrado con un +.</div>
+          </li>
+          <li>
+            <svg viewBox="0 0 140 200" role="img" aria-label="Pantalla para confirmar con el botón Agregar marcado arriba a la derecha">
+              <rect x="2" y="2" width="136" height="196" rx="20" class="ph-body"/>
+              <rect x="10" y="22" width="120" height="166" rx="6" class="ph-sheet"/>
+              <text x="16" y="40" class="ph-txt ph-soft">Cancelar</text>
+              <rect x="84" y="28" width="42" height="18" rx="9" class="ph-hit-pill"/>
+              <text x="90" y="40" class="ph-txt ph-strong" textLength="30" lengthAdjust="spacingAndGlyphs">Agregar</text>
+              <rect x="18" y="56" width="104" height="44" rx="8" class="ph-card"/>
+              <image href="icon-oi.png" x="24" y="62" width="32" height="32"/>
+              <text x="64" y="76" class="ph-txt ph-strong">Bitácora OI</text>
+              <rect x="64" y="84" width="48" height="5" rx="2.5" class="ph-line"/>
+            </svg>
+            <div><b>Toca “Agregar”</b>Arriba a la derecha. Puedes dejar el nombre “Bitácora OI” o cambiarlo.</div>
+          </li>
+          <li>
+            <svg viewBox="0 0 140 200" role="img" aria-label="Pantalla de inicio del iPhone con el ícono de Bitácora OI">
+              <rect x="2" y="2" width="136" height="196" rx="20" class="ph-body"/>
+              <rect x="10" y="22" width="120" height="166" rx="6" class="ph-home"/>
+              <g class="ph-app"><rect x="20" y="36" width="24" height="24" rx="6"/><rect x="58" y="36" width="24" height="24" rx="6"/><rect x="96" y="36" width="24" height="24" rx="6"/>
+              <rect x="20" y="76" width="24" height="24" rx="6"/><rect x="58" y="76" width="24" height="24" rx="6"/></g>
+              <rect x="94" y="74" width="28" height="28" rx="7" class="ph-hit-pill"/>
+              <rect x="96" y="76" width="24" height="24" rx="6" fill="#fff"/>
+              <image href="icon-oi.png" x="98" y="78" width="20" height="20"/>
+              <text x="91" y="112" class="ph-txt ph-tiny">Bitácora OI</text>
+            </svg>
+            <div><b>¡Listo! Ábrela desde el ícono</b>Se abre a pantalla completa, sin las barras de Safari, y siempre con las actividades al día.</div>
+          </li>
+        </ol>
+      </div>
+    </details>
   </section>
 
   <footer class="site-footer">Hecho por La Pampilla con cariño para ustedes - Felipe Fesser<br>© 2026 Felipe Fesser. Todos los derechos reservados.</footer>
@@ -2061,6 +2153,8 @@ function fillTools(){
 }
 
 fillTools();
+// Si ya la abrieron desde el ícono de inicio, el tutorial sobra.
+if(navigator.standalone || matchMedia("(display-mode: standalone)").matches) document.getElementById("install-ios").hidden = true;
 render();
 loadRatings();
 </script>
