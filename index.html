@@ -1836,14 +1836,81 @@ const ACTIVITIES = [
    más "dia" (uno de FINDE.dias) y "bloque" (horario).
    Si "actividades" queda vacío, la pestaña muestra un mensaje de "no hay". */
 const FINDE = {
-  titulo:"Próxima salida",
-  fecha:"",
-  zonas:"",   // zonas que van a la salida, ej. "Lampa, La Pampilla, Calle Larga y Batuco"
+  titulo:"Salida de noviembre",
+  fecha:"6–8 de noviembre",
+  zonas:"Melipilla, Huechún, Puangue, MR y Peñaflor",   // zonas que van a la salida, ej. "Lampa, La Pampilla, Calle Larga y Batuco"
   dias:[
     {id:"sabado",  label:"Sábado",  nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"},
     {id:"domingo", label:"Domingo", nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"}
   ],
   actividades:[
+{...ACTIVITIES.find(a=>a.id==="sep1"), dia:"sabado", bloque:"10:00 – 10:45"},
+
+{id:"n2", dia:"sabado", bloque:"11:00 – 11:45", nombre:"Reglas de Oro: dulce o truco", habilidades:["EQUIPO","CONVIVENCIA"], tiempo:"~30 min", bucket:"media",
+ materiales:["Cartulinas de dos colores distintos: letras D-U-L-C-E (un color) y T-R-U-C-O (otro color)","Pliegos de papel kraft","Plumones y lápices de colores","3 carteles con las Reglas de Oro"],
+ proposito:"Que los NNAJ reconozcan qué significa cumplir y no cumplir las Reglas de Oro a través de una búsqueda. Un equipo representa situaciones donde las reglas sí se cumplen (Dulce) y el otro situaciones donde no se cumplen (Truco), comprendiendo que cada persona puede elegir cómo actuar y que cuidar las reglas depende de todos.",
+ desarrollo:[
+  "<b>Preparación previa:</b> se esconden por el colegio las letras de cada palabra, cada una en cartulinas de distinto color. Además, se define si al final cada equipo trabajará con papelógrafo o con actuación.",
+  "<b>Presentación:</b> con ambientación de Halloween, se reúne a toda la zona en el círculo y se anuncia que llegó Halloween. Se divide la zona en dos grandes equipos y se explica que cada uno debe encontrar 5 letras de su palabra (que aún no conocen).",
+  "<b>La búsqueda:</b> a la señal, cada equipo recorre la escuela buscando solo las letras de su color. Al reunir las cinco, se juntan, las ordenan y descubren su palabra.",
+  "<b>Cada palabra, un desafío:</b> se recuerdan brevemente las tres reglas y cada equipo recibe su misión y la prepara como papelógrafo o actuación. Equipo Dulce: muestra situaciones en que sí se cumplen las Reglas de Oro, indicando qué regla se cumple en cada una. Equipo Truco: muestra situaciones en que no se cumplen, indicando qué regla se rompe.",
+  "<b>Presentación:</b> se reúne a toda la zona en el círculo y cada equipo presenta. En el caso del Equipo Truco, al terminar cada situación todos identifican qué regla se rompió y proponen cómo convertir el truco en dulce, es decir, cómo se habría solucionado."
+ ],
+ reflexion:"En el círculo general: ¿Qué diferencia hubo entre las situaciones 'dulce' y las 'truco'? ¿Qué podemos hacer para que en OI y en el colegio haya más momentos 'dulce'? Reforzar que cada uno elige cómo actuar y que las Reglas de Oro se cuidan entre todos.",
+ tips:[]},
+
+{id:"n3", dia:"sabado", bloque:"12:00 – 13:00", nombre:"Mi personaje especial: modo Halloween", habilidades:["AUTOESTIMA","EMPATIA"], tiempo:"~30 min", bucket:"media",
+ materiales:["Hoja en blanco","Lápices de colores","Plumones"],
+ proposito:"Fomentar el conocimiento mutuo y la valoración de las cualidades de cada integrante del grupo mediante la creación de un personaje que combine características físicas, gustos y habilidades de sus compañeros. A través de la creatividad y un juego de adivinanzas, los NNAJ descubren nuevas cosas sobre los demás y reconocen sus particularidades.",
+ desarrollo:[
+  "Los voluntarios cuentan que el monstruo creado por el grupo necesita nuevos amigos, ¡y cada NNAJ creará uno! Deberán inventar otro monstruo usando características de distintas personas de su grupo: no se trata de copiar a alguien completo, sino de mezclar elementos (el pelo de una persona, la sonrisa de otra, el deporte favorito de alguien más o una habilidad especial de otro compañero).",
+  "Antes de dibujar, los voluntarios invitan a mirar a sus compañeros y pensar en sus características, gustos, talentos o intereses. Se dan ejemplos de cómo representarlas de forma entretenida (si alguien tiene el pelo rubio con rulos, se puede dibujar como 'fideos' o 'maruchan'), buscando que de una misma característica salgan distintas interpretaciones. Reforzar que todo se hace con respeto y sin burlas.",
+  "Cada NNAJ recibe su hoja y construye su monstruo, con características sacadas de distintas personas del grupo: físicas, de personalidad, intereses o habilidades.",
+  "Con los dibujos terminados, cada uno presenta su monstruo al grupo y explica algunas de sus características, ¡pero sin revelar todavía en quiénes se inspiró! Los voluntarios motivan a presentarlos de manera entretenida."
+ ],
+ reflexion:"Reforzar que al crear sus monstruos pudieron conocer mejor a sus compañeros y reconocer lo especial de cada uno. Así como una misma característica puede representarse de distintas formas, las personas también vemos e interpretamos las cosas de manera diferente. Lo importante es valorar nuestra propia forma de ser.",
+ tips:[]},
+
+{id:"n4", dia:"sabado", bloque:"14:30 – 15:15", nombre:"¡Hoy dirigimos nosotros!", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"~45 min", bucket:"larga",
+ materiales:["Una caja de materiales para toda la zona (conos, pelota pequeña, globos, cuerda, cucharas de madera, cartulinas, gorros, lápices, etc.)","Tarjetas de imprevistos para los voluntarios"],
+ proposito:"Que cada equipo o núcleo cree una mini-actividad y la presente al resto de la zona. Mientras la dirigen, enfrentan imprevistos que complican el juego y tienen que adaptarse y resolverlos juntos, descubriendo que los planes pueden torcerse y que, con creatividad, comunicación y buena disposición, la actividad sigue funcionando.",
+ desarrollo:[
+  "<b>Presentación:</b> en el círculo, se divide la zona en 4 equipos y cada uno se convierte en una fábrica de juegos: creará una actividad y se la presentará al resto. Los materiales son limitados, así que deben elegir bien.",
+  "<b>La caja de la zona:</b> se ubica la caja grande al centro y se sortea el orden de elección. Por turnos, cada equipo conversa, se pone de acuerdo y elige un objeto, que ya no estará disponible para los demás. En la segunda vuelta el orden se invierte. Se sigue hasta que cada uno tenga 4 objetos o se acabe la caja.",
+  "<b>Creamos el juego:</b> cada equipo crea un juego corto (unos 5 minutos), divertido, simple y posible de jugar con los otros equipos. Deciden nombre, reglas y roles para presentarlo (quién explica, quién demuestra, quién arbitra). Los voluntarios ayudan a que todos participen, pero no proponen el juego.",
+  "<b>Rondas:</b> cada equipo explica su juego y lo dirige. Durante la partida, los voluntarios de apoyo activan imprevistos sin aviso, y los NNAJ que dirigen deben resolverlos como equipo. Al terminar se intercambian roles, hasta que todos hayan presentado."
+ ],
+ reflexion:"En cada equipo: ¿Cómo decidieron qué materiales elegir? ¿Qué pasó cuando se acabó un objeto que querían? ¿Qué pasó cuando apareció un imprevisto? ¿Qué hizo cada uno para resolverlo? Reforzar que equivocarse o que algo salga distinto no significa fracasar: lo importante es cómo reaccionamos y cómo nos apoyamos.",
+ tips:["Ideas de imprevistos: se retira un material que están usando, nadie entendió, hay alguien haciendo mucho ruido e interrumpiendo, hay que agregar una nueva regla que complique el juego, etc."]},
+
+{...ACTIVITIES.find(a=>a.id==="sep5"), dia:"domingo", bloque:"10:00 – 10:45"},
+
+{id:"n6", dia:"domingo", bloque:"11:00 – 11:45", nombre:"En tus zapatos", habilidades:["EMPATIA"], tiempo:"~20 min", bucket:"corta",
+ materiales:["Plantillas de zapatos impresas, una por NNAJ (anexo A)","Lápices grafito y gomas","Lápices de colores y plumones","Disfraz para el sketch del zapatero (opcional)"],
+ proposito:"Fomentar la empatía mediante el reconocimiento de las emociones y experiencias de otras personas. Creando e intercambiando plantillas de zapatos, los NNAJ se ponen en el lugar de sus compañeros, imaginan cómo se sienten frente a distintas situaciones y piensan en formas de acompañarlos.",
+ desarrollo:[
+  "<b>Mini sketch del zapatero (opcional):</b> los encargados de talleres introducen la actividad con un personaje zapatero, invitando a imaginar cómo sería caminar con los zapatos de otra persona: «¿Se imaginan cómo sería caminar un día con los zapatos de otra persona?». El zapatero puede lucirse mostrando distintos estilos de zapatos que han pasado por su zapatería.",
+  "<b>Mi zapato:</b> por núcleos, cada NNAJ recibe una plantilla y escribe o dibuja una situación cotidiana que genere alguna emoción, agradable o desagradable (propia, observada o imaginaria), y decora su zapato. Ejemplo: «Me siento triste cuando mis compañeros no me invitan a jugar».",
+  "<b>Caminando en otros zapatos:</b> se mezclan las plantillas y se reparten de nuevo. Cada uno se pone en el lugar de quien vivió la situación y responde en el reverso: ¿Cómo podría sentirse esta persona? ¿Qué podrías hacer para acompañarla? Ejemplo: «Podría sentirse triste o excluida. Podría invitarla a jugar conmigo para que no se sienta sola».",
+  "<b>Compartir los zapatos:</b> quienes quieran comparten la situación que recibieron y su respuesta, y si quieren pueden devolverle el zapato a quien lo escribió."
+ ],
+ reflexion:"Ser empático no significa tener que resolver lo que le pasa a otra persona, sino intentar comprender cómo se siente y encontrar una forma de acompañarla. Preguntas guía: ¿Cómo fue intentar ponerse en los zapatos de otra persona? ¿Qué significa para ustedes ser empáticos? ¿Siempre necesitamos solucionar los problemas de los demás para ayudarlos? ¿De qué otras formas podemos acompañar a alguien?",
+ tips:[], nota:"La plantilla del zapato (anexo A) va impresa desde el manual."},
+
+{...ACTIVITIES.find(a=>a.id==="f4"), dia:"domingo", bloque:"12:00 – 13:00", tiempo:"~30 min", bucket:"media"},
+
+{id:"n8", dia:"domingo", bloque:"14:30 – 15:15", nombre:"¡Al aire! Nuestro podcast OI", habilidades:["EQUIPO","EMPATIA"], tiempo:"~45 min", bucket:"larga",
+ materiales:["Sobres con temas de conversación","Micrófono y audífonos por núcleo","Materiales para construir una cámara y un micrófono ficticios (cartón, tubos de papel, papel, plumones, cinta adhesiva)","Cronómetro o reloj"],
+ proposito:"A través de la simulación de un podcast y una posterior experiencia como reporteros, fomentar la confianza, la curiosidad por conocer a otros y la capacidad de establecer conversaciones significativas, valorando las experiencias y opiniones de sus pares.",
+ desarrollo:[
+  "<b>¡Bienvenidos a nuestro podcast!:</b> por núcleo, se explica que serán los protagonistas de su propio podcast. Los voluntarios son el público, con la misión de escucharlos y entretenerse.",
+  "<b>¡Comienza la conversación!:</b> los voluntarios entregan un tema para iniciar. Los NNAJ conversan procurando que todos participen y que sea entretenido y fluido. Como público, los voluntarios proponen nuevos temas, hacen preguntas y motivan la conversación cuando se detiene.",
+  "<b>Nueva sección, 'Operación Infancia por dentro':</b> al terminar el podcast, los NNAJ dejan de ser conductores y se convierten en reporteros, con la misión de conocer las experiencias de otros que participan en la jornada.",
+  "<b>Construimos nuestro equipo:</b> cada núcleo construye su cámara y micrófono ficticios, diseñándolos como si fueran de un verdadero equipo de televisión.",
+  "<b>¡Salimos a entrevistar!:</b> los núcleos se juntan en parejas. Un núcleo sale como reportero, acompañado por sus voluntarios, y entrevista al otro; a la mitad del tiempo intercambian roles. Preguntas guía: ¿Qué ha sido lo más entretenido de la jornada? ¿Qué actividad te ha gustado más y por qué? ¿Qué fue lo más difícil o inesperado de hoy?"
+ ],
+ reflexion:"Conversación breve en el núcleo: ¿Cómo fue conversar sin que nadie les dijera de qué hablar? ¿Qué descubrieron de los otros núcleos al entrevistarlos? ¿Hubo algo en común con ellos? ¿Cómo se sintieron al ser entrevistados? Reforzar que conversar permite conocer a otras personas y descubrir que, aunque todos somos diferentes, podemos encontrar intereses y experiencias en común.",
+ tips:["El foco debe estar en la diversión, la interacción y la creatividad, evitando que las conversaciones se sientan como una entrevista formal."]}
   ]
 };
 
@@ -2075,7 +2142,7 @@ function cardHTML(a){
 }
 
 function openDetail(id){
-  const a = ACTIVITIES.find(x=>x.id===id) || FINDE.actividades.find(x=>x.id===id);
+  const a = FINDE.actividades.find(x=>x.id===id) || ACTIVITIES.find(x=>x.id===id); // FINDE primero: trae día/bloque de las que reutilizan id del catálogo
   if(!a) return;
   const body = document.getElementById("sheet-body");
   body.innerHTML = `
