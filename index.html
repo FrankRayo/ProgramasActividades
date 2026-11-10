@@ -1827,26 +1827,8 @@ const ACTIVITIES = [
  ],
  reflexion:"Alrededor de la máquina: ¿Habríamos podido construirla sin los demás pueblos? ¿Qué tenía nuestro pueblo que los otros necesitaban? ¿Qué tuvimos que hacer para conseguir los materiales que nos faltaban? ¿Fue importante ayudar a los demás? Transmitir que todos tenemos habilidades, conocimientos y cualidades distintas que pueden servir a otros: así como cada pueblo tenía recursos que los demás necesitaban, cada persona tiene algo importante que aportar a su comunidad. No necesitamos tenerlo ni saberlo todo; compartiendo, comunicándonos y trabajando juntos logramos cosas imposibles por nuestra cuenta.",
  tips:["Es fundamental preparar antes los puestos del mercado y las piezas de la gran máquina."],
- nota:"En el cronograma aparece como 'Catanazo parte 2'. Continúa directamente la parte 1 de la mañana."}
-];
-
-/* ---------- Actividades de la salida de este fin de semana ----------
-   Cargar aquí las actividades del manual de la salida, con la misma forma
-   que ACTIVITIES (usar ids con prefijo "f" para no chocar con el catálogo)
-   más "dia" (uno de FINDE.dias) y "bloque" (horario).
-   Si "actividades" queda vacío, la pestaña muestra un mensaje de "no hay". */
-const FINDE = {
-  titulo:"Salida de noviembre",
-  fecha:"6–8 de noviembre",
-  zonas:"Melipilla, Huechún, Puangue, MR y Peñaflor",   // zonas que van a la salida, ej. "Lampa, La Pampilla, Calle Larga y Batuco"
-  dias:[
-    {id:"sabado",  label:"Sábado",  nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"},
-    {id:"domingo", label:"Domingo", nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"}
-  ],
-  actividades:[
-{...ACTIVITIES.find(a=>a.id==="sep1"), dia:"sabado", bloque:"10:00 – 10:45"},
-
-{id:"n2", dia:"sabado", bloque:"11:00 – 11:45", nombre:"Reglas de Oro: dulce o truco", habilidades:["EQUIPO","CONVIVENCIA"], tiempo:"~30 min", bucket:"media",
+ nota:"En el cronograma aparece como 'Catanazo parte 2'. Continúa directamente la parte 1 de la mañana."},
+{id:"n2", nombre:"Reglas de Oro: dulce o truco", habilidades:["EQUIPO","CONVIVENCIA"], tiempo:"~30 min", bucket:"media",
  materiales:["Cartulinas de dos colores distintos: letras D-U-L-C-E (un color) y T-R-U-C-O (otro color)","Pliegos de papel kraft","Plumones y lápices de colores","3 carteles con las Reglas de Oro"],
  proposito:"Que los NNAJ reconozcan qué significa cumplir y no cumplir las Reglas de Oro a través de una búsqueda. Un equipo representa situaciones donde las reglas sí se cumplen (Dulce) y el otro situaciones donde no se cumplen (Truco), comprendiendo que cada persona puede elegir cómo actuar y que cuidar las reglas depende de todos.",
  desarrollo:[
@@ -1859,7 +1841,7 @@ const FINDE = {
  reflexion:"En el círculo general: ¿Qué diferencia hubo entre las situaciones 'dulce' y las 'truco'? ¿Qué podemos hacer para que en OI y en el colegio haya más momentos 'dulce'? Reforzar que cada uno elige cómo actuar y que las Reglas de Oro se cuidan entre todos.",
  tips:[]},
 
-{id:"n3", dia:"sabado", bloque:"12:00 – 13:00", nombre:"Mi personaje especial: modo Halloween", habilidades:["AUTOESTIMA","EMPATIA"], tiempo:"~30 min", bucket:"media",
+{id:"n3", nombre:"Mi personaje especial: modo Halloween", habilidades:["AUTOESTIMA","EMPATIA"], tiempo:"~30 min", bucket:"media",
  materiales:["Hoja en blanco","Lápices de colores","Plumones"],
  proposito:"Fomentar el conocimiento mutuo y la valoración de las cualidades de cada integrante del grupo mediante la creación de un personaje que combine características físicas, gustos y habilidades de sus compañeros. A través de la creatividad y un juego de adivinanzas, los NNAJ descubren nuevas cosas sobre los demás y reconocen sus particularidades.",
  desarrollo:[
@@ -1871,7 +1853,7 @@ const FINDE = {
  reflexion:"Reforzar que al crear sus monstruos pudieron conocer mejor a sus compañeros y reconocer lo especial de cada uno. Así como una misma característica puede representarse de distintas formas, las personas también vemos e interpretamos las cosas de manera diferente. Lo importante es valorar nuestra propia forma de ser.",
  tips:[]},
 
-{id:"n4", dia:"sabado", bloque:"14:30 – 15:15", nombre:"¡Hoy dirigimos nosotros!", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"~45 min", bucket:"larga",
+{id:"n4", nombre:"¡Hoy dirigimos nosotros!", habilidades:["EQUIPO","RESILIENCIA"], tiempo:"~45 min", bucket:"larga",
  materiales:["Una caja de materiales para toda la zona (conos, pelota pequeña, globos, cuerda, cucharas de madera, cartulinas, gorros, lápices, etc.)","Tarjetas de imprevistos para los voluntarios"],
  proposito:"Que cada equipo o núcleo cree una mini-actividad y la presente al resto de la zona. Mientras la dirigen, enfrentan imprevistos que complican el juego y tienen que adaptarse y resolverlos juntos, descubriendo que los planes pueden torcerse y que, con creatividad, comunicación y buena disposición, la actividad sigue funcionando.",
  desarrollo:[
@@ -1883,9 +1865,7 @@ const FINDE = {
  reflexion:"En cada equipo: ¿Cómo decidieron qué materiales elegir? ¿Qué pasó cuando se acabó un objeto que querían? ¿Qué pasó cuando apareció un imprevisto? ¿Qué hizo cada uno para resolverlo? Reforzar que equivocarse o que algo salga distinto no significa fracasar: lo importante es cómo reaccionamos y cómo nos apoyamos.",
  tips:["Ideas de imprevistos: se retira un material que están usando, nadie entendió, hay alguien haciendo mucho ruido e interrumpiendo, hay que agregar una nueva regla que complique el juego, etc."]},
 
-{...ACTIVITIES.find(a=>a.id==="sep5"), dia:"domingo", bloque:"10:00 – 10:45"},
-
-{id:"n6", dia:"domingo", bloque:"11:00 – 11:45", nombre:"En tus zapatos", habilidades:["EMPATIA"], tiempo:"~20 min", bucket:"corta",
+{id:"n6", nombre:"En tus zapatos", habilidades:["EMPATIA"], tiempo:"~20 min", bucket:"corta",
  materiales:["Plantillas de zapatos impresas, una por NNAJ (anexo A)","Lápices grafito y gomas","Lápices de colores y plumones","Disfraz para el sketch del zapatero (opcional)"],
  proposito:"Fomentar la empatía mediante el reconocimiento de las emociones y experiencias de otras personas. Creando e intercambiando plantillas de zapatos, los NNAJ se ponen en el lugar de sus compañeros, imaginan cómo se sienten frente a distintas situaciones y piensan en formas de acompañarlos.",
  desarrollo:[
@@ -1897,9 +1877,7 @@ const FINDE = {
  reflexion:"Ser empático no significa tener que resolver lo que le pasa a otra persona, sino intentar comprender cómo se siente y encontrar una forma de acompañarla. Preguntas guía: ¿Cómo fue intentar ponerse en los zapatos de otra persona? ¿Qué significa para ustedes ser empáticos? ¿Siempre necesitamos solucionar los problemas de los demás para ayudarlos? ¿De qué otras formas podemos acompañar a alguien?",
  tips:[], nota:"La plantilla del zapato (anexo A) va impresa desde el manual."},
 
-{...ACTIVITIES.find(a=>a.id==="f4"), dia:"domingo", bloque:"12:00 – 13:00", tiempo:"~30 min", bucket:"media"},
-
-{id:"n8", dia:"domingo", bloque:"14:30 – 15:15", nombre:"¡Al aire! Nuestro podcast OI", habilidades:["EQUIPO","EMPATIA"], tiempo:"~45 min", bucket:"larga",
+{id:"n8", nombre:"¡Al aire! Nuestro podcast OI", habilidades:["EQUIPO","EMPATIA"], tiempo:"~45 min", bucket:"larga",
  materiales:["Sobres con temas de conversación","Micrófono y audífonos por núcleo","Materiales para construir una cámara y un micrófono ficticios (cartón, tubos de papel, papel, plumones, cinta adhesiva)","Cronómetro o reloj"],
  proposito:"A través de la simulación de un podcast y una posterior experiencia como reporteros, fomentar la confianza, la curiosidad por conocer a otros y la capacidad de establecer conversaciones significativas, valorando las experiencias y opiniones de sus pares.",
  desarrollo:[
@@ -1911,6 +1889,22 @@ const FINDE = {
  ],
  reflexion:"Conversación breve en el núcleo: ¿Cómo fue conversar sin que nadie les dijera de qué hablar? ¿Qué descubrieron de los otros núcleos al entrevistarlos? ¿Hubo algo en común con ellos? ¿Cómo se sintieron al ser entrevistados? Reforzar que conversar permite conocer a otras personas y descubrir que, aunque todos somos diferentes, podemos encontrar intereses y experiencias en común.",
  tips:["El foco debe estar en la diversión, la interacción y la creatividad, evitando que las conversaciones se sientan como una entrevista formal."]}
+];
+
+/* ---------- Actividades de la salida de este fin de semana ----------
+   Cargar aquí las actividades del manual de la salida, con la misma forma
+   que ACTIVITIES (usar ids con prefijo "f" para no chocar con el catálogo)
+   más "dia" (uno de FINDE.dias) y "bloque" (horario).
+   Si "actividades" queda vacío, la pestaña muestra un mensaje de "no hay". */
+const FINDE = {
+  titulo:"Próxima salida",
+  fecha:"",
+  zonas:"",   // zonas que van a la salida, ej. "Lampa, La Pampilla, Calle Larga y Batuco"
+  dias:[
+    {id:"sabado",  label:"Sábado",  nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"},
+    {id:"domingo", label:"Domingo", nota:"Almuerzo y recreo activo entre 13:00 y 14:30 · Reflexión general 15:30 – 16:00 (~20 min)"}
+  ],
+  actividades:[
   ]
 };
 
